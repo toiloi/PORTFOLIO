@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Toai Nguyen — Full Stack Developer</title>
+  <meta name="description" content="Portfolio — Full Stack Developer: About, Services, Projects, Testimonials, Contact." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="#top" aria-label="Home">
+        <span class="logo-text">NAT</span>
+      </a>
+      <nav class="nav-links">
+        <a href="#top">Home</a>
+        <a href="#about">About Me</a>
+        <a href="#services">Services</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+        <button id="themeToggle" class="icon-btn" aria-label="Toggle theme">
+          <i class="fa-solid fa-sun"></i>
+        </button>
+      </nav>
+      <button id="menuBtn" class="btn show-mobile">☰</button>
+    </div>
+  </header>
+
+  <main id="top" class="container">
+    <!-- ========== HERO ========== -->
+    <section class="hero reveal">
+      <div class="hero-left">
+        <p class="hi">Hi I am</p>
+        <h2 class="name animate-name"><span class="accent">Toai Nguyen</span></h2>
+        <h1 class="role">
+          <span class="animate-stack">Full Stack</span><br />
+          <span class="animate-dev">Developer</span>
+        </h1>
+        <p class="lede animate-content">
+          As a Full Stack Developer, I specialize in creating responsive, high-performance web applications using modern technologies. I enjoy every part of the process — from designing sleek user interfaces to building powerful server-side logic. I’m constantly exploring new tools and frameworks to improve my skills and deliver better user experiences.
+        </p>
+        <a class="btn solid animate-content" href="#contact"><strong>Hire Me</strong></a>
+      </div>
+
+      <div class="hero-right animate-content">
+        <div class="portrait-wrap">
+          <img src="assets/img/ava.png" alt="Portrait" class="portrait"/>
+        </div>
+        <div class="socials">
+          <a href="https://www.facebook.com/toiloi1211"><i class="fa-brands fa-facebook"></i></a>
+          <a href="https://github.com/toiloi"><i class="fa-brands fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/nguy%E1%BB%85n-anh-to%E1%BA%A1i-436997310/"><i class="fa-brands fa-linkedin"></i></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== ABOUT ========== -->
+    <section id="about" class="about">
+      <div class="section-head center reveal">
+        <h2>About Me</h2>
+        <p>Hi! I'm <strong>Nguyen Anh Toai</strong>, a third-year student at UTH University.  
+          Experienced with <strong>Spring Boot, HTML, CSS, JavaScript</strong>, and <strong>SQL Server</strong>.  
+          I aim to become a professional developer who delivers practical and scalable solutions.</p>
+      </div>
+      <div class="about-grid">
+        <div class="about-photo reveal">
+          <div class="portrait-wrap lg">
+            <img src="assets/img/ava2.jpg" alt="About portrait" class="portrait"/>
+          </div>
+        </div>
+        <div class="about-skills reveal">
+          <div class="skill"><span>Java (Spring Boot)</span><div class="bar"><i style="--v:60%"></i></div></div>
+          <div class="skill"><span>Python (Django)</span><div class="bar"><i style="--v:70%"></i></div></div>
+          <div class="skill"><span>C# (ASP.NET)</span><div class="bar"><i style="--v:45%"></i></div></div>
+          <div class="skill"><span>SQL</span><div class="bar"><i style="--v:80%"></i></div></div>
+          <div class="skill"><span>HTML & CSS</span><div class="bar"><i style="--v:70%"></i></div></div>
+          <div class="skill"><span>JavaScript</span><div class="bar"><i style="--v:70%"></i></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SERVICES ========== -->
+    <section id="services" class="services">
+      <div class="section-head center reveal">
+        <h2>Services</h2>
+        <p>I build complete web applications — from clean interfaces to powerful backend systems.</p>
+      </div>
+      <div class="grid svc-grid">
+        <div class="svc-card reveal"><div class="svc-ico"><i class="fa-solid fa-code"></i></div><h3>FRONTEND (HTML&CSS&JS)</h3><p>Build fast, accessible UIs with solid SEO and Core Web Vitals.</p></div>
+        <div class="svc-card reveal"><div class="svc-ico"><i class="fa-solid fa-gears"></i></div><h3>BACKEND API (Django/ASP.NET/Java SpringBoot)</h3><p>Design secure REST/GraphQL APIs with authentication and rate limiting.</p></div>
+        <div class="svc-card reveal"><div class="svc-ico"><i class="fa-solid fa-diagram-project"></i></div><h3>MICROSERVICES & MESSAGING</h3><p>Decouple services and scale with asynchronous communication.</p></div>
+        <div class="svc-card reveal"><div class="svc-ico"><i class="fa-solid fa-database"></i></div><h3>DATABASE & ORM</h3><p>Schema design and query optimization for high throughput.</p></div>
+      </div>
+    </section>
+
+    <!-- ========== PROJECTS ========== -->
+    <section id="projects" class="projects">
+      <div class="section-head center reveal">
+        <h2>My Projects</h2>
+        <p>Some of the projects I’ve built during my learning and development journey.</p>
+      </div>
+      <div class="filter-pills reveal">
+        <button class="pill active" data-filter="all">All</button>
+        <button class="pill" data-filter="frontend">Web Design</button>
+        <button class="pill" data-filter="backend">Backend System</button>
+        <button class="pill" data-filter="console">App Console</button>
+      </div>
+      <div class="proj-grid" id="projectGrid">
+        <article class="proj-card reveal" data-tags="react dashboard nextjs" data-desc="Bảng điều khiển cho câu lạc bộ cầu lông. Quản lý người chơi, lịch đấu, điểm số."
+         data-link="https://your-demo-link.com">
+          <div class="thumb"><img src="assets/img/Screenshot 2025-10-15 152334.png" alt="Project 1"/></div>
+          <ul class="tags"><li>React</li><li>Next.js</li><li>TypeScript</li><li>Dashboard System</li></ul>
+          <p class="name-project">Badminton</p>
+        </article>
+        <article class="proj-card reveal" data-tags="react dashboard nextjs">
+          <div class="thumb"><img src="assets/img/Screenshot 2025-10-15 152334.png" alt="Project 1"/></div>
+          <ul class="tags"><li>React</li><li>Next.js</li><li>TypeScript</li><li>Dashboard System</li></ul>
+          <p class="name-project">Badminton</p>
+        </article>
+        <article class="proj-card reveal" data-tags="react dashboard nextjs">
+          <div class="thumb"><img src="assets/img/Screenshot 2025-10-15 152334.png" alt="Project 1"/></div>
+          <ul class="tags"><li>React</li><li>Next.js</li><li>TypeScript</li><li>Dashboard System</li></ul>
+          <p class="name-project">Badminton</p>
+        </article>
+        <article class="proj-card reveal" data-tags="react dashboard nextjs">
+          <div class="thumb"><img src="assets/img/Screenshot 2025-10-15 152334.png" alt="Project 1"/></div>
+          <ul class="tags"><li>React</li><li>Next.js</li><li>TypeScript</li><li>Dashboard System</li></ul>
+          <p class="name-project">Badminton</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ========== CTA ========== -->
+    <section id="contact" class="contact">
+      <div class="section-head center reveal">
+        <h2>Let's work together</h2>
+        <p>If you're looking for a dedicated and creative developer — let’s build something amazing together!</p>
+      </div>
+      <form class="cta-form reveal" onsubmit="event.preventDefault(); alert('Thanks! I\'ll reach out soon.'); this.reset();">
+        <input class="input" type="email" placeholder="Enter your email" required />
+        <button class="btn solid" type="submit"><strong>Contact Me</strong></button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container center">
+      <h3>CODING WITH TOAI</h3>
+      <ul class="foot-nav">
+        <li><a href="#top">Home</a></li>
+        <li><a href="#about">About Me</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <small>© <span id="year"></span> Toai Nguyen</small>
+    </div>
+  </footer>
+  <!-- Project Modal -->
+<div id="projectModal" class="modal" aria-hidden="true">
+  <div class="modal__box" role="dialog" aria-modal="true" aria-labelledby="pmTitle">
+    <div class="modal__head">
+      <h3 id="pmTitle">Project title</h3>
+      <button class="modal__close" aria-label="Close">&times;</button>
+    </div>
+    <div class="modal__body">
+      <div class="modal__media">
+        <img id="pmImg" alt="">
+      </div>
+      <div class="modal__content">
+        <ul id="pmTags" class="tags"></ul>
+        <p id="pmDesc">No description yet.</p>
+        <div class="modal__actions">
+          <a id="pmLink" class="btn solid" href="#" target="_blank" rel="noopener">View project</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <script src="assets/app.js" defer></script>
+</body>
+</html>
