@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Portfolio • 3 năm CNTT</title>
+    <meta name="description" content="Portfolio sau 3 năm học Công nghệ Thông tin – dự án, kỹ năng, liên hệ.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <link href="https://unpkg.com/swiper@10/swiper-bundle.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-logo">
+                <span class="iconify" data-icon="ph:aperture-fill"></span>
+            </div>
+            <div class="loading-text">
+                <span id="loading-title">HADES</span>
+                <div class="loading-bar">
+                    <div class="loading-progress"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="tsparticles" aria-hidden="true"></div>
+    
+    <!-- Advanced Parallax Background Layers -->
+    <div class="parallax-layer parallax-bg-1"></div>
+    <div class="parallax-layer parallax-bg-2"></div>
+    <div class="parallax-layer parallax-bg-3"></div>
+    
+    <!-- Particle System Container -->
+    <div class="particle-container" id="particleContainer"></div>
+    
+    <a class="skip-link" href="#main">Bỏ qua nội dung</a>
+
+    <header class="site-header">
+        <div class="nav glass">
+            <div class="brand">
+                <span class="logo" aria-hidden="true"><span class="iconify" data-icon="ph:aperture-fill"></span></span>
+                <span class="title">Portfolio</span>
+            </div>
+            <nav class="menu" aria-label="Chính">
+                <a href="#about">Giới thiệu</a>
+                <a href="#skills">Kỹ năng</a>
+                <a href="#projects">Dự án</a>
+                <a href="#contact">Liên hệ</a>
+                <button id="themeToggle" class="icon-btn" aria-label="Đổi giao diện" title="Đổi giao diện"></button>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main">
+        <section id="hero" class="hero morphing-bg" data-aos="fade-up">
+            <div class="hero-card glass">
+                <div class="hero-text">
+                    <h1 class="text-reveal">Xin chào, mình là <span class="accent glitch" data-text="Sinh viên CNTT">Trương Lê Bảo Thọ</span></h1>
+                    <div class="typed-text">
+                        <span id="typed-text"></span>
+                        <span class="typing-cursor"></span>
+                    </div>
+                    <p class="scroll-fade-in">Sau 3 năm học ngành Công nghệ Thông tin, mình tập trung vào phát triển Web, thiết kế hệ thống và trải nghiệm người dùng. Đam mê tạo ra những sản phẩm công nghệ có ý nghĩa và mang lại giá trị thực tế.</p>
+                    <div class="hero-cta">
+                        <a href="#projects" class="btn primary btn-morph liquid-btn">🚀 Xem dự án</a>
+                        <a href="#contact" class="btn btn-morph magnetic">💬 Liên hệ</a>
+                    </div>
+                </div>
+                <div class="hero-media">
+                                    <div class="avatar glass" aria-label="Ảnh đại diện">
+                                                    <!-- Anonymous person SVG (inline for crisp rendering and theme-aware color) -->
+                                                    <svg class="avatar-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-hidden="false">
+                                                        <title>Người ẩn danh</title>
+                                                        <defs>
+                                                            <linearGradient id="g1" x1="0" x2="1" y1="0" y2="1">
+                                                                <stop offset="0" stop-color="rgba(35,131,255,0.18)" />
+                                                                <stop offset="1" stop-color="rgba(255,107,129,0.12)" />
+                                                            </linearGradient>
+                                                        </defs>
+                                                        <rect width="120" height="120" rx="16" fill="url(#g1)" />
+                                                        <g transform="translate(20,16)" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="2">
+                                                            <circle cx="40" cy="28" r="18" fill="none" stroke-opacity="0.95" />
+                                                            <path d="M4,86 C4,66 22,54 40,54 C58,54 76,66 76,86" stroke-opacity="0.95" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+                                                        </g>
+                                                    </svg>
+                                            </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="section" data-aos="fade-up" data-aos-delay="100">
+            <div class="section-header">
+                <h2>Giới thiệu</h2>
+                <p>Tư duy hệ thống, code sạch, ưu tiên trải nghiệm người dùng và hiệu năng.</p>
+            </div>
+            <div class="cards">
+                <article class="card glass card-3d floating-element scroll-scale-in" data-aos="zoom-in" data-aos-delay="150">
+                    <h3>🎓 Học tập</h3>
+                    <p>Thuộc lòng nền tảng CS: cấu trúc dữ liệu, thuật toán, mạng máy tính, hệ điều hành. Luôn cập nhật kiến thức mới và áp dụng vào thực tế.</p>
+                </article>
+                <article class="card glass card-3d floating-element scroll-scale-in" data-aos="zoom-in" data-aos-delay="200">
+                    <h3>🚀 Hướng phát triển</h3>
+                    <p>Full‑stack web: React/Next.js, Node.js, thiết kế API, DevOps cơ bản. Tập trung vào tạo ra những ứng dụng web hiện đại và hiệu quả.</p>
+                </article>
+                <article class="card glass card-3d floating-element scroll-scale-in" data-aos="zoom-in" data-aos-delay="250">
+                    <h3>💎 Giá trị</h3>
+                    <p>Tính kỷ luật, khả năng học nhanh, và giao tiếp rõ ràng trong nhóm. Luôn đặt chất lượng và trải nghiệm người dùng lên hàng đầu.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="skills" class="section" data-aos="fade-up" data-aos-delay="100">
+            <div class="section-header">
+                <h2>Kỹ năng</h2>
+                <p>Các công nghệ và kỹ năng mà mình đã tích lũy trong quá trình học tập và phát triển</p>
+            </div>
+            <div class="skills-grid">
+                <div class="skill glass">
+                    <span>JavaScript / TypeScript</span>
+                    <div class="meter"><span style="--p:82%"></span></div>
+                </div>
+                <div class="skill glass">
+                    <span>HTML / CSS</span>
+                    <div class="meter"><span style="--p:88%"></span></div>
+                </div>
+                <div class="skill glass">
+                    <span>React</span>
+                    <div class="meter"><span style="--p:75%"></span></div>
+                </div>
+                <div class="skill glass">
+                    <span>Node.js</span>
+                    <div class="meter"><span style="--p:70%"></span></div>
+                </div>
+                <div class="skill glass">
+                    <span>Database & SQL</span>
+                    <div class="meter"><span style="--p:65%"></span></div>
+                </div>
+                <div class="skill glass">
+                    <span>Git & CI/CD</span>
+                    <div class="meter"><span style="--p:72%"></span></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="section" data-aos="fade-up" data-aos-delay="100">
+            <div class="section-header">
+                <h2>Dự án tiêu biểu</h2>
+                <p>Một vài dự án học tập và cá nhân nổi bật trong 3 năm qua, thể hiện khả năng áp dụng kiến thức vào thực tế</p>
+            </div>
+            <div class="project-filters">
+                <button class="filter-btn active" data-filter="all">Tất cả</button>
+                <button class="filter-btn" data-filter="frontend">Frontend</button>
+                <button class="filter-btn" data-filter="backend">Backend</button>
+                <button class="filter-btn" data-filter="fullstack">Full-stack</button>
+            </div>
+            <div class="projects swiper">
+                <div class="swiper-wrapper">
+                    <article class="project glass swiper-slide tilt-card card-3d scroll-slide-left" data-category="fullstack">
+                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200&auto=format&fit=crop" alt="Website bán kim cương minh hoạ">
+                        <div class="project-body">
+                            <h3>Website bán kim cương</h3>
+                            <p>Ứng dụng web bán kim cương với tính năng tìm kiếm và lọc nâng cao.</p>
+                            <div class="tags">
+                                <span>Django</span><span>JavaScript</span><span>SQL</span>
+                            </div>
+                            <button class="btn subtle project-detail-btn btn-morph" data-project="dashboard">🔍 Chi tiết</button>
+                        </div>
+                    </article>
+                    <article class="project glass swiper-slide tilt-card card-3d scroll-fade-in" data-category="backend">
+                        <img src="./img/uth1.png" alt="API minh hoạ">
+                        <div class="project-body">
+                            <h3>UTH Team Matchmaking</h3>
+                            <p>UTH Team Matchmaking API giúp kết nối sinh viên trong cùng đội nhóm dựa trên kỹ năng và sở thích chung.</p>
+                            <div class="tags">
+                                <span>Spring Boot</span><span>JWT</span><span>WebSocket</span>
+                            </div>
+                            <button class="btn subtle project-detail-btn btn-morph" data-project="api">🔍 Chi tiết</button>
+                        </div>
+                    </article>
+                    <article class="project glass swiper-slide tilt-card card-3d scroll-slide-right" data-category="frontend">
+                        <img src="./img/TFSIGN.png" alt="UI minh hoạ">
+                        <div class="project-body">
+                            <h3>Traffic Sign Management</h3>
+                            <p>Ứng dụng web quản lý biển báo giao thông tích hợp trí tuệ nhân tạo.</p>
+                            <div class="tags">
+                                <span>.NET</span><span>AI</span><span>Microservices</span>
+                            </div>
+                            <button class="btn subtle project-detail-btn btn-morph" data-project="ui">🔍 Chi tiết</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="swiper-button-prev" aria-label="Trước"></div>
+                <div class="swiper-button-next" aria-label="Sau"></div>
+                <div class="swiper-pagination" aria-hidden="true"></div>
+            </div>
+        </section>
+
+        <section id="contact" class="section" data-aos="fade-up" data-aos-delay="100">
+            <div class="section-header">
+                <h2>Liên hệ</h2>
+                <p>Hãy kết nối với mình để thảo luận về cơ hội hợp tác hoặc trao đổi kinh nghiệm</p>
+            </div>
+            <div class="contact-social">
+                <a href="https://github.com/HadesXChaos" class="btn subtle btn-morph" target="_blank" rel="noopener" aria-label="GitHub">
+                    <span class="iconify" data-icon="mdi:github"></span>
+                    <span>GitHub</span>
+                </a>
+                <a href="https://discord.com/users/457501201404264458" class="btn subtle btn-morph" target="_blank" rel="noopener" aria-label="Discord">
+                    <span class="iconify" data-icon="mdi:discord"></span>
+                    <span>Discord</span>
+                </a>
+            </div>
+            <form class="contact glass" name="contact" autocomplete="on">
+                <div class="field">
+                    <label for="name">Họ và tên</label>
+                    <input id="name" name="name" type="text" placeholder="Trương Lê Bảo Thọ" required>
+                </div>
+                <div class="field">
+                    <label for="email">Email</label>
+                    <input id="email" name="email" type="email" placeholder="thozed1032@gmail.com" required>
+                </div>
+                <div class="field">
+                    <label for="message">Nội dung</label>
+                    <textarea id="message" name="message" rows="4" placeholder="Mình muốn trao đổi về..." required></textarea>
+                </div>
+                <button type="submit" class="btn primary btn-morph liquid-btn">📤 Gửi tin nhắn</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- Project Modal -->
+    <div id="project-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="modal-title">
+        <div class="modal-content glass" role="document">
+            <div class="modal-header">
+                <h3 id="modal-title">Chi tiết dự án</h3>
+                <button class="modal-close" id="modal-close" aria-label="Đóng hộp thoại">×</button>
+            </div>
+            <div class="modal-body">
+                <!-- Invisible focus trap at the start -->
+                <div tabindex="0" data-focus-start></div>
+
+                <img id="modal-image" class="modal-image" src="" alt="">
+                <div id="modal-description"></div>
+                <div class="modal-tech" id="modal-tech"></div>
+                <div id="modal-features"></div>
+                <div class="modal-links" id="modal-links"></div>
+
+                <!-- Invisible focus trap at the end -->
+                <div tabindex="0" data-focus-end></div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="glass">
+            <p>© 2025 • Create By Hades</p>
+            <a href="#hero" class="to-top" aria-label="Lên đầu trang">⤴</a>
+        </div>
+    </footer>
+    
+    <script src="https://code.iconify.design/3/3.1.1/iconify.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script src="https://unpkg.com/swiper@10/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.7.1/tsparticles.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js" integrity="sha512-CiknY8jYkQz9sQp5Jz0Q4n+0JtKJQy1iHKtA4w1m2A+oCMj2o7WkW5l0X9F3v3oV8n6HnqfLzJcZkU9J2kqzEA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.8.1/dist/vanilla-tilt.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+
