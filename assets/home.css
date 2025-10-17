@@ -1,0 +1,21 @@
+/* Base */
+:root { --ring: #60a5fa; }
+html, body { height: 100%; }
+body { font-family: 'Plus Jakarta Sans', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+
+/* Animations */
+@media (prefers-reduced-motion: no-preference) {
+  .fade-up { animation: fadeUp .48s ease both; }
+  .fade-up:nth-child(2) { animation-delay: .06s }
+  .fade-up:nth-child(3) { animation-delay: .12s }
+  .fade-up:nth-child(4) { animation-delay: .18s }
+  .fade-up:nth-child(5) { animation-delay: .24s }
+}
+@keyframes fadeUp { from { opacity: 0; transform: translateY(10px) } to { opacity: 1; transform: translateY(0) } }
+
+/* Effects */
+.glass { background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03)); backdrop-filter: blur(10px) saturate(120%); }
+.card:hover .sheen { opacity: 1; }
+
+/* Prevent janky transitions during theme toggle */
+.notransition * { transition: none !important; }

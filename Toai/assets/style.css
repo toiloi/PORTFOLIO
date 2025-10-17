@@ -399,6 +399,10 @@ a {
   box-shadow: var(--shadow);
   overflow: hidden;
   border: 1px solid color-mix(in hsl, var(--muted) 20%, transparent);
+  max-width: 380px;        
+  width: 100%;
+  margin: 0 auto;            
+  transition: all 0.3s ease;
 }
 
 .thumb {
@@ -519,9 +523,7 @@ a {
 }
 
 /* ===== Project hover ===== */
-.proj-card {
-  transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease;
-}
+
 .proj-card:hover {
   transform: translateY(-6px) scale(1.02);
   box-shadow: 0 16px 40px rgba(0,0,0,.18);
@@ -629,18 +631,7 @@ a {
   .modal__body { grid-template-columns: 1fr; }
 }
 
-/* Hiệu ứng mượt khi lọc project */
-.proj-card {
-  opacity: 1;
-  transform: scale(1);
-  transition: opacity 0.4s ease, transform 0.4s ease;
-}
 
-.proj-card.hide {
-  opacity: 0;
-  transform: scale(0.9);
-  pointer-events: none;
-}
 
 /* === HERO Animations === */
 
@@ -721,3 +712,107 @@ a {
     transform: translateY(0);
   }
 }
+
+/* Lưới project: cột tự co giãn, thẻ cao bằng nhau */
+.proj-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 26px;
+  justify-content: start;  
+  align-content: start;    
+  justify-items: stretch;
+  align-items: stretch;         
+}
+
+/* Card dạng cột để chia phần ảnh / nội dung */
+.proj-card{
+  display: flex;
+  flex-direction: column;
+  border-radius: 18px;
+  overflow: hidden;
+  height: 100%;            
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity .35s ease, transform .35s ease;
+}
+
+
+
+/* Ảnh: cùng tỷ lệ, không giãn méo */
+.proj-card .thumb{
+  position: relative;
+  padding: 14px;
+  background: #ffe7d6;        
+}
+.proj-card .thumb img{
+  width: 100%;
+  height: 100%;
+  display: block;
+  border-radius: 12px;
+  object-fit: cover;
+  aspect-ratio: 16 / 9;        
+}
+
+/* Phần nội dung phía dưới */
+.proj-card .proj-body{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px 18px 18px;
+  flex: 1 1 auto;             
+}
+
+/* tag gọn và wrap đẹp */
+.proj-card .tags{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 14px;
+  margin: 2px 4px 6px;
+  padding: 0;
+  list-style: none;
+  width: 100%;
+}
+
+/* Tên project: đừng đẩy card cao quá khi xuống dòng */
+.name-project{
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 1.25;
+  margin: 4px 0 0;
+  word-break: break-word;          /* tránh tràn */
+}
+
+/* Viền + bóng đồng nhất (nếu cần) */
+.proj-card{
+  border: 1px solid color-mix(in hsl, var(--muted) 20%, transparent);
+  box-shadow: var(--shadow);
+}
+
+/* Khi chỉ còn 1 project hiển thị, giữ kích thước gọn gàng */
+.proj-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 28px;
+  justify-content: center;   /* canh giữa, không dính full */
+  align-content: start;
+}
+
+/* Nếu có nhiều hơn 1 thẻ, thì giãn đều bình thường */
+@media (min-width: 768px) {
+  .proj-grid:not(:has(.proj-card:nth-child(2))) {
+    justify-content: center;
+  }
+  .proj-grid:has(.proj-card:nth-child(2)) {
+    justify-content: start;
+  }
+}
+
+.proj-card {
+  will-change: transform, opacity;
+  transition: transform .38s ease, opacity .28s ease;
+}
+
+/* ẩn thẻ không khớp mà không làm giật layout trong lúc animate */
+.proj-card.is-hiding { opacity: 0; transform: scale(.96); pointer-events:none; }
+.proj-card.is-gone   { display: none; }          /* chỉ set sau khi fade xong */
+.proj-card.is-new    { opacity: 0; transform: scale(.96); } /* thẻ mới show */
