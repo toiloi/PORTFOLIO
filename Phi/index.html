@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Profile</div>
+            <ul class="nav-links">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#project">Project</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="mobile-menu-toggle" id="menu-toggle">
+                <div class="hamburger"></div>
+                <div class="hamburger"></div>
+                <div class="hamburger"></div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="mobile-menu" id="mobile-menu">
+        <ul class="mobile-nav-links">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#project">Project</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+
+        <div class="hero-content">
+            <p class="hero-subtitle">Welcome to My profile</p>
+            <h1>I'm Hoàng Phi</h1>
+            <p class="subtitle">A third-year student majoring in information technology at University of Transport Ho Chi Minh City.</p>
+            <a href="#project" class="cta-button">View My Work</a>
+        </div>
+
+        <div class="scroll-indicator"></div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container about-content">
+            <div class="about-image"></div>
+            <div class="about-text">
+                <h3>About Me</h3>
+                <p>MSSV: 082205001536</p>
+                <p>Full Name: NGUYỄN HOÀNG PHI</p>
+                <p>Class: CN2305CLC</p>
+                <p>Faculty: Information Technology</p>
+                <div class="skills">
+                    <span class="skill-tag">HTML</span>
+                    <span class="skill-tag">CSS</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">PHP</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- project Section -->
+    <section class="project" id="project">
+        <div class="container">
+            <h2 class="section-title">My Project</h2>
+            <div class="project-grid">
+                <div class="project-item">
+                    <div class="project-image"></div>
+                    <div class="project-content">
+                        <h4>Diamond Shop</h4>
+                        <p>Fully functional diamond sales website project to be implemented in HK2 2023-2024</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Django</span>
+                            <span class="tech-tag">MySQL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-image"></div>
+                    <div class="project-content">
+                        <h4>UTH Team Meeting</h4>
+                        <p>UTH student learning website project with modern functions, implemented in HK1 2024-2025</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Java</span>
+                            <span class="tech-tag">Spring Boot</span>
+                            <span class="tech-tag">MySQL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-image"></div>
+                    <div class="project-content">
+                        <h4>Book Review Site</h4>
+                        <p>Book review website with friendly, intuitive, easy-to-use interface implemented in
+                            HK1-2025-2026</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">HTML</span>
+                            <span class="tech-tag">CSS</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">PHP</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="contact-floating-shapes">
+            <div class="contact-shape contact-shape-1"></div>
+            <div class="contact-shape contact-shape-2"></div>
+            <div class="contact-shape contact-shape-3"></div>
+            <div class="contact-shape contact-shape-4"></div>
+            <div class="contact-shape contact-shape-5"></div>
+            <div class="contact-shape contact-shape-6"></div>
+        </div>
+
+        <div class="container" style="position: relative; z-index: 2; text-align: center;">
+            <h2 class="section-title" style="color: white;">Get in Touch</h2>
+            <p style="max-width: 600px; margin: 0 auto 2rem;">Interested in working together? Let's connect and discuss
+                your next project.</p>
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=phinh1536@ut.edu.vn" target="_blank" class="cta-button">
+                Contact Me
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-left">
+                <p>© 2025 Hoang Phi. All Rights Reserved.</p>
+            </div>
+            <div class="footer-right">
+                <a href="#hero">Home</a>
+                <a href="#about">About</a>
+                <a href="#project">Project</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+
+        window.addEventListener('scroll', () => {
+            document.querySelector('nav').classList.toggle('scrolled', window.scrollY > 50);
+        });
+    </script>
+
+</body>
+
+</html>
