@@ -1,191 +1,326 @@
 <!DOCTYPE html>
 <html lang="vi" class="scroll-smooth dark">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ổ Quỷ</title>
-  <meta name="description" content="Trang giới thiệu các thành viên trong nhóm và portfolio." />
-  <meta name="color-scheme" content="dark" />
-  <meta name="theme-color" content="#0b1120">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ổ Quỷ</title>
+    <meta
+      name="description"
+      content="Trang giới thiệu các thành viên trong nhóm và portfolio."
+    />
+    <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#0b1120" />
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- Prevent theme flash (set class before CSS loads) -->
-  <script>
-    (function(){
-      try {
-        var THEME_KEY='theme-preference';
-        var mode = 'dark';
-        localStorage.setItem(THEME_KEY, mode);
-        document.documentElement.classList.add('dark');
-        document.documentElement.style.colorScheme = mode;
-      } catch(e) {}
-    })();
-  </script>
-  <!-- TailwindCSS (CDN) -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          fontFamily: { jakarta: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'] },
-          container: { center: true, padding: '1rem' },
-          boxShadow: {
-            glow: '0 10px 30px rgba(30, 64, 175, 0.45)'
+    <!-- Prevent theme flash (set class before CSS loads) -->
+    <script>
+      (function () {
+        try {
+          var THEME_KEY = "theme-preference";
+          var mode = "dark";
+          localStorage.setItem(THEME_KEY, mode);
+          document.documentElement.classList.add("dark");
+          document.documentElement.style.colorScheme = mode;
+        } catch (e) {}
+      })();
+    </script>
+    <!-- TailwindCSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            fontFamily: {
+              jakarta: ["Plus Jakarta Sans", "system-ui", "sans-serif"],
+            },
+            container: { center: true, padding: "1rem" },
+            boxShadow: {
+              glow: "0 10px 30px rgba(30, 64, 175, 0.45)",
+            },
+            backgroundImage: {
+              "hero-grid":
+                "radial-gradient(1200px_600px_at_10%_-10%,rgba(59,130,246,.18),transparent_40%),radial-gradient(900px_500px_at_110%_10%,rgba(236,72,153,.18),transparent_40%),conic-gradient(from_0deg,rgba(2,6,23,.9),rgba(2,6,23,.95),rgba(2,6,23,.9))",
+            },
           },
-          backgroundImage: {
-            'hero-grid':
-              'radial-gradient(1200px_600px_at_10%_-10%,rgba(59,130,246,.18),transparent_40%),radial-gradient(900px_500px_at_110%_10%,rgba(236,72,153,.18),transparent_40%),conic-gradient(from_0deg,rgba(2,6,23,.9),rgba(2,6,23,.95),rgba(2,6,23,.9))'
-          }
-        }
-      }
-    }
-  </script>
+        },
+      };
+    </script>
 
-  <!-- Icons -->
-  <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 
-  <link rel="stylesheet" href="assets/home.css" />
-</head>
-<body class="bg-hero-grid text-slate-100 selection:bg-indigo-500/20">
-  <!-- Top nav -->
-  <header class="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-white/60 dark:supports-[backdrop-filter]:bg-slate-900/40 border-b border-slate-200/70 dark:border-slate-800">
-    <nav class="container flex items-center justify-between py-3">
-      <a href="#" class="group inline-flex items-center gap-2">
-        <span class="inline-grid place-items-center w-8 h-8 rounded-xl bg-indigo-600 text-white shadow-glow">
-          <i data-lucide="sparkles"></i>
-        </span>
-        <span class="font-extrabold tracking-tight text-lg">Ổ Quỷ</span>
-      </a>
-      <div class="flex items-center gap-2">
-        <a href="#members" class="rounded-xl px-3 py-2 text-sm font-semibold bg-indigo-600 text-white hover:bg-indigo-500 shadow-glow focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]">Xem thành viên</a>
+    <link rel="stylesheet" href="assets/home.css" />
+  </head>
+  <body class="bg-hero-grid text-slate-100 selection:bg-indigo-500/20">
+    <!-- Top nav -->
+    <header
+      class="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-white/60 dark:supports-[backdrop-filter]:bg-slate-900/40 border-b border-slate-200/70 dark:border-slate-800"
+    >
+      <nav class="container flex items-center justify-between py-3">
+        <a href="#" class="group inline-flex items-center gap-2">
+          <span
+            class="inline-grid place-items-center w-8 h-8 rounded-xl bg-indigo-600 text-white shadow-glow"
+          >
+            <i data-lucide="sparkles"></i>
+          </span>
+          <span class="font-extrabold tracking-tight text-lg">Ổ Quỷ</span>
+        </a>
+        <div class="flex items-center gap-2">
+          <a
+            href="#members"
+            class="rounded-xl px-3 py-2 text-sm font-semibold bg-indigo-600 text-white hover:bg-indigo-500 shadow-glow focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]"
+            >Xem thành viên</a
+          >
+        </div>
+      </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="relative overflow-hidden">
+      <div class="container py-14 md:py-20">
+        <!-- Filters -->
+        <div class="mt-10 grid gap-3 md:grid-cols-[1fr,auto]">
+          <label class="relative">
+            <span class="sr-only">Tìm theo tên hoặc kỹ năng</span>
+            <input
+              id="searchInput"
+              type="text"
+              placeholder="Tìm theo tên, vai trò, kỹ năng…"
+              class="w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-900/40 px-4 py-3 pe-10 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]"
+            />
+            <i
+              data-lucide="search"
+              class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400"
+            ></i>
+          </label>
+          <div class="flex flex-wrap items-center gap-2">
+            <button
+              data-role="all"
+              class="role-chip rounded-xl px-3 py-2 text-sm font-semibold bg-slate-900 text-white dark:bg-white dark:text-slate-900"
+            >
+              Tất cả
+            </button>
+            <button
+              data-role="FullStack"
+              class="role-chip rounded-xl px-3 py-2 text-sm font-semibold border border-slate-200 dark:border-slate-700"
+            >
+              FullStack
+            </button>
+            <button
+              data-role="Frontend"
+              class="role-chip rounded-xl px-3 py-2 text-sm font-semibold border border-slate-200 dark:border-slate-700"
+            >
+              Frontend
+            </button>
+            <button
+              data-role="Backend"
+              class="role-chip rounded-xl px-3 py-2 text-sm font-semibold border border-slate-200 dark:border-slate-700"
+            >
+              Backend
+            </button>
+          </div>
+        </div>
       </div>
-    </nav>
-  </header>
+    </section>
 
-  <!-- Hero -->
-  <section class="relative overflow-hidden">
-    <div class="container py-14 md:py-20">
-      
+    <!-- Members -->
+    <section id="members" class="container pb-16">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+        <!-- Card: Thọ -->
+        <article
+          class="card group relative rounded-2xl border border-slate-200/70 dark:border-slate-700 glass p-5 fade-up"
+          data-role="FullStack"
+        >
+          <span
+            class="sheen pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-300"
+            style="
+              background: radial-gradient(
+                600px 120px at var(--mx, 50%) 0%,
+                rgba(59, 130, 246, 0.22),
+                transparent 40%
+              );
+            "
+          ></span>
+          <div class="flex items-start gap-4">
+            <img
+              src="Tho/img/Avt.jpg"
+              alt="Ảnh Thọ"
+              class="w-16 h-16 rounded-xl object-cover border border-slate-200/60 dark:border-slate-700 shadow"
+            />
+            <div>
+              <h3 class="font-extrabold text-lg">Thọ</h3>
+              <p class="text-sm text-slate-600 dark:text-slate-400">
+                FullStack • Developer
+              </p>
+            </div>
+          </div>
+          <div class="mt-4 flex items-center justify-between">
+            <a
+              href="Tho/index.html"
+              class="inline-flex items-center gap-2 rounded-xl px-3 py-2 text-sm font-bold bg-indigo-600 text-white hover:bg-indigo-500 shadow-glow focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]"
+            >
+              <i data-lucide="external-link"></i> Xem portfolio
+            </a>
+          </div>
+        </article>
 
-      <!-- Filters -->
-      <div class="mt-10 grid gap-3 md:grid-cols-[1fr,auto]">
-        <label class="relative">
-          <span class="sr-only">Tìm theo tên hoặc kỹ năng</span>
-          <input id="searchInput" type="text" placeholder="Tìm theo tên, vai trò, kỹ năng…" class="w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-900/40 px-4 py-3 pe-10 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]" />
-          <i data-lucide="search" class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
-        </label>
-        <div class="flex flex-wrap items-center gap-2">
-          <button data-role="all" class="role-chip rounded-xl px-3 py-2 text-sm font-semibold bg-slate-900 text-white dark:bg-white dark:text-slate-900">Tất cả</button>
-          <button data-role="FullStack" class="role-chip rounded-xl px-3 py-2 text-sm font-semibold border border-slate-200 dark:border-slate-700">FullStack</button>
-          <button data-role="Frontend" class="role-chip rounded-xl px-3 py-2 text-sm font-semibold border border-slate-200 dark:border-slate-700">Frontend</button>
-          <button data-role="Backend" class="role-chip rounded-xl px-3 py-2 text-sm font-semibold border border-slate-200 dark:border-slate-700">Backend</button>
-        </div>
+        <!-- Card: Toại -->
+        <article
+          class="card group relative rounded-2xl border border-slate-200/70 dark:border-slate-700 glass p-5 fade-up"
+          data-role="FullStack"
+        >
+          <span
+            class="sheen pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-300"
+            style="
+              background: radial-gradient(
+                600px 120px at var(--mx, 50%) 0%,
+                rgba(59, 130, 246, 0.22),
+                transparent 40%
+              );
+            "
+          ></span>
+          <div class="flex items-start gap-4">
+            <img
+              src="Toai/assets/img/ava.png"
+              alt="Ảnh Toại"
+              class="w-16 h-16 rounded-xl object-cover border border-slate-200/60 dark:border-slate-700 shadow"
+            />
+            <div>
+              <h3 class="font-extrabold text-lg">Toại</h3>
+              <p class="text-sm text-slate-600 dark:text-slate-400">
+                FullStack • Developer
+              </p>
+            </div>
+          </div>
+          <div class="mt-4 flex items-center justify-between">
+            <a
+              href="Toai/index.html"
+              class="inline-flex items-center gap-2 rounded-xl px-3 py-2 text-sm font-bold bg-indigo-600 text-white hover:bg-indigo-500 shadow-glow focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]"
+            >
+              <i data-lucide="external-link"></i> Xem portfolio
+            </a>
+          </div>
+        </article>
+
+        <!-- Card: Phi -->
+        <article
+          class="card group relative rounded-2xl border border-slate-200/70 dark:border-slate-700 glass p-5 fade-up"
+          data-role="FullStack"
+        >
+          <span
+            class="sheen pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-300"
+            style="
+              background: radial-gradient(
+                600px 120px at var(--mx, 50%) 0%,
+                rgba(59, 130, 246, 0.22),
+                transparent 40%
+              );
+            "
+          ></span>
+          <div class="flex items-start gap-4">
+            <img
+              src=""
+              alt="Ảnh Phi"
+              class="w-16 h-16 rounded-xl object-cover border border-slate-200/60 dark:border-slate-700 shadow"
+            />
+            <div>
+              <h3 class="font-extrabold text-lg">Phi</h3>
+              <p class="text-sm text-slate-600 dark:text-slate-400">
+                Backend • Developer
+              </p>
+            </div>
+          </div>
+          <div class="mt-4 flex items-center justify-between">
+            <a
+              href="Phi/index.html"
+              class="inline-flex items-center gap-2 rounded-xl px-3 py-2 text-sm font-bold bg-indigo-600 text-white hover:bg-indigo-500 shadow-glow focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]"
+            >
+              <i data-lucide="external-link"></i> Xem portfolio
+            </a>
+          </div>
+        </article>
+
+        <!-- Placeholders -->
+        <article
+          class="card group relative rounded-2xl border border-dashed border-slate-300/70 dark:border-slate-700 p-5 fade-up"
+          data-role="Đang cập nhật"
+          aria-disabled="true"
+        >
+          <div class="flex items-start gap-4">
+            <div
+              class="w-16 h-16 rounded-xl grid place-items-center bg-slate-100 dark:bg-slate-800 border border-slate-200/60 dark:border-slate-700"
+            >
+              <i data-lucide="user-plus" class="opacity-60"></i>
+            </div>
+            <div>
+              <h3 class="font-extrabold text-lg">Hoàng</h3>
+              <p class="text-sm text-slate-600 dark:text-slate-400">
+                Đang cập nhật
+              </p>
+            </div>
+          </div>
+          <div class="mt-4 flex items-center justify-between">
+            <a
+              href="Hoang/index.html"
+              class="inline-flex items-center gap-2 rounded-xl px-3 py-2 text-sm font-bold bg-indigo-600 text-white hover:bg-indigo-500 shadow-glow focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]"
+            >
+              <i data-lucide="external-link"></i> Xem portfolio
+            </a>
+          </div>
+        </article>
+
+        <article
+          class="card group relative rounded-2xl border border-dashed border-slate-300/70 dark:border-slate-700 p-5 fade-up"
+          data-role="Đang cập nhật"
+          aria-disabled="true"
+        >
+          <div class="flex items-start gap-4">
+            <div
+              class="w-16 h-16 rounded-xl grid place-items-center bg-slate-100 dark:bg-slate-800 border border-slate-200/60 dark:border-slate-700"
+            >
+              <i data-lucide="user-plus" class="opacity-60"></i>
+            </div>
+            <div>
+              <h3 class="font-extrabold text-lg">Bằng</h3>
+              <p class="text-sm text-slate-600 dark:text-slate-400">
+                Đang cập nhật
+              </p>
+            </div>
+          </div>
+          <div class="mt-4 flex items-center justify-between">
+            <a
+              href="bang/DBPortfolio.html"
+              class="inline-flex items-center gap-2 rounded-xl px-3 py-2 text-sm font-bold bg-indigo-600 text-white hover:bg-indigo-500 shadow-glow focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]"
+            >
+              <i data-lucide="external-link"></i> Xem portfolio
+            </a>
+          </div>
+          </div>
+        </article>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Members -->
-  <section id="members" class="container pb-16">
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-      <!-- Card: Thọ -->
-      <article class="card group relative rounded-2xl border border-slate-200/70 dark:border-slate-700 glass p-5 fade-up" data-role="FullStack">
-        <span class="sheen pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-300" style="background: radial-gradient(600px 120px at var(--mx, 50%) 0%, rgba(59,130,246,.22), transparent 40%);"></span>
-        <div class="flex items-start gap-4">
-          <img src="Tho/img/Avt.jpg" alt="Ảnh Thọ" class="w-16 h-16 rounded-xl object-cover border border-slate-200/60 dark:border-slate-700 shadow"/>
-          <div>
-            <h3 class="font-extrabold text-lg">Thọ</h3>
-            <p class="text-sm text-slate-600 dark:text-slate-400">FullStack • Developer</p>
-          </div>
-        </div>
-        <div class="mt-4 flex items-center justify-between">
-          <a href="Tho/index.html" class="inline-flex items-center gap-2 rounded-xl px-3 py-2 text-sm font-bold bg-indigo-600 text-white hover:bg-indigo-500 shadow-glow focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]">
-            <i data-lucide="external-link"></i> Xem portfolio
-          </a>
-        </div>
-      </article>
-
-      <!-- Card: Toại -->
-      <article class="card group relative rounded-2xl border border-slate-200/70 dark:border-slate-700 glass p-5 fade-up" data-role="FullStack">
-        <span class="sheen pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-300" style="background: radial-gradient(600px 120px at var(--mx, 50%) 0%, rgba(59,130,246,.22), transparent 40%);"></span>
-        <div class="flex items-start gap-4">
-          <img src="Toai/assets/img/ava.png" alt="Ảnh Toại" class="w-16 h-16 rounded-xl object-cover border border-slate-200/60 dark:border-slate-700 shadow"/>
-          <div>
-            <h3 class="font-extrabold text-lg">Toại</h3>
-            <p class="text-sm text-slate-600 dark:text-slate-400">FullStack • Developer</p>
-          </div>
-        </div>
-        <div class="mt-4 flex items-center justify-between">
-          <a href="Toai/index.html" class="inline-flex items-center gap-2 rounded-xl px-3 py-2 text-sm font-bold bg-indigo-600 text-white hover:bg-indigo-500 shadow-glow focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]">
-            <i data-lucide="external-link"></i> Xem portfolio
-          </a>
-        </div>
-      </article>
-
-      <!-- Card: Phi -->
-      <article class="card group relative rounded-2xl border border-slate-200/70 dark:border-slate-700 glass p-5 fade-up" data-role="FullStack">
-        <span class="sheen pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-300" style="background: radial-gradient(600px 120px at var(--mx, 50%) 0%, rgba(59,130,246,.22), transparent 40%);"></span>
-        <div class="flex items-start gap-4">
-          <img src="" alt="Ảnh Phi" class="w-16 h-16 rounded-xl object-cover border border-slate-200/60 dark:border-slate-700 shadow"/>
-          <div>
-            <h3 class="font-extrabold text-lg">Phi</h3>
-            <p class="text-sm text-slate-600 dark:text-slate-400">Backend • Developer</p>
-          </div>
-        </div>
-        <div class="mt-4 flex items-center justify-between">
-          <a href="Phi/index.html" class="inline-flex items-center gap-2 rounded-xl px-3 py-2 text-sm font-bold bg-indigo-600 text-white hover:bg-indigo-500 shadow-glow focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]">
-            <i data-lucide="external-link"></i> Xem portfolio
-          </a>
-        </div>
-      </article>
-
-      <!-- Placeholders -->
-      <article class="card group relative rounded-2xl border border-dashed border-slate-300/70 dark:border-slate-700 p-5 fade-up" data-role="Đang cập nhật" aria-disabled="true">
-        <div class="flex items-start gap-4">
-          <div class="w-16 h-16 rounded-xl grid place-items-center bg-slate-100 dark:bg-slate-800 border border-slate-200/60 dark:border-slate-700">
-            <i data-lucide="user-plus" class="opacity-60"></i>
-          </div>
-          <div>
-            <h3 class="font-extrabold text-lg">Thành viên 4</h3>
-            <p class="text-sm text-slate-600 dark:text-slate-400">Đang cập nhật</p>
-          </div>
-        </div>
-        <div class="mt-4">
-          <button disabled class="inline-flex items-center gap-2 rounded-xl px-3 py-2 text-sm font-semibold border border-slate-200 dark:border-slate-700 text-slate-500 dark:text-slate-400">Sắp ra mắt</button>
-        </div>
-      </article>
-
-      <article class="card group relative rounded-2xl border border-dashed border-slate-300/70 dark:border-slate-700 p-5 fade-up" data-role="Đang cập nhật" aria-disabled="true">
-        <div class="flex items-start gap-4">
-          <div class="w-16 h-16 rounded-xl grid place-items-center bg-slate-100 dark:bg-slate-800 border border-slate-200/60 dark:border-slate-700">
-            <i data-lucide="user-plus" class="opacity-60"></i>
-          </div>
-          <div>
-            <h3 class="font-extrabold text-lg">Thành viên 5</h3>
-            <p class="text-sm text-slate-600 dark:text-slate-400">Đang cập nhật</p>
-          </div>
-        </div>
-        <div class="mt-4">
-          <button disabled class="inline-flex items-center gap-2 rounded-xl px-3 py-2 text-sm font-semibold border border-slate-200 dark:border-slate-700 text-slate-500 dark:text-slate-400">Sắp ra mắt</button>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="border-t border-slate-200 dark:border-slate-800">
-    <div class="container py-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-slate-500">
-      <p>© <span id="year"></span> Ổ Quỷ. All rights reserved.</p>
-      <a href="#" class="inline-flex items-center gap-1 hover:underline">
-        <i data-lucide="keyboard"></i> Điều hướng bằng bàn phím: Tab / Shift+Tab
-      </a>
-    </div>
-  </footer>
+    <!-- Footer -->
+    <footer class="border-t border-slate-200 dark:border-slate-800">
+      <div
+        class="container py-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-slate-500"
+      >
+        <p>© <span id="year"></span> Ổ Quỷ. All rights reserved.</p>
+        <a href="#" class="inline-flex items-center gap-1 hover:underline">
+          <i data-lucide="keyboard"></i> Điều hướng bằng bàn phím: Tab /
+          Shift+Tab
+        </a>
+      </div>
+    </footer>
 
     <script src="assets/home.js" defer></script>
-</body>
+  </body>
 </html>
