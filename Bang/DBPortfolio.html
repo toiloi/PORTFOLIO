@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lê Duy Bằng</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif+Telugu:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <div class="logo">AboutMe</div>
+        <ul>
+          <li><a href="DBPortfolio.html">Trang chủ</a></li>
+          <li><a href="#about">Giới thiệu</a></li>
+          <li><a href="#projects">Dự án</a></li>
+          <li><a href="#contact">Liên hệ</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container" id="home">
+        <div class="intro">
+          <!-- Đã bỏ “Dự án nổi bật” -->
+          <p id="typing-text"></p>
+        </div>
+        <div class="poster">
+          <h1>WEB DEVELOPER</h1>
+          <h2>TÔI LÀ MỘT</h2>
+          <img src="images/DBpic.png" alt="Ảnh minh họa" />
+        </div>
+      </div>
+
+      <section class="about" id="about">
+        <div class="text">
+          <h2>Giới thiệu bản thân</h2>
+          <p>
+            Xin chào! Tôi là <strong>Lê Duy Bằng</strong>, một lập trình viên
+            web đam mê sáng tạo và học hỏi. Tôi yêu thích việc biến ý tưởng
+            thành sản phẩm thực tế, đặc biệt chú trọng vào trải nghiệm người
+            dùng.
+          </p>
+        </div>
+        <div class="project-box">
+          <h3 style="text-align: center; padding: 0">Thông tin cá nhân</h3>
+          <ul style="text-align: center; list-style: none; padding: 0">
+            <li>Tên : Lê Duy Bằng</li>
+            <li>Ngày sinh: 🎂 2/11/2005</li>
+            <li>Khoá học : CN23</li>
+            <li>Email : leduybang1102@gmail.com</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- DỰ ÁN -->
+      <div class="skills-container">
+        <h3>KỸ NĂNG CỦA TÔI</h3>
+        <div class="skills-grid">
+          <div class="skill-card">HTML</div>
+          <div class="skill-card">CSS</div>
+          <div class="skill-card">JavaScript</div>
+          <div class="skill-card">Java</div>
+          <div class="skill-card">Spring Boot</div>
+          <div class="skill-card">MySQL</div>
+          <div class="skill-card">ASP.Net Core</div>
+          <div class="skill-card">Git & GitHub</div>
+        </div>
+      </div>
+      <div class="timeline-container">
+        <h3>HÀNH TRÌNH & ĐỊNH HƯỚNG PHÁT TRIỂN</h3>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <h4>2023 - Bắt đầu học lập trình</h4>
+              <p>
+                Làm quen với HTML, CSS và JavaScript — đặt nền tảng cho phát
+                triển web.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <h4>2024 - Nâng cao kỹ năng backend</h4>
+              <p>
+                Học Java, Spring Boot, MySQL và áp dụng vào các dự án trong môn
+                học tại trường.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <h4>2025 - Định hướng chuyên sâu</h4>
+              <p>
+                Phát triển thành Full-Stack Developer, tham gia dự án mã nguồn
+                mở và hoàn thiện kỹ năng teamwork.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <h4>Tương lai</h4>
+              <p>
+                Trở thành kỹ sư phần mềm chuyên nghiệp, đóng góp vào các sản
+                phẩm hữu ích cho cộng đồng.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="timeline-end">
+        <div class="arrow-down"></div>
+        <p>DƯỚI ĐÂY LÀ DỰ ÁN CỦA TÔI</p>
+      </div>
+      <section class="project" id="projects">
+        <div class="project-card">
+          <img src="images/UTHTEAM.png" alt="Dự án 1" />
+          <h3>UTH Team Matching</h3>
+          <p>Nền tảng kết nối sinh viên và nhóm dự án học thuật tại UTH.</p>
+          <button
+            onclick="openModal('UTH Team Matching', 'images/UTHTEAM.png', 'Ứng dụng web giúp sinh viên tìm nhóm làm việc phù hợp, sử dụng Spring Boot và MySQL.')"
+          >
+            Xem chi tiết
+          </button>
+        </div>
+
+        <div class="project-card">
+          <img src="images/bang.png" alt="Dự án 2" />
+          <h3>Portfolio Website</h3>
+          <p>Website cá nhân để giới thiệu kỹ năng và dự án.</p>
+          <button
+            onclick="openModal('Portfolio Website', 'images/bang.png', 'Trang web cá nhân với hiệu ứng động và thiết kế responsive, được xây dựng bằng HTML, CSS và JS.')"
+          >
+            Xem chi tiết
+          </button>
+        </div>
+
+        <div class="project-card">
+          <img src="images/IOT.png" alt="Dự án 3" />
+          <h3>Smart Home IoT</h3>
+          <p>Điều khiển thiết bị qua mạng nội bộ.</p>
+          <button
+            onclick="openModal('Smart Home IoT', 'images/project3.jpg', 'Dự án IoT cho phép bật/tắt thiết bị từ xa, sử dụng ESP32 và Firebase Realtime Database.')"
+          >
+            Xem chi tiết
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <!-- POPUP -->
+    <div id="projectModal" class="modal">
+      <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h2 id="modal-title">Tên dự án</h2>
+        <img id="modal-image" src="" alt="Hình dự án" />
+        <p id="modal-description"></p>
+      </div>
+    </div>
+
+    <footer>
+      <p>
+        &copy; 2025 - Thiết kế bởi <a href="DBPortfolio.html">Lê Duy Bằng</a>
+      </p>
+      <p>
+        LIÊN HỆ TÔI TẠI
+        <a href="https://www.facebook.com/bang.leduy.96/">FACEBOOK</a>
+      </p>
+    </footer>
+
+    <script src="JS/scrips.js"></script>
+  </body>
+</html>
