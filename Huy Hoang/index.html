@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Portfolio</title>
+    <link rel="icon" type="image/png" href="assets/image/logoweb.png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="assets/style.css" />
+    <script src="assets/scripts.js" defer></script>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <nav>
+        <div class="logo">
+          <a href="#hero" class="logo-link" aria-label="MyPortfolio">
+            <span class="logo-text">🧑‍💻MyPortfolio</span>
+          </a>
+        </div>
+        <ul>
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero">
+      <div class="hero-inner">
+        <div class="hero-text">
+          <h1>Chào mừng đến với trang web của tôi</h1>
+          <p>
+            Tôi là sinh viên năm 3 đang theo học chuyên ngành CNTT của Trường
+            Đại học Giao thông Vận tải
+          </p>
+          <button
+            class="btn"
+            onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })"
+          >
+            Liên hệ ngay
+          </button>
+        </div>
+        <div class="hero-media">
+          <img src="assets/image/avatar.png" alt="Ảnh của tôi" />
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+      <h2>Giới thiệu</h2>
+      <p style="color: white">
+        Dưới đây là một số thông tin cá nhân cũng như định hướng phát triển
+        trong tương lai của tôi.
+      </p>
+      <div class="about-grid">
+        <!-- Card 1: Thông tin cá nhân -->
+        <div class="about-card-container">
+          <div class="about-card-inner">
+            <div class="about-card about-card-front">
+              <div class="icon">
+                <i class="fas fa-code"></i>
+              </div>
+              <h3>Thông tin cá nhân</h3>
+              <p>Họ và tên: Nguyễn Huy Hoàng</p>
+              <p>Ngày sinh: 20/05/2005</p>
+              <p>Email: hoangnh7128@ut.edu.vn</p>
+              <p>Chuyên ngành: CNTT</p>
+            </div>
+            <div class="about-card-back">
+              <div class="img-slider">
+                <img src="assets/image/profile.png" class="active" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2: Sở thích -->
+        <div class="about-card-container">
+          <div class="about-card-inner">
+            <div class="about-card about-card-front">
+              <div class="icon">
+                <i class="fas fa-cogs"></i>
+              </div>
+              <h3>Sở thích</h3>
+              <p>Đọc sách và xem phim về thể loại hành động</p>
+              <p>Chơi các môn thể thao như bóng đá, cầu lông, billiards</p>
+              <p>
+                Du lịch và dã ngoại cũng như tham gia các hoạt động ngoài trời
+              </p>
+            </div>
+            <div class="about-card-back">
+              <div class="img-slider">
+                <img src="assets/image/bida.png" class="active" />
+                <img src="assets/image/beach.png" />
+                <img src="assets/image/viethuong.png" />
+              </div>
+              <button class="prev">&lt;</button>
+              <button class="next">&gt;</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3: Mục tiêu phát triển -->
+        <div class="about-card-container">
+          <div class="about-card-inner">
+            <div class="about-card about-card-front">
+              <div class="icon">
+                <i class="fas fa-cloud"></i>
+              </div>
+              <h3>Mục tiêu phát triển</h3>
+              <p>Trở thành web developer chuyên nghiệp</p>
+              <p>Thuần thục các thuật toán với độ phức tạp cao</p>
+              <p>Xây dựng kỹ năng làm việc nhóm và phát biểu trước đám đông</p>
+            </div>
+            <div class="about-card-back">
+              <div class="img-slider">
+                <img src="assets/image/future1.png" class="active" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="fade-in">
+      <h2>Kỹ năng</h2>
+      <h3>
+        Dưới đây là 1 số kĩ năng mà tôi đã tích lũy được trong quá trình học tập
+      </h3>
+      <div class="skills-container">
+        <div class="skill">
+          <p>Lập trình Frontend</p>
+          <div class="skill-bar"><div style="--skill-level: 50%"></div></div>
+          <div class="skill-details">
+            <ul>
+              <li>
+                Hiểu cơ bản về cấu trúc và các thành phần cũng như chức năng của
+                1 trang web cơ bản
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="skill">
+          <p>C++</p>
+          <div class="skill-bar"><div style="--skill-level: 50%"></div></div>
+          <div class="skill-details">
+            <ul>
+              <li>
+                Nắm khái quát về cú pháp và cách hoạt động cũng như các dòng
+                lệnh và các kiểu dữ liệu
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="skill">
+          <p>C#</p>
+          <div class="skill-bar"><div style="--skill-level: 35%"></div></div>
+          <div class="skill-details">
+            <ul>
+              <li>
+                Đang trong quá trình học tập và tìm hiểu để phát triển ứng dụng
+                mạng
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="skill">
+          <p>Java</p>
+          <div class="skill-bar"><div style="--skill-level: 55%"></div></div>
+          <div class="skill-details">
+            <ul>
+              <li>
+                Áp dụng kiến thức đã học về OOP để thiết kế trang web thực tế
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="skill">
+          <p>Python</p>
+          <div class="skill-bar"><div style="--skill-level: 50%"></div></div>
+          <div class="skill-details">
+            <ul>
+              <li>Thiết kế web dựa trên các hàm và các thư viện được hỗ trợ</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="fade-in">
+      <h2>Các dự án đã tham gia</h2>
+      <div class="projects-container">
+        <div class="project">
+          <img src="assets/image/badminton.png" alt="Project 1" />
+          <div class="project-info">
+            <h3>BadmintonManage</h3>
+            <p style="font-style: italic">
+              Website quản lý và đặt lịch sân cầu lông.
+            </p>
+            <p>Các nhiệm vụ đã đảm nhận:</p>
+            <p>• Lên kế hoạch và thiết kế các biểu đồ UML.</p>
+            <p>
+              • Phát triển các tính năng trên trang quản lý danh sách sân và
+              trang khuyến mãi cho khách hàng.
+            </p>
+            <a
+              href="https://github.com/toiloi/BadmintonManage"
+              class="btn-learn"
+              >Truy cập dự án <i class="fas fa-"></i
+            ></a>
+          </div>
+        </div>
+        <div class="project">
+          <img src="assets/image/tsl.png" alt="Project 2" />
+          <div class="project-info">
+            <h3>TSL-SignMap</h3>
+            <p style="font-style: italic">
+              Ứng dụng quản lý vị trí biển báo giao thông có tích hợp AI(đang
+              phát triển).
+            </p>
+            <p>Các nhiệm vụ đã đảm nhận:</p>
+            <p>• Lên kế hoạch và thiết kế các biểu đồ UML.</p>
+            <p>• Phát triển các tính năng cho ứng dụng.</p>
+            <a href="https://github.com/hhoang205/TSL-SignMap" class="btn-learn"
+              >Truy cập dự án</a
+            >
+          </div>
+        </div>
+        <div class="project">
+          <img src="assets/image/utspa.png" alt="Project 3" />
+          <div class="project-info">
+            <h3>Skincare-Booking-System</h3>
+            <p style="font-style: italic">
+              Website quản lý hệ thống làm đẹp và chăm sóc da.
+            </p>
+            <p>Các nhiệm vụ đã đảm nhận:</p>
+            <p>• Lên kế hoạch và thiết kế các biểu đồ UML.</p>
+            <p>
+              • Thiết kế giao diện người dùng (UI) và trải nghiệm người dùng
+              (UX) cho toàn bộ ứng dụng.
+            </p>
+            <a
+              href="https://github.com/Phap625/Skincare-Booking-System"
+              class="btn-learn"
+              >Truy cập dự án</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="fade-in" style="min-height: 30px">
+      <h2>Liên hệ</h2>
+      <div class="contact-container">
+        <a href="mailto:nguyenhuyhoang2052005@gmail.com"
+          ><i class="fas fa-envelope"></i> Email</a
+        >
+        <a
+          href="https://github.com/hhoang205"
+          target="_blank"
+          rel="noopener noreferrer"
+          ><i class="fab fa-github"></i> GitHub</a
+        >
+        <a
+          href="https://zalo.me/0363514840"
+          target="_blank"
+          rel="noopener noreferrer"
+          ><i class="fas fa-comment-dots"></i> Zalo</a
+        >
+        <a
+          href="https://www.facebook.com/nguyen.hoang.13779?locale=vi_VN"
+          target="_blank"
+          rel="noopener noreferrer"
+          ><i class="fab fa-facebook"></i> Facebook</a
+        >
+        <a
+          href="https://www.instagram.com/_hhoang205/"
+          target="_blank"
+          rel="noopener noreferrer"
+          ><i class="fab fa-instagram"></i> Instagram</a
+        >
+        <a
+          href="https://www.linkedin.com/in/nguy%E1%BB%85n-ho%C3%A0ng-77a27435a/"
+          target="_blank"
+          rel="noopener noreferrer"
+          ><i class="fab fa-linkedin"></i> Linkedin</a
+        >
+        <a href="tel:0363514840"><i class="fas fa-phone"></i> Hotline</a>
+      </div>
+    </section>
+    <button class="scroll-to-top" id="scrollToTopBtn">🔼</button>
+    <!-- Footer -->
+    <footer>
+      <p>&copy; Thiết kế bởi Nguyễn Hoàng.</p>
+    </footer>
+  </body>
+</html>
