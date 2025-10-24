@@ -262,7 +262,7 @@ a { text-decoration: none; color: inherit; }
   z-index: 0;
 }
 /* Ensure content stays above the canvas overlay */
-.site-header, main, .site-footer { position: relative; z-index: 1; }
+main, .site-footer { position: relative; z-index: 1; }
 
 
 /* ===== 3D Flip Chip (perf-optimized) ===== */
@@ -283,10 +283,10 @@ a { text-decoration: none; color: inherit; }
 .chip-face.front { font-weight: 800; }
 .chip-face.front i { color: var(--accent); }
 .chip-face.back { transform: rotateY(180deg); padding: 0 22px; }
-.chip-list { display: flex; gap: 14px 18px; flex-wrap: wrap; list-style: none; margin: 0; padding: 0; justify-content: center; }
+.chip-list { display: flex; gap: 14px 18px; flex-wrap: wrap; list-style: none; margin: 0; padding: 0; justify-content: center;}
 .chip-list li { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; }
 .chip-status { display: inline-flex; align-items: center; gap: 10px; font-weight: 700; color: var(--muted); }
-.chip-status i { color: var(--accent); }
+.chip-status i, .chip-list i { color: var(--accent); }
 
 @media (prefers-reduced-motion: reduce) {
   .chip-3d, .tilt { transition: none !important; }
@@ -382,3 +382,113 @@ a { text-decoration: none; color: inherit; }
   box-shadow: var(--shadow);
 }
 @media (max-width: 980px) { .about-extras { grid-template-columns: 1fr; } }
+
+
+/* ===== Preloader ===== */
+#preloader {
+  position: fixed; inset: 0; background: var(--bg); display: grid; place-items: center;
+  z-index: 9999;
+}
+.preloader__inner { display: grid; gap: 14px; place-items: center; }
+.preloader__logo { font-weight: 900; font-size: 28px; color: var(--accent); letter-spacing: 1px; }
+.preloader__bar { width: 200px; height: 6px; border-radius: 999px; background: color-mix(in hsl, var(--muted) 14%, transparent); overflow: hidden; }
+.preloader__bar i { display: block; width: 40%; height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent-2)); animation: loadRun 1.2s ease-in-out infinite; border-radius: inherit; }
+.preloader__text { margin: 0; color: var(--muted); font-size: 14px; }
+@keyframes loadRun { 0% { transform: translateX(-100%);} 50% { transform: translateX(60%);} 100%{ transform: translateX(200%);} }
+body.is-loaded #preloader { opacity: 0; visibility: hidden; transition: opacity .5s ease, visibility .5s ease; }
+
+/* ===== Project overlay on hover ===== */
+.proj-card .thumb { position: relative; overflow: hidden; }
+.proj-card .overlay-body {
+  position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 16px; background: linear-gradient(180deg, rgba(0,0,0,0) 20%, rgba(0,0,0,.55) 85%);
+  opacity: 0; transform: translateY(12px); transition: opacity .35s ease, transform .35s ease;
+  color: #fff;
+}
+.proj-card .overlay-body .name-project { color: #fff; margin: 0 0 6px; }
+.proj-card .overlay-body .tags { color: #ffe7d6; margin: 0; }
+.proj-card:hover .overlay-body { opacity: 1; transform: translateY(0); }
+
+/* ===== Nav active state ===== */
+.nav-links a.active { color: var(--accent); background: color-mix(in hsl, var(--card) 60%, transparent); border-radius: 10px; }
+
+
+/* ===== PRELOADER ===== */
+#preloader {
+  position: fixed; inset: 0; background: var(--bg);
+  display: grid; place-items: center; z-index: 9999;
+}
+.preloader__box {
+  display: grid; gap: 14px; place-items: center;
+  padding: 28px 34px; border-radius: 18px; background: var(--card);
+  border: 1px solid color-mix(in hsl, var(--muted) 20%, transparent);
+  box-shadow: var(--shadow);
+}
+.preloader__logo { font-weight: 900; font-size: 28px; color: var(--accent); letter-spacing: .8px; }
+.preloader__bar { width: 240px; height: 10px; border-radius: 999px; background: var(--soft); overflow: hidden; border: 1px solid color-mix(in hsl, var(--muted) 20%, transparent); }
+.preloader__bar i {
+  display: block; height: 100%; width: 40%; background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  animation: preloaderSlide 1.2s ease-in-out infinite;
+}
+.preloader__note { color: var(--muted); font-size: 14px; }
+@keyframes preloaderSlide {
+  0% { transform: translateX(-100%); }
+  50% { transform: translateX(10%); }
+  100% { transform: translateX(160%); }
+}
+/* hide anim when prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .preloader__bar i { animation: none; width: 60%; }
+}
+
+html { scroll-behavior: smooth; }
+
+
+/* ===== Project Flip Card ===== */
+.proj-card { perspective: 1200px; cursor: pointer; }
+.proj-card .card-3d {
+  position: relative; height: 100%; transform-style: preserve-3d;
+  transition: transform .7s cubic-bezier(.22,.61,.36,1);
+}
+.proj-card:hover .card-3d { transform: rotateY(180deg); }
+.proj-card .face {
+  position: absolute; inset: 0; display: flex; flex-direction: column;
+  backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: 18px; overflow: hidden;
+}
+/* front: image dominant */
+.proj-card .face.front { background: #ffe7d6; }
+.proj-card .face.front .thumb { padding: 0; background: transparent; height: 100%; }
+.proj-card .face.front .thumb img { height: 100%; object-fit: cover; aspect-ratio: unset; }
+/* back: info + blurred image */
+.proj-card .face.back {
+  transform: rotateY(180deg);
+  align-items: stretch; justify-content: flex-end; padding: 0;
+}
+.proj-card .back__bg {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center;
+  filter: blur(6px) saturate(1.02); opacity: .35;
+}
+.proj-card .back__cover {
+  position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.2), rgba(0,0,0,.55));
+}
+.proj-card .back__content {
+  position: relative; padding: 16px 18px 18px; color: #fff; z-index: 1;
+}
+.proj-card .back__content .name-project { color: #fff; margin: 4px 0 8px; }
+.proj-card .back__content .tags { color: #ffd9b3; }
+
+
+/* Scrollspy active link */
+.nav-links a.active { color: var(--accent); border-bottom: 2px solid var(--accent); }
+
+
+/* Fix: ensure project flip cards have a visible height */
+.proj-card { aspect-ratio: 16 / 9; }
+.proj-card .card-3d, .proj-card .face { height: 100%; }
+.proj-card .face.front .thumb,
+.proj-card .face.front .thumb img { width: 100%; height: 100%; object-fit: cover; }
+
+
+/* Fix: anchor offset for sticky header */
+#top, #about, #services, #projects, #contact { scroll-margin-top: 90px; }

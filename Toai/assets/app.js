@@ -46,7 +46,7 @@ window.addEventListener('DOMContentLoaded', () => {
       window.__skillsAnimated = true;
     }
 
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    entries.forEach(e => { if (!e.isIntersecting) return; const el = e.target; el.classList.add('visible'); if (el.classList.contains('about-skills')) { try { animateSkillBars(); } catch(e){} } });
   }, { threshold: 0.2 });
   reveal.forEach(el => io.observe(el));
 
@@ -190,7 +190,7 @@ window.addEventListener('DOMContentLoaded', () => {
   function openModalFrom(card){
     const nameEl = card.querySelector('.name-project');
     const imgEl  = card.querySelector('.thumb img');
-    const tagEls = card.querySelectorAll('.tags li');
+    const tagEls = card.querySelectorAll('.overlay-body .tags li');
 
     title.textContent = nameEl ? nameEl.textContent.trim() : 'Project';
     img.src = imgEl ? imgEl.src : '';
@@ -657,4 +657,185 @@ window.addEventListener('DOMContentLoaded', () => {
     c.addEventListener('mousemove', magnet, {passive: true});
     c.addEventListener('mouseleave', magnetOff, {passive: true});
   });
+})();
+
+
+// === Preloader ===
+(function(){
+  function done(){ document.body.classList.add('is-loaded'); }
+  if (document.readyState === 'complete') { setTimeout(done, 200); }
+  else { window.addEventListener('load', () => setTimeout(done, 200), {once:true}); }
+})();
+
+// === Smooth scroll for nav links ===
+(function(){
+  const header = document.querySelector('.site-header');
+  const offset = () => (header ? header.getBoundingClientRect().height : 0) + 8;
+  document.querySelectorAll('.nav-links a[href^="#"]').forEach(a => {
+    a.addEventListener('click', (e) => {
+      const id = a.getAttribute('href').slice(1);
+      const el = document.getElementById(id) || document.querySelector(`[name="${id}"]`) || document.querySelector(`[data-id="${id}"]`);
+      if (!el) return;
+      e.preventDefault();
+      const top = el.getBoundingClientRect().top + window.scrollY - offset();
+      window.scrollTo({ top, behavior: 'smooth' });
+    });
+  });
+})();
+
+// === Scrollspy (highlight nav link on section in view) ===
+(function(){
+  const links = Array.from(document.querySelectorAll('.nav-links a[href^="#"]'));
+  const map = new Map(links.map(a => [ (a.getAttribute('href')||'').slice(1), a ]));
+  const sections = ['top','about','services','projects','contact']
+    .map(id => document.getElementById(id))
+    .filter(Boolean);
+
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const id = e.target.id;
+      links.forEach(l => l.classList.remove('active'));
+      const a = map.get(id);
+      if (a) a.classList.add('active');
+    });
+  }, { threshold: 0.6 });
+
+  sections.forEach(s => io.observe(s));
+})();
+
+
+// === Scrollspy (highlight nav link based on section in view)
+(function(){
+  const links = Array.from(document.querySelectorAll('.nav-links a[href^="#"]'));
+  const map = new Map();
+  links.forEach(a => {
+    const id = a.getAttribute('href').slice(1);
+    const sec = document.getElementById(id) || document.querySelector(`[id="${id}"]`);
+    if (sec) map.set(sec, a);
+  });
+  const io = new IntersectionObserver((ents)=>{
+    ents.forEach(ent => {
+      const a = map.get(ent.target);
+      if (!a) return;
+      if (ent.isIntersecting) {
+        links.forEach(x=>x.classList.remove('active'));
+        a.classList.add('active');
+      }
+    });
+  }, { rootMargin: "-45% 0px -50% 0px", threshold: 0.01 });
+  map.forEach((_, sec)=> io.observe(sec));
+  // click -> close mobile nav? optional
+})();
+
+
+// === Build Project Flip Cards (front image / back info + blurred img) ===
+(function(){
+  document.querySelectorAll('.proj-card').forEach(card => {
+    if (card.querySelector('.card-3d')) return; // already built
+
+    const thumb = card.querySelector('.thumb');
+    const imgEl = thumb?.querySelector('img');
+    const tags  = card.querySelector('.tags');
+    const name  = card.querySelector('.name-project');
+
+    const wrap = document.createElement('div');
+    wrap.className = 'card-3d';
+
+    // FRONT (image only)
+    const front = document.createElement('div');
+    front.className = 'face front';
+    if (thumb) front.appendChild(thumb); // move thumb (ok)
+
+    // BACK (clone title/tags to avoid breaking other logic)
+    const back = document.createElement('div');
+    back.className = 'face back';
+    const bg = document.createElement('div'); bg.className = 'back__bg';
+    if (imgEl) bg.style.backgroundImage = `url(${imgEl.src})`;
+    const cover = document.createElement('div'); cover.className = 'back__cover';
+    const body = document.createElement('div'); body.className = 'back__content';
+
+    if (name){
+      const nameCln = name.cloneNode(true);
+      body.appendChild(nameCln);
+    }
+    if (tags){
+      const tagsCln = tags.cloneNode(true);
+      body.appendChild(tagsCln);
+    }
+    
+
+    back.appendChild(bg); back.appendChild(cover); back.appendChild(body);
+
+    // Assemble into card: keep original name/tags in DOM for other scripts (e.g., modal)
+    wrap.appendChild(front);
+    wrap.appendChild(back);
+    card.appendChild(wrap);
+  });
+})();
+
+
+// === Scrollspy Fallback: compute active on scroll (also on load/resize)
+(function(){
+  const links = Array.from(document.querySelectorAll('.nav-links a[href^="#"]'));
+  const sections = links.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+  function setActiveByScroll(){
+    const y = window.scrollY + window.innerHeight * 0.35; // pick a scanline at ~35% from top
+    let active = sections[0];
+    for (const sec of sections){
+      const top = sec.offsetTop, bot = top + sec.offsetHeight;
+      if (y >= top && y < bot){ active = sec; break; }
+    }
+    links.forEach(a => a.classList.remove('active'));
+    const link = links.find(a => a.getAttribute('href') === '#' + active.id);
+    if (link) link.classList.add('active');
+  }
+  window.addEventListener('scroll', setActiveByScroll, {passive:true});
+  window.addEventListener('resize', setActiveByScroll, {passive:true});
+  window.addEventListener('load', setActiveByScroll, {once:true});
+  setActiveByScroll();
+})();
+
+
+// === Scrollspy Combo (IO + fallback + click highlight) ===
+(function(){
+  const nav = document.querySelector('.nav-links');
+  if (!nav) return;
+  const links = Array.from(nav.querySelectorAll('a[href^="#"]'));
+  const secs = links.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+
+  function setActive(id){
+    links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
+  }
+
+  // Click highlight immediately
+  links.forEach(a => a.addEventListener('click', () => {
+    const id = a.getAttribute('href').slice(1);
+    setActive(id);
+  }));
+
+  // IO observer
+  const io = new IntersectionObserver((ents)=>{
+    ents.forEach(ent => {
+      if (!ent.isIntersecting) return;
+      const id = ent.target.id;
+      if (id) setActive(id);
+    });
+  }, { rootMargin: "-45% 0px -50% 0px", threshold: 0.01 });
+  secs.forEach(sec => io.observe(sec));
+
+  // Fallback on scroll
+  function setActiveByScroll(){
+    const y = window.scrollY + window.innerHeight * 0.35;
+    let chosen = secs[0];
+    for (const sec of secs){
+      const top = sec.offsetTop, bot = top + sec.offsetHeight;
+      if (y >= top && y < bot){ chosen = sec; break; }
+    }
+    if (chosen && chosen.id) setActive(chosen.id);
+  }
+  window.addEventListener('scroll', setActiveByScroll, {passive:true});
+  window.addEventListener('resize', setActiveByScroll, {passive:true});
+  window.addEventListener('load', setActiveByScroll, {once:true});
+  setActiveByScroll();
 })();
