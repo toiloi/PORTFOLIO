@@ -34,20 +34,29 @@
   <main id="top" class="container">
     <!-- ========== HERO ========== -->
     <section class="hero reveal">
+      <canvas id="heroFX" aria-hidden="true"></canvas>
       <div class="hero-left">
         <p class="hi">Hi I am</p>
         <h2 class="name animate-name"><span class="accent">Toai Nguyen</span></h2>
         <h1 class="role">
-          <span class="animate-stack">Full Stack</span><br />
-          <span class="animate-dev">Developer</span>
+          <span class="animate-stack">FULLSTACK</span><br />
+          <span class="animate-dev">DEVELOPER</span>
         </h1>
         <div class="lede animate-content">
-          <p class="tt"><strong>Discipline - Dynamic - Creative</strong></p>
-          <p>Full name: Nguyen Anh Toai</p>
-          <p>Birthday: Oct 11, 2005</p>
-          <p>Phone Number: +84 364 289 613</p>
-          <p>Gmail: anhtoai847@gmail.com</p>
-          <p>Hobbies: Coding, Badminton, Book, Game</p>
+          <!-- Slogan gõ từng từ -->
+          <p class="tt">
+            <strong>
+              <span id="sloganTyper" class="typewriter" data-words='["Discipline","Dynamic","Creative"]' data-sep=" - "></span>
+              <span class="caret" aria-hidden="true"></span>
+            </strong>
+          </p>
+
+          <!-- Đoạn văn gõ từng từ (đã thay nội dung) -->
+          <p id="bioTyper"
+             class="typewriter-paragraph"
+             data-text="I'm Nguyen Anh Toai — a third-year UTH student who loves building clean, reliable web apps. I work mostly with Java/Spring Boot, HTML/CSS/JS, and SQL Server, and I care about discipline, curiosity, and creativity. Outside code I enjoy badminton, reading, and games.">
+            <span class="caret" aria-hidden="true"></span>
+          </p>
         </div>
         <a class="btn solid animate-content" href="#contact"><strong>Hire Me</strong></a>
       </div>
@@ -176,28 +185,28 @@
       <small>© <span id="year"></span> Toai Nguyen</small>
     </div>
   </footer>
+
   <!-- Project Modal -->
-<div id="projectModal" class="modal" aria-hidden="true">
-  <div class="modal__box" role="dialog" aria-modal="true" aria-labelledby="pmTitle">
-    <div class="modal__head">
-      <h3 id="pmTitle">Project title</h3>
-      <button class="modal__close" aria-label="Close">&times;</button>
-    </div>
-    <div class="modal__body">
-      <div class="modal__media">
-        <img id="pmImg" alt="">
+  <div id="projectModal" class="modal" aria-hidden="true">
+    <div class="modal__box" role="dialog" aria-modal="true" aria-labelledby="pmTitle">
+      <div class="modal__head">
+        <h3 id="pmTitle">Project title</h3>
+        <button class="modal__close" aria-label="Close">&times;</button>
       </div>
-      <div class="modal__content">
-        <ul id="pmTags" class="tags"></ul>
-        <p id="pmDesc">No description yet.</p>
-        <div class="modal__actions">
-          <a id="pmLink" class="btn solid" href="#" target="_blank" rel="noopener">View project</a>
+      <div class="modal__body">
+        <div class="modal__media">
+          <img id="pmImg" alt="">
+        </div>
+        <div class="modal__content">
+          <ul id="pmTags" class="tags"></ul>
+          <p id="pmDesc">No description yet.</p>
+          <div class="modal__actions">
+            <a id="pmLink" class="btn solid" href="#" target="_blank" rel="noopener">View project</a>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-
 
   <script src="assets/app.js" defer></script>
 </body>

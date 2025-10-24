@@ -1,4 +1,4 @@
-// app.js (smooth filter + stable reorder + keep theme/modal/reveal)
+// app.js (smooth filter + stable reorder + keep theme/modal/reveal + typewriter)
 window.addEventListener('DOMContentLoaded', () => {
   const root = document.documentElement;
   const themeBtn = document.getElementById('themeToggle');
@@ -45,21 +45,14 @@ window.addEventListener('DOMContentLoaded', () => {
   if (!grid || !pills.length) return;
 
   const cards = Array.from(grid.querySelectorAll('.proj-card'));
-
-  // Lấy vị trí hiện tại của 1 node
   const rect = el => el.getBoundingClientRect();
 
-  // Animate FLIP cho 1 node (từ before -> after)
   function flip(el, before, after) {
     const dx = before.left - after.left;
     const dy = before.top  - after.top;
-
-    // Invert
     el.style.transform = `translate(${dx}px, ${dy}px)`;
     el.style.transition = 'none';
-    // Force reflow
     el.getBoundingClientRect();
-    // Play
     el.style.transition = '';
     el.style.transform = '';
   }
@@ -67,35 +60,29 @@ window.addEventListener('DOMContentLoaded', () => {
   function applyFilter(filter) {
     const f = (filter || 'all').toLowerCase();
 
-    // 1) BEFORE: đo vị trí hiện tại của các thẻ sẽ còn hiển thị (match hoặc đang hiển thị)
     const beforeMap = new Map();
     cards.forEach(c => {
       const tags = (c.getAttribute('data-tags') || '').toLowerCase();
       const isMatch = (f === 'all' || tags.includes(f));
-      // thẻ đang hiển thị hoặc sẽ hiển thị
       if (!c.classList.contains('is-gone') && isMatch) {
         beforeMap.set(c, rect(c));
       }
     });
 
-    // 2) Gắn trạng thái ẩn/hiện (chưa reorder DOM)
     cards.forEach(c => {
       const tags = (c.getAttribute('data-tags') || '').toLowerCase();
       const isMatch = (f === 'all' || tags.includes(f));
       if (isMatch) {
-        // nếu trước đó bị ẩn -> sẽ xuất hiện như "mới"
         if (c.classList.contains('is-gone')) {
           c.classList.remove('is-gone');
-          c.classList.add('is-new'); // opacity 0, scale .96
-          c.style.display = '';      // cần có trong flow để tính after
+          c.classList.add('is-new');
+          c.style.display = '';
         }
       } else {
-        // ẩn mượt (chưa display:none ngay)
         c.classList.add('is-hiding');
       }
     });
 
-    // 3) REORDER: đưa thẻ match lên trước (DOM append) – làm sau một tick
     requestAnimationFrame(() => {
       const match = cards.filter(c => {
         const tags = (c.getAttribute('data-tags') || '').toLowerCase();
@@ -106,40 +93,33 @@ window.addEventListener('DOMContentLoaded', () => {
       match.forEach(c => grid.appendChild(c));
       rest.forEach(c  => grid.appendChild(c));
 
-      // 4) AFTER: đo vị trí mới của các thẻ còn hiển thị
       const afterMap = new Map();
       match.forEach(c => afterMap.set(c, rect(c)));
 
-      // 5) PLAY FLIP: animate di chuyển mượt tới vị trí mới
       match.forEach(c => {
         const before = beforeMap.get(c);
         const after  = afterMap.get(c);
         if (before && after) flip(c, before, after);
       });
 
-      // 6) Hoàn tất trạng thái ẩn/hiện
-      //    - thẻ "mới" fade-in
       match.forEach(c => {
         if (c.classList.contains('is-new')) {
-          // force reflow để transition chạy
           c.getBoundingClientRect();
           c.classList.remove('is-new');
         }
       });
 
-      //    - thẻ không khớp: sau khi fade-out xong thì display:none
       setTimeout(() => {
         cards.forEach(c => {
           if (c.classList.contains('is-hiding')) {
             c.classList.remove('is-hiding');
-            c.classList.add('is-gone'); // loại khỏi layout
+            c.classList.add('is-gone');
           }
         });
-      }, 320); // khớp với transition .28–.38s
+      }, 320);
     });
   }
 
-  // Bind UI
   pills.forEach(pill => {
     pill.addEventListener('click', () => {
       pills.forEach(x => x.classList.remove('active'));
@@ -148,7 +128,6 @@ window.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Init
   applyFilter('all');
 })();
 
@@ -226,4 +205,201 @@ window.addEventListener('DOMContentLoaded', () => {
     else { span.textContent = ch; }
     nameEl.appendChild(span);
   });
+})();
+
+// === Type-by-words utilities (Slogan + Paragraph) ===
+(function(){
+  function typeWordsOnce(targetEl, words, {separator=' ', wordDelay=350, onDone} = {}) {
+    if (!targetEl) return;
+    const caret = targetEl.nextElementSibling?.classList.contains('caret') ? targetEl.nextElementSibling : null;
+    let i = 0;
+    targetEl.textContent = '';
+    if (caret) caret.style.visibility = 'visible';
+    function step(){
+      if (i < words.length){
+        targetEl.textContent += (i === 0 ? '' : separator) + words[i];
+        i++;
+        setTimeout(step, wordDelay);
+      } else {
+        if (typeof onDone === 'function') onDone();
+      }
+    }
+    step();
+  }
+
+  function typeParagraphByWords(targetEl, fullText, {wordDelay=80, onDone} = {}) {
+    if (!targetEl) return;
+    const caret = targetEl.querySelector('.caret') || targetEl.nextElementSibling;
+    const words = (fullText || '').split(/\s+/).filter(Boolean);
+    let i = 0;
+    if (caret && targetEl.contains(caret)) {
+      targetEl.innerHTML = '';
+      targetEl.appendChild(caret);
+    } else {
+      targetEl.textContent = '';
+    }
+    if (caret) caret.style.visibility = 'visible';
+    function step(){
+      if (i < words.length){
+        const space = (i === 0) ? '' : ' ';
+        if (caret && targetEl.contains(caret)) {
+          caret.insertAdjacentText('beforebegin', space + words[i]);
+        } else {
+          targetEl.textContent += space + words[i];
+        }
+        i++;
+        setTimeout(step, wordDelay);
+      } else {
+        if (typeof onDone === 'function') onDone();
+      }
+    }
+    step();
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const sloganEl = document.getElementById('sloganTyper');
+    if (sloganEl) {
+      let words = [];
+      try { words = JSON.parse(sloganEl.getAttribute('data-words') || '[]'); } catch {}
+      const sep = sloganEl.getAttribute('data-sep') || ' - ';
+      typeWordsOnce(sloganEl, words, { separator: sep, wordDelay: 420 });
+    } else {
+      // fallback: if not found, try the original .tt strong content
+      const strong = document.querySelector('.tt strong');
+      if (strong) {
+        typeWordsOnce(strong, ['Discipline','Dynamic','Creative'], { separator: ' - ', wordDelay: 420 });
+      }
+    }
+
+    const bioEl = document.getElementById('bioTyper');
+    if (bioEl) {
+      const text = bioEl.getAttribute('data-text') || bioEl.textContent || '';
+      typeParagraphByWords(bioEl, text, { wordDelay: 55 });
+    }
+  });
+})();
+
+// === Hero Icons FX ===
+(function(){
+  const ORANGE = '#ff6900';
+
+  function initHeroFX(){
+    const hero = document.querySelector('.hero');
+    const canvas = document.getElementById('heroFX');
+    if (!hero || !canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    let w = 0, h = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+    function sizeCanvas(){
+      const rect = hero.getBoundingClientRect();
+      w = Math.max(1, Math.floor(rect.width));
+      h = Math.max(1, Math.floor(rect.height));
+      canvas.width = Math.floor(w * dpr);
+      canvas.height = Math.floor(h * dpr);
+      canvas.style.width = w + 'px';
+      canvas.style.height = h + 'px';
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+
+    const iconNames = ['pencil','book','ruler','calculator','flask','backpack','compass','magnifier','laptop'];
+    const atlas = {};
+    function makeIcon(draw, size=26){
+      const c = document.createElement('canvas');
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      c.width = c.height = size * dpr;
+      const g = c.getContext('2d');
+      g.scale(dpr, dpr);
+      g.clearRect(0,0,size,size);
+      g.strokeStyle = ORANGE;
+      g.lineWidth = 1.8;
+      g.lineJoin = 'round';
+      g.lineCap = 'round';
+      draw(g, size);
+      return c;
+    }
+    const icons = {
+      pencil: (g,s)=>{ g.beginPath(); g.moveTo(s*.15,s*.78); g.lineTo(s*.78,s*.15); g.stroke();
+                       g.beginPath(); g.moveTo(s*.80,s*.13); g.lineTo(s*.87,s*.20); g.lineTo(s*.78,s*.22); g.closePath(); g.stroke();
+                       g.strokeRect(s*.12, s*.72, s*.12, s*.12); },
+      book: (g,s)=>{ g.beginPath(); g.moveTo(s*.22,s*.25); g.lineTo(s*.22,s*.78); g.lineTo(s*.48,s*.68); g.lineTo(s*.76,s*.78); g.lineTo(s*.76,s*.25); g.closePath(); g.stroke();
+                     g.beginPath(); g.moveTo(s*.48,s*.32); g.lineTo(s*.48,s*.70); g.stroke(); },
+      ruler:(g,s)=>{ g.strokeRect(s*.22,s*.38,s*.56,s*.26);
+                     for(let i=0;i<9;i++){ const x=s*(.24+i*(.56/8)); g.beginPath(); g.moveTo(x,s*.38); g.lineTo(x,s*(i%2?.31:.28)); g.stroke();} },
+      calculator:(g,s)=>{ g.strokeRect(s*.26,s*.22,s*.48,s*.54);
+                          g.strokeRect(s*.31,s*.27,s*.38,s*.12);
+                          for(let r=0;r<3;r++) for(let c=0;c<3;c++) g.strokeRect(s*(.31+c*.12), s*(.45+r*.12), s*.09, s*.09); },
+      flask:(g,s)=>{ g.beginPath(); g.moveTo(s*.45,s*.22); g.lineTo(s*.55,s*.22); g.lineTo(s*.55,s*.42);
+                     g.quadraticCurveTo(s*.76,s*.70,s*.70,s*.80); g.lineTo(s*.30,s*.80);
+                     g.quadraticCurveTo(s*.24,s*.70,s*.45,s*.42); g.closePath(); g.stroke(); },
+      backpack:(g,s)=>{ g.beginPath(); g.moveTo(s*.34,s*.38); g.quadraticCurveTo(s*.50,s*.20,s*.66,s*.38); g.lineTo(s*.66,s*.74); g.quadraticCurveTo(s*.50,s*.84,s*.34,s*.74); g.closePath(); g.stroke();
+                        g.strokeRect(s*.42,s*.56,s*.16,s*.12); },
+      compass:(g,s)=>{ g.beginPath(); g.arc(s*.5,s*.38,s*.08,0,Math.PI*2); g.stroke();
+                       g.beginPath(); g.moveTo(s*.5,s*.46); g.lineTo(s*.34,s*.78); g.moveTo(s*.5,s*.46); g.lineTo(s*.66,s*.78); g.stroke();
+                       g.beginPath(); g.moveTo(s*.42,s*.62); g.lineTo(s*.58,s*.62); g.stroke(); },
+      magnifier:(g,s)=>{ g.beginPath(); g.arc(s*.45,s*.45,s*.16,0,Math.PI*2); g.stroke();
+                         g.beginPath(); g.moveTo(s*.56,s*.56); g.lineTo(s*.78,s*.78); g.stroke(); },
+      laptop:(g,s)=>{ g.strokeRect(s*.28,s*.32,s*.44,s*.26);
+                      g.beginPath(); g.moveTo(s*.22,s*.62); g.lineTo(s*.78,s*.62); g.lineTo(s*.70,s*.72); g.lineTo(s*.30,s*.72); g.closePath(); g.stroke(); }
+    };
+    iconNames.forEach(n => { atlas[n] = makeIcon(icons[n], 24); });
+
+    let nodes = [];
+    function resetNodes(){
+      const area = w * h;
+      const target = Math.max(80, Math.min(360, Math.floor(area / 7000)));
+      nodes = Array.from({length: target}).map(() => {
+        const name = iconNames[(Math.random()*iconNames.length)|0];
+        return {
+          name,
+          x: Math.random() * w,
+          y: Math.random() * h,
+          z: Math.random(),
+          s: 0.55 + Math.random()*0.6,
+          vx: (Math.random() * 0.5 - 0.25),
+          vy: (Math.random() * 0.5 - 0.25),
+          rot: (Math.random()*0.02 - 0.01),
+          a: 0.65 + Math.random()*0.25,
+          r: Math.random()*Math.PI*2
+        };
+      });
+    }
+
+    function draw(){
+      ctx.clearRect(0,0,w,h);
+      for (const it of nodes){
+        it.x += it.vx * (0.5 + it.z*0.7);
+        it.y += it.vy * (0.5 + it.z*0.7);
+        it.r += it.rot;
+
+        if (it.x > w+20) it.x = -20;
+        if (it.x < -20) it.x = w+20;
+        if (it.y > h+20) it.y = -20;
+        if (it.y < -20) it.y = h+20;
+
+        const img = atlas[it.name];
+        const size = (18 * it.s) * (0.7 + it.z*0.6);
+        const half = size/2;
+        ctx.save();
+        ctx.globalAlpha = it.a * (0.9 - it.z*0.3);
+        ctx.translate(it.x, it.y);
+        ctx.rotate(it.r);
+        ctx.drawImage(img, -half, -half, size, size);
+        ctx.restore();
+      }
+      requestAnimationFrame(draw);
+    }
+
+    sizeCanvas();
+    resetNodes();
+    window.addEventListener('resize', () => { sizeCanvas(); resetNodes(); }, {passive:true});
+    setTimeout(() => { sizeCanvas(); resetNodes(); }, 300);
+    requestAnimationFrame(draw);
+  }
+
+  if (document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', initHeroFX, {once:true});
+  } else {
+    initHeroFX();
+  }
 })();
