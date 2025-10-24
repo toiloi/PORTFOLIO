@@ -839,3 +839,41 @@ window.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('load', setActiveByScroll, {once:true});
   setActiveByScroll();
 })();
+
+// Highlight nav link on scroll (fixed)
+const sections = Array.from(document.querySelectorAll('section[id]'));
+const navLinks = Array.from(document.querySelectorAll('.nav-links a[href^="#"]'));
+
+// Chiều cao header (chỉnh cho đúng site của bạn)
+const HEADER_OFFSET = 71;
+
+// Set active duy nhất
+function setActive(id) {
+  navLinks.forEach(a => {
+    const isCurrent = a.getAttribute('href') === `#${id}`;
+    a.classList.toggle('active', isCurrent);
+  });
+}
+
+function onScroll() {
+  // Dùng một "đường ngắm" ở khoảng 1/3 phía trên viewport + bù header
+  const focusLine = window.scrollY + HEADER_OFFSET + window.innerHeight / 3;
+
+  // Mặc định là section đầu (thường là home)
+  let currentId = sections[0]?.id;
+
+  for (const sec of sections) {
+    const top = sec.offsetTop;
+    const bottom = top + sec.offsetHeight;
+    if (focusLine >= top && focusLine < bottom) {
+      currentId = sec.id;
+      break;
+    }
+  }
+
+  setActive(currentId);
+}
+
+window.addEventListener('scroll', onScroll, { passive: true });
+window.addEventListener('load', onScroll);
+onScroll();
