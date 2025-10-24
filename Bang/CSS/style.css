@@ -1124,3 +1124,6 @@ footer a:hover {
     opacity: 1;
   }
 }
+footer {
+  background-color: #1b002f;
+}
