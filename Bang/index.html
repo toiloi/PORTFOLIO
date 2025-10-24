@@ -13,11 +13,17 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="CSS/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Serif+Telugu:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
   </head>
 
   <body>
     <header>
-      <nav>
+      <nav id="navbar">
         <div class="logo">AboutMe</div>
         <ul>
           <li><a href="index.html">Trang chủ</a></li>
@@ -30,66 +36,139 @@
 
     <main>
       <div class="container" id="home">
-        <div class="intro">
-          <!-- Đã bỏ “Dự án nổi bật” -->
-          <p id="typing-text"></p>
-        </div>
-        <div class="poster">
-          <h1>WEB DEVELOPER</h1>
-          <h2>TÔI LÀ MỘT</h2>
-          <img src="images/DBpic.png" alt="Ảnh minh họa" />
+        <div class="container3d">
+          <div class="posterIntro">
+            <h1>WEB DEVELOPER</h1>
+            <h2>I'M</h2>
+          </div>
+          <div class="container3Din" id="infinity-bg">
+            <div class="frame">
+              <div class="intro">
+                <p id="typing-text"></p>
+              </div>
+            </div>
+            <div class="frame"></div>
+            <div class="frame">
+              <div class="poster">
+                <div class="" id="">
+                  <img src="images/DBpic.png" alt="Ảnh minh họa" />
+                </div>
+              </div>
+            </div>
+            <div class="frame">
+              <div class="poster">
+                <img
+                  src="images/Linux-icon-design-on-transparent-background-PNG.png"
+                  alt="Ảnh minh họa"
+                  id="linux"
+                />
+              </div>
+            </div>
+            <div class="frame">
+              <div class="poster">
+                <img src="images/vsc.png" alt="Ảnh minh họa" id="vsc" />
+              </div>
+            </div>
+            <div class="frame">
+              <div class="poster">
+                <img src="images/chatgpt.png" alt="Ảnh minh họa" id="chatgpt" />
+              </div>
+            </div>
+            <div class="frame">
+              <div class="poster">
+                <img src="images/disc.png" alt="Ảnh minh họa" id="dics" />
+              </div>
+            </div>
+            <div class="frame">
+              <div class="poster">
+                <img src="images/sql.png" alt="Ảnh minh họa" id="sql" />
+              </div>
+            </div>
+            <div class="frame">
+              <div class="poster">
+                <img src="images/spring.png" alt="Ảnh minh họa" id="spring" />
+              </div>
+            </div>
+            <div class="frame"></div>
+          </div>
         </div>
       </div>
+      <div class="container" id="about-section">
+        <h1>THÔNG TIN</h1>
+        <section class="about" id="about" style="margin-top: 50px">
+          <div class="text">
+            <h2>Giới thiệu bản thân</h2>
+            <p>
+              Xin chào! Tôi là <strong>Lê Duy Bằng</strong>, một Web Developer
+              đam mê công nghệ và lập trình. Tôi yêu thích việc tạo ra các trang
+              web đẹp mắt và chức năng, đồng thời không ngừng học hỏi những công
+              nghệ mới để nâng cao kỹ năng của mình. Với sự sáng tạo và tinh
+              thần làm việc chăm chỉ, tôi luôn sẵn sàng đối mặt với những thách
+              thức mới trong lĩnh vực phát triển web.
+            </p>
+          </div>
+          <div class="project-box">
+            <h3 style="text-align: center; padding: 0">Thông tin cá nhân</h3>
+            <ul style="text-align: center; list-style: none; padding: 0">
+              <li>Tên : Lê Duy Bằng</li>
+              <li>Ngày sinh: 🎂 2/11/2005</li>
+              <li>Khoá học : CN23</li>
+              <li>Địa chỉ : Xã Tân Nhựt, TPHCM</li>
+            </ul>
+          </div>
+        </section>
 
-      <section class="about" id="about">
-        <div class="text">
-          <h2>Giới thiệu bản thân</h2>
-          <p>
-            Xin chào! Tôi là <strong>Lê Duy Bằng</strong>, một lập trình viên
-            web đam mê sáng tạo và học hỏi. Tôi yêu thích việc biến ý tưởng
-            thành sản phẩm thực tế, đặc biệt chú trọng vào trải nghiệm người
-            dùng.
-          </p>
-        </div>
-        <div class="project-box">
-          <h3 style="text-align: center; padding: 0">Thông tin cá nhân</h3>
-          <ul style="text-align: center; list-style: none; padding: 0">
-            <li>Tên : Lê Duy Bằng</li>
-            <li>Ngày sinh: 🎂 2/11/2005</li>
-            <li>Khoá học : CN23</li>
-            <li>Email : leduybang1102@gmail.com</li>
-          </ul>
-        </div>
-      </section>
-
-      <!-- DỰ ÁN -->
-      <div class="skills-container">
-        <h3>KỸ NĂNG CỦA TÔI</h3>
-        <div class="skills-grid">
-          <div class="skill-card">HTML</div>
-          <div class="skill-card">CSS</div>
-          <div class="skill-card">JavaScript</div>
-          <div class="skill-card">Java</div>
-          <div class="skill-card">Spring Boot</div>
-          <div class="skill-card">MySQL</div>
-          <div class="skill-card">ASP.Net Core</div>
-          <div class="skill-card">Git & GitHub</div>
-        </div>
-      </div>
-      <div class="timeline-container">
-        <h3>HÀNH TRÌNH & ĐỊNH HƯỚNG PHÁT TRIỂN</h3>
-        <div class="timeline">
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-content">
-              <h4>2023 - Bắt đầu học lập trình</h4>
-              <p>
-                Làm quen với HTML, CSS và JavaScript — đặt nền tảng cho phát
-                triển web.
-              </p>
+        <section class="about" id="about">
+          <div class="project-box">
+            <div class="media-slideshow">
+              <img class="slide" src="images/hinh5.jpg" alt="Ảnh 1" />
+              <img class="slide" src="images/hinh1.jpg" alt="Ảnh 2" />
+              <img class="slide" src="images/hinh2.jpg" alt="Ảnh 3" />
+              <img class="slide" src="images/hinh3.jpg" alt="Ảnh 4" />
+              <img class="slide" src="images/hinh4.jpg" alt="Ảnh 5" />
             </div>
           </div>
 
+          <div class="text" id="hoppy">
+            <h2>Sở thích</h2>
+            <p>
+              Mình thích chụp ảnh và dựng video, các khoảnh khắc vui vẻ cùng
+              người nhà và bạn bè. Những lúc không muốn làm gì mình sẽ xem lại.
+            </p>
+          </div>
+        </section>
+      </div>
+
+      <div class="container">
+        <div class="skills-container">
+          <h3>KỸ NĂNG CỦA TÔI</h3>
+          <div class="skills-grid">
+            <div class="skill-card">HTML</div>
+            <div class="skill-card">CSS</div>
+            <div class="skill-card">JavaScript</div>
+            <div class="skill-card">Java</div>
+            <div class="skill-card">Spring Boot</div>
+            <div class="skill-card">MySQL</div>
+            <div class="skill-card">ASP.Net Core</div>
+            <div class="skill-card">Git & GitHub</div>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="timeline-container">
+          <h3>HÀNH TRÌNH & ĐỊNH HƯỚNG PHÁT TRIỂN</h3>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <h4>2023 - Bắt đầu học lập trình</h4>
+                <p>
+                  Làm quen với HTML, CSS và JavaScript — đặt nền tảng cho phát
+                  triển web.
+                </p>
+              </div>
+            </div>
+          </div>
           <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="timeline-content">
@@ -123,45 +202,48 @@
             </div>
           </div>
         </div>
+        <div class="timeline-end">
+          <div class="arrow-down"></div>
+          <p>DƯỚI ĐÂY LÀ DỰ ÁN CỦA TÔI</p>
+        </div>
       </div>
-      <div class="timeline-end">
-        <div class="arrow-down"></div>
-        <p>DƯỚI ĐÂY LÀ DỰ ÁN CỦA TÔI</p>
+
+      <div class="container">
+        <section class="project" id="projects">
+          <div class="project-card">
+            <img src="images/UTHTEAM.png" alt="Dự án 1" />
+            <h3>UTH Team Matching</h3>
+            <p>Nền tảng kết nối sinh viên và nhóm dự án học thuật tại UTH.</p>
+            <button
+              onclick="openModal('UTH Team Matching', 'images/UTHTEAM.png', 'Ứng dụng web giúp sinh viên tìm nhóm làm việc phù hợp, sử dụng Spring Boot và MySQL.')"
+            >
+              Xem chi tiết
+            </button>
+          </div>
+
+          <div class="project-card">
+            <img src="images/bang.png" alt="Dự án 2" />
+            <h3>Portfolio Website</h3>
+            <p>Website cá nhân để giới thiệu kỹ năng và dự án.</p>
+            <button
+              onclick="openModal('Portfolio Website', 'images/bang.png', 'Trang web cá nhân với hiệu ứng động và thiết kế responsive, được xây dựng bằng HTML, CSS và JS.')"
+            >
+              Xem chi tiết
+            </button>
+          </div>
+
+          <div class="project-card">
+            <img src="images/IOT.png" alt="Dự án 3" />
+            <h3>Smart Home IoT</h3>
+            <p>Điều khiển thiết bị qua mạng nội bộ.</p>
+            <button
+              onclick="openModal('Smart Home IoT', 'images/project3.jpg', 'Dự án IoT cho phép bật/tắt thiết bị từ xa, sử dụng ESP32 và Firebase Realtime Database.')"
+            >
+              Xem chi tiết
+            </button>
+          </div>
+        </section>
       </div>
-      <section class="project" id="projects">
-        <div class="project-card">
-          <img src="images/UTHTEAM.png" alt="Dự án 1" />
-          <h3>UTH Team Matching</h3>
-          <p>Nền tảng kết nối sinh viên và nhóm dự án học thuật tại UTH.</p>
-          <button
-            onclick="openModal('UTH Team Matching', 'images/UTHTEAM.png', 'Ứng dụng web giúp sinh viên tìm nhóm làm việc phù hợp, sử dụng Spring Boot và MySQL.')"
-          >
-            Xem chi tiết
-          </button>
-        </div>
-
-        <div class="project-card">
-          <img src="images/bang.png" alt="Dự án 2" />
-          <h3>Portfolio Website</h3>
-          <p>Website cá nhân để giới thiệu kỹ năng và dự án.</p>
-          <button
-            onclick="openModal('Portfolio Website', 'images/bang.png', 'Trang web cá nhân với hiệu ứng động và thiết kế responsive, được xây dựng bằng HTML, CSS và JS.')"
-          >
-            Xem chi tiết
-          </button>
-        </div>
-
-        <div class="project-card">
-          <img src="images/IOT.png" alt="Dự án 3" />
-          <h3>Smart Home IoT</h3>
-          <p>Điều khiển thiết bị qua mạng nội bộ.</p>
-          <button
-            onclick="openModal('Smart Home IoT', 'images/project3.jpg', 'Dự án IoT cho phép bật/tắt thiết bị từ xa, sử dụng ESP32 và Firebase Realtime Database.')"
-          >
-            Xem chi tiết
-          </button>
-        </div>
-      </section>
     </main>
 
     <!-- POPUP -->
@@ -185,5 +267,6 @@
     </footer>
 
     <script src="JS/scrips.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   </body>
 </html>
