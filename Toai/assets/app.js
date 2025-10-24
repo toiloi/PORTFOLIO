@@ -1,4 +1,4 @@
-// app.js (smooth filter + stable reorder + keep theme/modal/reveal + typewriter)
+// app.js (smooth filter + stable reorder + keep theme/modal/reveal)
 window.addEventListener('DOMContentLoaded', () => {
   const root = document.documentElement;
   const themeBtn = document.getElementById('themeToggle');
@@ -45,14 +45,21 @@ window.addEventListener('DOMContentLoaded', () => {
   if (!grid || !pills.length) return;
 
   const cards = Array.from(grid.querySelectorAll('.proj-card'));
+
+  // Lấy vị trí hiện tại của 1 node
   const rect = el => el.getBoundingClientRect();
 
+  // Animate FLIP cho 1 node (từ before -> after)
   function flip(el, before, after) {
     const dx = before.left - after.left;
     const dy = before.top  - after.top;
+
+    // Invert
     el.style.transform = `translate(${dx}px, ${dy}px)`;
     el.style.transition = 'none';
+    // Force reflow
     el.getBoundingClientRect();
+    // Play
     el.style.transition = '';
     el.style.transform = '';
   }
@@ -60,29 +67,35 @@ window.addEventListener('DOMContentLoaded', () => {
   function applyFilter(filter) {
     const f = (filter || 'all').toLowerCase();
 
+    // 1) BEFORE: đo vị trí hiện tại của các thẻ sẽ còn hiển thị (match hoặc đang hiển thị)
     const beforeMap = new Map();
     cards.forEach(c => {
       const tags = (c.getAttribute('data-tags') || '').toLowerCase();
       const isMatch = (f === 'all' || tags.includes(f));
+      // thẻ đang hiển thị hoặc sẽ hiển thị
       if (!c.classList.contains('is-gone') && isMatch) {
         beforeMap.set(c, rect(c));
       }
     });
 
+    // 2) Gắn trạng thái ẩn/hiện (chưa reorder DOM)
     cards.forEach(c => {
       const tags = (c.getAttribute('data-tags') || '').toLowerCase();
       const isMatch = (f === 'all' || tags.includes(f));
       if (isMatch) {
+        // nếu trước đó bị ẩn -> sẽ xuất hiện như "mới"
         if (c.classList.contains('is-gone')) {
           c.classList.remove('is-gone');
-          c.classList.add('is-new');
-          c.style.display = '';
+          c.classList.add('is-new'); // opacity 0, scale .96
+          c.style.display = '';      // cần có trong flow để tính after
         }
       } else {
+        // ẩn mượt (chưa display:none ngay)
         c.classList.add('is-hiding');
       }
     });
 
+    // 3) REORDER: đưa thẻ match lên trước (DOM append) – làm sau một tick
     requestAnimationFrame(() => {
       const match = cards.filter(c => {
         const tags = (c.getAttribute('data-tags') || '').toLowerCase();
@@ -93,33 +106,40 @@ window.addEventListener('DOMContentLoaded', () => {
       match.forEach(c => grid.appendChild(c));
       rest.forEach(c  => grid.appendChild(c));
 
+      // 4) AFTER: đo vị trí mới của các thẻ còn hiển thị
       const afterMap = new Map();
       match.forEach(c => afterMap.set(c, rect(c)));
 
+      // 5) PLAY FLIP: animate di chuyển mượt tới vị trí mới
       match.forEach(c => {
         const before = beforeMap.get(c);
         const after  = afterMap.get(c);
         if (before && after) flip(c, before, after);
       });
 
+      // 6) Hoàn tất trạng thái ẩn/hiện
+      //    - thẻ "mới" fade-in
       match.forEach(c => {
         if (c.classList.contains('is-new')) {
+          // force reflow để transition chạy
           c.getBoundingClientRect();
           c.classList.remove('is-new');
         }
       });
 
+      //    - thẻ không khớp: sau khi fade-out xong thì display:none
       setTimeout(() => {
         cards.forEach(c => {
           if (c.classList.contains('is-hiding')) {
             c.classList.remove('is-hiding');
-            c.classList.add('is-gone');
+            c.classList.add('is-gone'); // loại khỏi layout
           }
         });
-      }, 320);
+      }, 320); // khớp với transition .28–.38s
     });
   }
 
+  // Bind UI
   pills.forEach(pill => {
     pill.addEventListener('click', () => {
       pills.forEach(x => x.classList.remove('active'));
@@ -128,6 +148,7 @@ window.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // Init
   applyFilter('all');
 })();
 
@@ -207,41 +228,53 @@ window.addEventListener('DOMContentLoaded', () => {
   });
 })();
 
-// === Type-by-words utilities (Slogan + Paragraph) ===
+// === Type-by-words utilities ===
 (function(){
-  function typeWordsOnce(targetEl, words, {separator=' ', wordDelay=350, onDone} = {}) {
+  // Gõ MỘT LẦN theo từng từ (không xóa), hỗ trợ mảng từ + separator
+  function typeWordsOnce(targetEl, words, {separator = ' ', wordDelay = 1000, onDone} = {}) {
     if (!targetEl) return;
-    const caret = targetEl.nextElementSibling?.classList.contains('caret') ? targetEl.nextElementSibling : null;
     let i = 0;
-    targetEl.textContent = '';
-    if (caret) caret.style.visibility = 'visible';
+    const caret = targetEl.nextElementSibling?.classList.contains('caret') ? targetEl.nextElementSibling : null;
+
     function step(){
       if (i < words.length){
+        // chèn từ + separator (trừ từ cuối)
         targetEl.textContent += (i === 0 ? '' : separator) + words[i];
         i++;
         setTimeout(step, wordDelay);
       } else {
+        // xong: giữ caret nhấp nháy
         if (typeof onDone === 'function') onDone();
       }
     }
+    // bắt đầu “rỗng”
+    targetEl.textContent = '';
+    // đảm bảo caret hiển thị
+    if (caret) caret.style.visibility = 'visible';
     step();
   }
 
-  function typeParagraphByWords(targetEl, fullText, {wordDelay=80, onDone} = {}) {
+  // Gõ từng từ cho 1 đoạn văn dài (chuỗi → tách theo khoảng trắng)
+  function typeParagraphByWords(targetEl, fullText, {wordDelay = 1000, onDone} = {}) {
     if (!targetEl) return;
+    // caret nằm trong p -> lấy caret cuối
     const caret = targetEl.querySelector('.caret') || targetEl.nextElementSibling;
     const words = (fullText || '').split(/\s+/).filter(Boolean);
     let i = 0;
+
+    // reset nội dung (chừa caret nếu ở bên trong)
     if (caret && targetEl.contains(caret)) {
-      targetEl.innerHTML = '';
-      targetEl.appendChild(caret);
+      targetEl.innerHTML = ''; // xóa hết trước
+      targetEl.appendChild(caret); // thêm lại caret vào cuối
     } else {
       targetEl.textContent = '';
     }
-    if (caret) caret.style.visibility = 'visible';
+
     function step(){
       if (i < words.length){
+        // chèn khoảng trắng trước các từ từ thứ 2 trở đi
         const space = (i === 0) ? '' : ' ';
+        // nếu caret là phần tử con -> chèn text trước caret
         if (caret && targetEl.contains(caret)) {
           caret.insertAdjacentText('beforebegin', space + words[i]);
         } else {
@@ -253,24 +286,23 @@ window.addEventListener('DOMContentLoaded', () => {
         if (typeof onDone === 'function') onDone();
       }
     }
+    if (caret) caret.style.visibility = 'visible';
     step();
   }
 
+  // === Slogan: "Discipline - Dynamic - Creative" ===
   document.addEventListener('DOMContentLoaded', () => {
     const sloganEl = document.getElementById('sloganTyper');
     if (sloganEl) {
-      let words = [];
-      try { words = JSON.parse(sloganEl.getAttribute('data-words') || '[]'); } catch {}
+      const arr = (() => {
+        try { return JSON.parse(sloganEl.getAttribute('data-words') || '[]'); }
+        catch { return []; }
+      })();
       const sep = sloganEl.getAttribute('data-sep') || ' - ';
-      typeWordsOnce(sloganEl, words, { separator: sep, wordDelay: 420 });
-    } else {
-      // fallback: if not found, try the original .tt strong content
-      const strong = document.querySelector('.tt strong');
-      if (strong) {
-        typeWordsOnce(strong, ['Discipline','Dynamic','Creative'], { separator: ' - ', wordDelay: 420 });
-      }
+      typeWordsOnce(sloganEl, arr, { separator: sep, wordDelay: 55 });
     }
 
+    // === Paragraph info ===
     const bioEl = document.getElementById('bioTyper');
     if (bioEl) {
       const text = bioEl.getAttribute('data-text') || bioEl.textContent || '';
@@ -279,7 +311,8 @@ window.addEventListener('DOMContentLoaded', () => {
   });
 })();
 
-// === Hero Icons FX ===
+
+// === Hero Icons FX: dense, small, outlined study-tool icons drifting within hero ===
 (function(){
   const ORANGE = '#ff6900';
 
@@ -347,6 +380,7 @@ window.addEventListener('DOMContentLoaded', () => {
     let nodes = [];
     function resetNodes(){
       const area = w * h;
+      // fill hero densely with small icons; area/7000 is dense, clamp to 80..360
       const target = Math.max(80, Math.min(360, Math.floor(area / 7000)));
       nodes = Array.from({length: target}).map(() => {
         const name = iconNames[(Math.random()*iconNames.length)|0];
@@ -354,9 +388,9 @@ window.addEventListener('DOMContentLoaded', () => {
           name,
           x: Math.random() * w,
           y: Math.random() * h,
-          z: Math.random(),
-          s: 0.55 + Math.random()*0.6,
-          vx: (Math.random() * 0.5 - 0.25),
+          z: Math.random(), // depth factor 0..1
+          s: 0.55 + Math.random()*0.6, // scale 0.55..1.15
+          vx: (Math.random() * 0.5 - 0.25), // px/frame
           vy: (Math.random() * 0.5 - 0.25),
           rot: (Math.random()*0.02 - 0.01),
           a: 0.65 + Math.random()*0.25,
