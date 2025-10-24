@@ -34,6 +34,18 @@ window.addEventListener('DOMContentLoaded', () => {
   // ---- Reveal on scroll
   const reveal = document.querySelectorAll('.reveal, .services .svc-card, .projects .proj-card, .cta-form');
   const io = new IntersectionObserver((entries) => {
+    function animateSkillBars(){
+      if (window.__skillsAnimated) return;
+      const bars = document.querySelectorAll('.about-skills .bar i');
+      bars.forEach((i, idx) => {
+        const target = getComputedStyle(i).getPropertyValue('--v').trim() || '0%';
+        i.style.width = '0%';
+        i.style.transition = 'width 1600ms cubic-bezier(.22,.61,.36,1)';
+        setTimeout(() => { i.style.width = target; }, 200 * idx);
+      });
+      window.__skillsAnimated = true;
+    }
+
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.2 });
   reveal.forEach(el => io.observe(el));
@@ -436,4 +448,213 @@ window.addEventListener('DOMContentLoaded', () => {
   } else {
     initHeroFX();
   }
+})();
+
+
+// === Page Icons FX: dense, small, outlined study-tool icons drifting across viewport ===
+(function(){
+  const ORANGE = '#ff6900';
+
+  function initPageFX(){
+    // Create/attach canvas to body if missing
+    let canvas = document.getElementById('pageFX');
+    if (!canvas){
+      canvas = document.createElement('canvas');
+      canvas.id = 'pageFX';
+      document.body.prepend(canvas);
+    }
+    const ctx = canvas.getContext('2d', { alpha: true });
+    let w = 0, h = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+    function sizeCanvas(){
+      w = Math.max(1, Math.floor(window.innerWidth));
+      h = Math.max(1, Math.floor(window.innerHeight));
+      canvas.width = Math.floor(w * dpr);
+      canvas.height = Math.floor(h * dpr);
+      canvas.style.width = w + 'px';
+      canvas.style.height = h + 'px';
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+
+    const iconNames = ['pencil','book','ruler','calculator','flask','backpack','compass','magnifier','laptop'];
+    const atlas = {};
+    function makeIcon(draw, size=26){
+      const c = document.createElement('canvas');
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      c.width = c.height = size * dpr;
+      const g = c.getContext('2d');
+      g.scale(dpr, dpr);
+      g.clearRect(0,0,size,size);
+      g.strokeStyle = ORANGE;
+      g.lineWidth = 1.8;
+      g.lineJoin = 'round';
+      g.lineCap = 'round';
+      draw(g, size);
+      return c;
+    }
+    const icons = {
+      pencil: (g,s)=>{ g.beginPath(); g.moveTo(s*.15,s*.78); g.lineTo(s*.78,s*.15); g.stroke();
+                       g.beginPath(); g.moveTo(s*.80,s*.13); g.lineTo(s*.87,s*.20); g.lineTo(s*.78,s*.22); g.closePath(); g.stroke();
+                       g.strokeRect(s*.12, s*.72, s*.12, s*.12); },
+      book: (g,s)=>{ g.beginPath(); g.moveTo(s*.22,s*.25); g.lineTo(s*.22,s*.78); g.lineTo(s*.48,s*.68); g.lineTo(s*.76,s*.78); g.lineTo(s*.76,s*.25); g.closePath(); g.stroke();
+                     g.beginPath(); g.moveTo(s*.48,s*.32); g.lineTo(s*.48,s*.70); g.stroke(); },
+      ruler:(g,s)=>{ g.strokeRect(s*.22,s*.38,s*.56,s*.26);
+                     for(let i=0;i<9;i++){ const x=s*(.24+i*(.56/8)); g.beginPath(); g.moveTo(x,s*.38); g.lineTo(x,s*(i%2?.31:.28)); g.stroke();} },
+      calculator:(g,s)=>{ g.strokeRect(s*.26,s*.22,s*.48,s*.54);
+                          g.strokeRect(s*.31,s*.27,s*.38,s*.12);
+                          for(let r=0;r<3;r++) for(let c=0;c<3;c++) g.strokeRect(s*(.31+c*.12), s*(.45+r*.12), s*.09, s*.09); },
+      flask:(g,s)=>{ g.beginPath(); g.moveTo(s*.45,s*.22); g.lineTo(s*.55,s*.22); g.lineTo(s*.55,s*.42);
+                     g.quadraticCurveTo(s*.76,s*.70,s*.70,s*.80); g.lineTo(s*.30,s*.80);
+                     g.quadraticCurveTo(s*.24,s*.70,s*.45,s*.42); g.closePath(); g.stroke(); },
+      backpack:(g,s)=>{ g.beginPath(); g.moveTo(s*.34,s*.38); g.quadraticCurveTo(s*.50,s*.20,s*.66,s*.38); g.lineTo(s*.66,s*.74); g.quadraticCurveTo(s*.50,s*.84,s*.34,s*.74); g.closePath(); g.stroke();
+                        g.strokeRect(s*.42,s*.56,s*.16,s*.12); },
+      compass:(g,s)=>{ g.beginPath(); g.arc(s*.5,s*.38,s*.08,0,Math.PI*2); g.stroke();
+                       g.beginPath(); g.moveTo(s*.5,s*.46); g.lineTo(s*.34,s*.78); g.moveTo(s*.5,s*.46); g.lineTo(s*.66,s*.78); g.stroke();
+                       g.beginPath(); g.moveTo(s*.42,s*.62); g.lineTo(s*.58,s*.62); g.stroke(); },
+      magnifier:(g,s)=>{ g.beginPath(); g.arc(s*.45,s*.45,s*.16,0,Math.PI*2); g.stroke();
+                         g.beginPath(); g.moveTo(s*.56,s*.56); g.lineTo(s*.78,s*.78); g.stroke(); },
+      laptop:(g,s)=>{ g.strokeRect(s*.28,s*.32,s*.44,s*.26);
+                      g.beginPath(); g.moveTo(s*.22,s*.62); g.lineTo(s*.78,s*.62); g.lineTo(s*.70,s*.72); g.lineTo(s*.30,s*.72); g.closePath(); g.stroke(); }
+    };
+    iconNames.forEach(n => { atlas[n] = makeIcon(icons[n], 24); });
+
+    let nodes = [];
+    function resetNodes(){
+      const area = w * h;
+      const target = Math.max(100, Math.min(420, Math.floor(area / 6500))); // slightly denser for page
+      nodes = Array.from({length: target}).map(() => {
+        const name = iconNames[(Math.random()*iconNames.length)|0];
+        return {
+          name,
+          x: Math.random() * w,
+          y: Math.random() * h,
+          z: Math.random(),
+          s: 0.55 + Math.random()*0.6,
+          vx: (Math.random() * 0.5 - 0.25),
+          vy: (Math.random() * 0.5 - 0.25),
+          rot: (Math.random()*0.02 - 0.01),
+          a: 0.55 + Math.random()*0.25,
+          r: Math.random()*Math.PI*2
+        };
+      });
+    }
+
+    function draw(){
+      ctx.clearRect(0,0,w,h);
+      for (const it of nodes){
+        it.x += it.vx * (0.5 + it.z*0.7);
+        it.y += it.vy * (0.5 + it.z*0.7);
+        it.r += it.rot;
+
+        if (it.x > w+20) it.x = -20;
+        if (it.x < -20) it.x = w+20;
+        if (it.y > h+20) it.y = -20;
+        if (it.y < -20) it.y = h+20;
+
+        const img = atlas[it.name];
+        const size = (18 * it.s) * (0.7 + it.z*0.6);
+        const half = size/2;
+        ctx.save();
+        ctx.globalAlpha = it.a * (0.9 - it.z*0.3);
+        ctx.translate(it.x, it.y);
+        ctx.rotate(it.r);
+        ctx.drawImage(img, -half, -half, size, size);
+        ctx.restore();
+      }
+      requestAnimationFrame(draw);
+    }
+
+    sizeCanvas();
+    resetNodes();
+    window.addEventListener('resize', () => { sizeCanvas(); resetNodes(); }, {passive:true});
+    setTimeout(() => { sizeCanvas(); resetNodes(); }, 300);
+    requestAnimationFrame(draw);
+  }
+
+  if (document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', initPageFX, {once:true});
+  } else {
+    initPageFX();
+  }
+})();
+
+// === Tilt cards with mouse position for glow ===
+(function(){
+  const TILT_SEL = '.tilt';
+  const els = Array.from(document.querySelectorAll(TILT_SEL));
+  const lerp = (a,b,t)=>a+(b-a)*t;
+  function onMove(e){
+    const el = e.currentTarget;
+    const r  = el.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width;
+    const y = (e.clientY - r.top) / r.height;
+    el.style.setProperty('--mx', (x*100)+'%');
+    el.style.setProperty('--my', (y*100)+'%');
+    const rx = lerp(5,-5,y);
+    const ry = lerp(-6,6,x);
+    el.style.transform = `translateY(-6px) scale(1.02) rotateX(${rx}deg) rotateY(${ry}deg)`;
+  }
+  function onLeave(e){ e.currentTarget.style.transform = ''; }
+  els.forEach(el => {
+    el.addEventListener('mousemove', onMove, {passive: true});
+    el.addEventListener('mouseleave', onLeave, {passive: true});
+  });
+})();
+
+// === Rich Hover FX: ripple, parallax image, magnetic icons ===
+(function(){
+  const cards = document.querySelectorAll('.fx-rich');
+  const projCards = document.querySelectorAll('.proj-card');
+  // inject sparkles layer once
+  cards.forEach(c => { if (!c.querySelector('.sparkles')) { const s = document.createElement('i'); s.className = 'sparkles'; c.appendChild(s); } });
+  // ripple on pointerdown
+  function ripple(e){
+    const el = e.currentTarget;
+    const r = el.getBoundingClientRect();
+    const x = e.clientX - r.left, y = e.clientY - r.top;
+    const span = document.createElement('span');
+    span.className = 'ripple';
+    const d = Math.max(r.width, r.height);
+    span.style.width = span.style.height = d + 'px';
+    span.style.left = (x - d/2) + 'px';
+    span.style.top  = (y - d/2) + 'px';
+    el.appendChild(span);
+    setTimeout(()=> span.remove(), 600);
+  }
+  cards.forEach(c => c.addEventListener('pointerdown', ripple));
+  // parallax image follow mouse
+  function parallaxImg(e){
+    const card = e.currentTarget;
+    const img = card.querySelector('.thumb img');
+    if (!img) return;
+    const r = card.getBoundingClientRect();
+    const x = (e.clientX - r.left)/r.width - 0.5;
+    const y = (e.clientY - r.top)/r.height - 0.5;
+    img.style.transform = `scale(1.06) translate(${x*8}px, ${y*6}px)`;
+  }
+  function resetImg(e){
+    const img = e.currentTarget.querySelector('.thumb img');
+    if (img) img.style.transform = '';
+  }
+  projCards.forEach(c => {
+    c.addEventListener('mousemove', parallaxImg, {passive: true});
+    c.addEventListener('mouseleave', resetImg, {passive: true});
+  });
+  // magnetic service icon
+  function magnet(e){
+    const icon = e.currentTarget.querySelector('.svc-ico');
+    if (!icon) return;
+    const r = e.currentTarget.getBoundingClientRect();
+    const x = (e.clientX - r.left)/r.width - 0.5;
+    const y = (e.clientY - r.top)/r.height - 0.5;
+    icon.style.transform = `translate(${x*10}px, ${y*8}px)`;
+  }
+  function magnetOff(e){
+    const icon = e.currentTarget.querySelector('.svc-ico');
+    if (icon) icon.style.transform = '';
+  }
+  document.querySelectorAll('.svc-card').forEach(c => {
+    c.addEventListener('mousemove', magnet, {passive: true});
+    c.addEventListener('mouseleave', magnetOff, {passive: true});
+  });
 })();

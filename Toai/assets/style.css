@@ -252,3 +252,133 @@ a { text-decoration: none; color: inherit; }
 .tt { min-height: 1.5em; }
 .typewriter-paragraph { display: inline-block; min-height: 3.2em; }
 .tt strong { letter-spacing: .5px; }
+
+
+/* === PAGE floating icons effect (outline #ff6900) === */
+#pageFX {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+/* Ensure content stays above the canvas overlay */
+.site-header, main, .site-footer { position: relative; z-index: 1; }
+
+
+/* ===== 3D Flip Chip (perf-optimized) ===== */
+.flipchip { perspective: 800px; width: 100%; display: flex; justify-content: center; contain: layout paint style; }
+.chip-3d { position: relative; width: 100%; max-width: 520px; height: 88px;
+  transform-style: preserve-3d; transition: transform .75s cubic-bezier(.22,.61,.36,1);
+  will-change: transform; transform: translateZ(0);
+}
+.flipchip:hover .chip-3d { transform: rotateY(180deg); }
+.chip-face {
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; gap: 10px;
+  border-radius: 999px; border: 1px solid color-mix(in hsl, var(--accent) 28%, transparent);
+  background: linear-gradient(180deg, color-mix(in hsl, var(--card) 96%, transparent), color-mix(in hsl, var(--card) 74%, transparent));
+  box-shadow: 0 8px 20px rgba(2,10,30,.08);
+  backface-visibility: hidden; -webkit-backface-visibility: hidden;
+  will-change: transform; transform: translateZ(0);
+}
+.chip-face.front { font-weight: 800; }
+.chip-face.front i { color: var(--accent); }
+.chip-face.back { transform: rotateY(180deg); padding: 0 22px; }
+.chip-list { display: flex; gap: 14px 18px; flex-wrap: wrap; list-style: none; margin: 0; padding: 0; justify-content: center; }
+.chip-list li { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; }
+.chip-status { display: inline-flex; align-items: center; gap: 10px; font-weight: 700; color: var(--muted); }
+.chip-status i { color: var(--accent); }
+
+@media (prefers-reduced-motion: reduce) {
+  .chip-3d, .tilt { transition: none !important; }
+  .flipchip:hover .chip-3d { transform: none; }
+}
+
+
+/* Tilt / Sheen / Glow */
+.tilt { position: relative; transform-style: preserve-3d; transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; will-change: transform; }
+.tilt:hover { transform: translateY(-6px) scale(1.02) rotateX(2deg) rotateY(-2deg); box-shadow: 0 20px 50px rgba(0,0,0,.22); border-color: var(--accent); }
+.tilt::after { content: ""; position: absolute; inset: -2px; background: linear-gradient(120deg, transparent 20%, rgba(255,255,255,.18) 40%, transparent 60%);
+  transform: translateX(-120%); pointer-events: none; transition: transform .7s ease; border-radius: inherit; }
+.tilt:hover::after { transform: translateX(120%); }
+.tilt::before { content: ""; position: absolute; inset: -1px; border-radius: inherit;
+  background: radial-gradient(120px 60px at var(--mx, 50%) var(--my, 50%), color-mix(in hsl, var(--accent) 45%, transparent) 0%, transparent 60%);
+  opacity: 0; transition: opacity .25s ease; pointer-events: none; }
+.tilt:hover::before { opacity: .8; }
+
+
+/* ===== RICH FX for Services & Projects ===== */
+.fx-rich { position: relative; isolation: isolate; overflow: hidden; }
+.fx-rich::after {
+  content: "";
+  position: absolute; inset: -1px; border-radius: inherit;
+  background: conic-gradient(from var(--ang, 0deg), var(--accent), transparent 20%, var(--accent-2), transparent 60%, var(--accent));
+  filter: blur(8px); opacity: 0; transition: opacity .35s ease; z-index: -1;
+}
+.fx-rich:hover::after { opacity: .7; }
+@keyframes spinBorder { to { --ang: 360deg; } }
+.fx-rich:hover { animation: spinBorder 2.8s linear infinite; }
+.fx-rich .sparkles { display: none; }
+.fx-rich:hover .sparkles { display: block; }
+.fx-rich .sparkles, .fx-rich .sparkles::before, .fx-rich .sparkles::after {
+  content: ""; position: absolute; pointer-events: none; inset: 0; border-radius: inherit;
+  background:
+    radial-gradient(6px 6px at 10% 20%, rgba(255,255,255,.8), transparent 70%),
+    radial-gradient(4px 4px at 80% 30%, rgba(255,255,255,.6), transparent 70%),
+    radial-gradient(5px 5px at 30% 80%, rgba(255,255,255,.7), transparent 70%);
+  opacity: .0; filter: drop-shadow(0 0 8px rgba(255,255,255,.6));
+  animation: sparkleFloat 3.5s ease-in-out infinite alternate;
+}
+.fx-rich .sparkles::before { animation-delay: .8s; }
+.fx-rich .sparkles::after  { animation-delay: 1.6s; }
+@keyframes sparkleFloat {
+  0% { transform: translateY(6px) scale(.98); opacity: .0; }
+  60% { opacity: .35; }
+  100% { transform: translateY(-6px) scale(1.02); opacity: .15; }
+}
+/* Projects extras */
+.proj-card .thumb { overflow: hidden; }
+.proj-card .thumb::before {
+  content: ""; position: absolute; top: 0; left: -120%; width: 40%; height: 100%;
+  background: linear-gradient(75deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.25) 50%, rgba(255,255,255,0) 100%);
+  transform: skewX(-18deg);
+  transition: transform .6s ease, left .6s ease, opacity .4s ease;
+  opacity: 0;
+}
+.proj-card:hover .thumb::before { left: 120%; opacity: 1; }
+.proj-card:hover .tags li { transform: translateY(-2px) rotate(-1deg); }
+.proj-card .tags li { transition: transform .25s ease; }
+/* Services extras */
+.svc-card .svc-ico { will-change: transform; animation: bob 2.6s ease-in-out infinite; transform-origin: center; }
+@keyframes bob { 50% { transform: translateY(-6px); } }
+
+
+/* Ripple effect */
+.ripple {
+  position: absolute; border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,.45) 0%, rgba(255,255,255,0) 60%);
+  transform: scale(0); animation: ripple .6s ease-out forwards;
+  pointer-events: none; mix-blend-mode: screen;
+}
+@keyframes ripple { to { transform: scale(1); opacity: 0; } }
+
+
+/* Stagger-friendly reveal tweaks for cards */
+.services .svc-card,
+.projects .proj-card { transition-property: opacity, transform, box-shadow, border-color; }
+
+
+/* ===== ABOUT EXTRAS (Hobbies + Certificates) ===== */
+.about-extras { 
+  display: grid; 
+  grid-template-columns: 1fr 1fr; 
+  gap: 20px; 
+  margin-top: 18px; 
+}
+.about-card {
+  background: linear-gradient(180deg, color-mix(in hsl, var(--card) 95%, transparent), color-mix(in hsl, var(--card) 70%, transparent));
+  border: 1px solid color-mix(in hsl, var(--muted) 20%, transparent);
+  border-radius: var(--radius);
+  padding: 18px;
+  box-shadow: var(--shadow);
+}
+@media (max-width: 980px) { .about-extras { grid-template-columns: 1fr; } }
