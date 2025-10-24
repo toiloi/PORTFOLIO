@@ -22,14 +22,15 @@
   </head>
 
   <body>
+    <button id="backToTop" title="Lên đầu trang">⬆</button>
     <header>
       <nav id="navbar">
         <div class="logo">AboutMe</div>
         <ul>
           <li><a href="index.html">Trang chủ</a></li>
-          <li><a href="#about">Giới thiệu</a></li>
-          <li><a href="#projects">Dự án</a></li>
-          <li><a href="#contact">Liên hệ</a></li>
+          <li><a href="#about-section">Giới thiệu</a></li>
+          <li><a href="#footer">Dự án</a></li>
+          <li><a href="#footer">Liên hệ</a></li>
         </ul>
       </nav>
     </header>
@@ -38,8 +39,8 @@
       <div class="container" id="home">
         <div class="container3d">
           <div class="posterIntro">
-            <h1>WEB DEVELOPER</h1>
-            <h2>I'M</h2>
+            <h1>PORTFOLIO</h1>
+            <h2>Welcome to my</h2>
           </div>
           <div class="container3Din" id="infinity-bg">
             <div class="frame">
@@ -95,25 +96,25 @@
       </div>
       <div class="container" id="about-section">
         <h1>THÔNG TIN</h1>
-        <section class="about" id="about" style="margin-top: 50px">
+        <section class="about" id="about" style="margin-top: 10px">
           <div class="text">
             <h2>Giới thiệu bản thân</h2>
             <p>
               Xin chào! Tôi là <strong>Lê Duy Bằng</strong>, một Web Developer
-              đam mê công nghệ và lập trình. Tôi yêu thích việc tạo ra các trang
+               yêu thích việc tạo ra các trang
               web đẹp mắt và chức năng, đồng thời không ngừng học hỏi những công
               nghệ mới để nâng cao kỹ năng của mình. Với sự sáng tạo và tinh
               thần làm việc chăm chỉ, tôi luôn sẵn sàng đối mặt với những thách
               thức mới trong lĩnh vực phát triển web.
             </p>
           </div>
-          <div class="project-box">
+          <div class="project-box" id = "peri4">
             <h3 style="text-align: center; padding: 0">Thông tin cá nhân</h3>
-            <ul style="text-align: center; list-style: none; padding: 0">
-              <li>Tên : Lê Duy Bằng</li>
-              <li>Ngày sinh: 🎂 2/11/2005</li>
-              <li>Khoá học : CN23</li>
-              <li>Địa chỉ : Xã Tân Nhựt, TPHCM</li>
+            <ul >
+              <li><strong>Tên</strong> : Lê Duy Bằng</li>
+              <li><strong>Ngày sinh</strong>: 🎂 2/11/2005</li>
+              <li><strong>Khoá học</strong> : CN23</li>
+              <li><strong>Địa chỉ </strong>: Xã Tân Nhựt, TPHCM</li>
             </ul>
           </div>
         </section>
@@ -135,87 +136,109 @@
               Mình thích chụp ảnh và dựng video, các khoảnh khắc vui vẻ cùng
               người nhà và bạn bè. Những lúc không muốn làm gì mình sẽ xem lại.
             </p>
-          </div>
-        </section>
-      </div>
+            <div class="skills-container">
+              
+              <h3>KỸ NĂNG CỦA TÔI</h3>
+              <div class="skills-grid">
+                <div class="skill-card" style="--percent: 90%">
+                  <span class="skill-name">HTML,CSS,JS</span>
+                  <div class="skill-bar"></div>
+                  <span class="skill-percent">90%</span>
+                </div>
 
-      <div class="container">
-        <div class="skills-container">
-          <h3>KỸ NĂNG CỦA TÔI</h3>
-          <div class="skills-grid">
-            <div class="skill-card">HTML</div>
-            <div class="skill-card">CSS</div>
-            <div class="skill-card">JavaScript</div>
-            <div class="skill-card">Java</div>
-            <div class="skill-card">Spring Boot</div>
-            <div class="skill-card">MySQL</div>
-            <div class="skill-card">ASP.Net Core</div>
-            <div class="skill-card">Git & GitHub</div>
-          </div>
-        </div>
-      </div>
-      <div class="container">
-        <div class="timeline-container">
-          <h3>HÀNH TRÌNH & ĐỊNH HƯỚNG PHÁT TRIỂN</h3>
-          <div class="timeline">
-            <div class="timeline-item">
-              <div class="timeline-dot"></div>
-              <div class="timeline-content">
-                <h4>2023 - Bắt đầu học lập trình</h4>
-                <p>
-                  Làm quen với HTML, CSS và JavaScript — đặt nền tảng cho phát
-                  triển web.
-                </p>
+                <div class="skill-card" style="--percent: 25%">
+                  <span class="skill-name">ASP.NET</span>
+                  <div class="skill-bar"></div>
+                  <span class="skill-percent">25%</span>
+                </div>
+
+                <div class="skill-card" style="--percent: 65%">
+                  <span class="skill-name">Python</span>
+                  <div class="skill-bar"></div>
+                  <span class="skill-percent">65%</span>
+                </div>
+              </div>
+              <div class="skills-grid">
+                <div class="skill-card" style="--percent: 90%">
+                  <span class="skill-name">SQL</span>
+                  <div class="skill-bar"></div>
+                  <span class="skill-percent">90%</span>
+                </div>
+
+                <div class="skill-card" style="--percent: 75%">
+                  <span class="skill-name">Linux</span>
+                  <div class="skill-bar"></div>
+                  <span class="skill-percent">75%</span>
+                </div>
+
+                <div class="skill-card" style="--percent: 65%">
+                  <span class="skill-name">Spring Boot</span>
+                  <div class="skill-bar"></div>
+                  <span class="skill-percent">45%</span>
+                </div>
               </div>
             </div>
           </div>
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-content">
-              <h4>2024 - Nâng cao kỹ năng backend</h4>
-              <p>
-                Học Java, Spring Boot, MySQL và áp dụng vào các dự án trong môn
-                học tại trường.
-              </p>
-            </div>
-          </div>
-
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-content">
-              <h4>2025 - Định hướng chuyên sâu</h4>
-              <p>
-                Phát triển thành Full-Stack Developer, tham gia dự án mã nguồn
-                mở và hoàn thiện kỹ năng teamwork.
-              </p>
-            </div>
-          </div>
-
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-content">
-              <h4>Tương lai</h4>
-              <p>
-                Trở thành kỹ sư phần mềm chuyên nghiệp, đóng góp vào các sản
-                phẩm hữu ích cho cộng đồng.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="timeline-end">
-          <div class="arrow-down"></div>
-          <p>DƯỚI ĐÂY LÀ DỰ ÁN CỦA TÔI</p>
-        </div>
+        </section>
       </div>
+<div class="container" id ="timeline-container">
+  <h1>QUÁ TRÌNH</h1>
+      <section class="timeline-container">
+        <div class="timeline">
+          <div
+            class="timeline-item"
+            
+          >
+            <div class="content">
+              <h3>2023 - Bắt đầu học lập trình</h3>
+              <p>
+                Làm quen với HTML, CSS và JavaScript — đặt nền tảng cho phát
+                triển web.
+              </p>
+            </div>
+          </div>
+          <div
+            class="timeline-item"
+            style="background-image: url('images/batdau\ \(1\).jpg')"
+          >
+            <div class="content"><h3></div>
+          </div>
+          <div class="timeline-item">
+            <div class="content">
+              <h3>2024 - Nâng cao kỹ năng backend</h3>
+              <p>
+                Học Java, Spring Boot, MySQL và áp dụng vào các dự án tại
+                trường.
+              </p>
+            </div>
+          </div>
+          <div class="timeline-item" style="background-image: url('images/nam2.jpg')">
+            <div class="content">
+          
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="content">
+              <h3>2025 - Định hướng chuyên sâu</h3>
+              <p>
+                Phát triển thành Full-Stack Developer và hoàn thiện kỹ năng
+                teamwork.
+              </p>
+            </div>
+          </div>
+        </div>
+        
+      </section>
 
-      <div class="container">
-        <section class="project" id="projects">
-          <div class="project-card">
+
+ <section class="project" id="projects">
+
+          <div class="project-card"  id="projects1">
             <img src="images/UTHTEAM.png" alt="Dự án 1" />
             <h3>UTH Team Matching</h3>
             <p>Nền tảng kết nối sinh viên và nhóm dự án học thuật tại UTH.</p>
             <button
-              onclick="openModal('UTH Team Matching', 'images/UTHTEAM.png', 'Ứng dụng web giúp sinh viên tìm nhóm làm việc phù hợp, sử dụng Spring Boot và MySQL.')"
+              onclick="openModal('UTH Team Matching', 'images/UTHTEAM.png', 'Ứng dụng web giúp sinh viên tìm nhóm làm việc phù hợp, sử dụng Spring Boot và MySQL.','https://github.com/toiloi/UTHTeamMatching')"
             >
               Xem chi tiết
             </button>
@@ -226,7 +249,7 @@
             <h3>Portfolio Website</h3>
             <p>Website cá nhân để giới thiệu kỹ năng và dự án.</p>
             <button
-              onclick="openModal('Portfolio Website', 'images/bang.png', 'Trang web cá nhân với hiệu ứng động và thiết kế responsive, được xây dựng bằng HTML, CSS và JS.')"
+              onclick="openModal('Portfolio Website', 'images/bang.png', 'Trang web cá nhân với hiệu ứng động và thiết kế responsive, được xây dựng bằng HTML, CSS và JS.','https://github.com/toiloi/PORTFOLIO')"
             >
               Xem chi tiết
             </button>
@@ -237,13 +260,15 @@
             <h3>Smart Home IoT</h3>
             <p>Điều khiển thiết bị qua mạng nội bộ.</p>
             <button
-              onclick="openModal('Smart Home IoT', 'images/project3.jpg', 'Dự án IoT cho phép bật/tắt thiết bị từ xa, sử dụng ESP32 và Firebase Realtime Database.')"
+              onclick="openModal('Game-Hub-Platform', 'images/project3.jpg', 'Tạo ra trang web dùng để tổng hợp các trò chơi','https://github.com/qichuang5705/Game-Hub-Platform')"
             >
               Xem chi tiết
             </button>
           </div>
         </section>
-      </div>
+    </div>
+
+   
     </main>
 
     <!-- POPUP -->
@@ -253,10 +278,11 @@
         <h2 id="modal-title">Tên dự án</h2>
         <img id="modal-image" src="" alt="Hình dự án" />
         <p id="modal-description"></p>
+         <a id="modal-github" href="" target="_blank">Link Dự Án</a>
       </div>
     </div>
 
-    <footer>
+    <footer id="footer">
       <p>
         &copy; 2025 - Thiết kế bởi <a href="DBPortfolio.html">Lê Duy Bằng</a>
       </p>

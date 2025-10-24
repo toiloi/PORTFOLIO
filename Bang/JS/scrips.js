@@ -1,27 +1,23 @@
-const modal = document.getElementById("projectModal");
-const modalTitle = document.getElementById("modal-title");
-const modalImage = document.getElementById("modal-image");
-const modalDesc = document.getElementById("modal-description");
-const closeBtn = document.querySelector(".close-btn");
-
-window.addEventListener("load", function () {
-  document.getElementById("home").scrollIntoView({ behavior: "smooth" });
-});
-
-function openModal(title, img, desc) {
-  modalTitle.textContent = title;
-  modalImage.src = img;
-  modalDesc.textContent = desc;
-  modal.style.display = "block";
+function openModal(title, image, description, githubLink) {
+  document.getElementById("modal-title").textContent = title;
+  document.getElementById("modal-image").src = image;
+  document.getElementById("modal-description").textContent = description;
+  document.getElementById("modal-github").href = githubLink;
+  document.getElementById("projectModal").style.display = "block";
 }
 
-closeBtn.onclick = () => (modal.style.display = "none");
-window.onclick = (e) => {
-  if (e.target === modal) modal.style.display = "none";
+// Đóng popup
+document.querySelector(".close-btn").onclick = function () {
+  document.getElementById("projectModal").style.display = "none";
 };
 
+window.onclick = function (event) {
+  if (event.target === document.getElementById("projectModal")) {
+    document.getElementById("projectModal").style.display = "none";
+  }
+};
 // Hiệu ứng typing
-const text = " Xin chào! Mình là Lê Duy Bằng ";
+const text = "Hi ! I'm Le Duy Bang";
 const typingElement = document.getElementById("typing-text");
 let index = 0;
 
@@ -110,3 +106,38 @@ setInterval(() => {
   currentSlideIndex = (currentSlideIndex + 1) % slides.length;
   showSlide(currentSlideIndex);
 }, 3000);
+// --- Nút trở về đầu trang ---
+const backToTop = document.getElementById("backToTop");
+
+// Hiện nút khi cuộn xuống
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 300) {
+    backToTop.classList.add("show");
+  } else {
+    backToTop.classList.remove("show");
+  }
+});
+
+// Cuộn mượt lên đầu khi nhấn
+backToTop.addEventListener("click", () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+});
+
+const items = document.querySelectorAll(".timeline-item");
+const line = document.querySelector(".timeline::before");
+
+function revealTimeline() {
+  const triggerBottom = window.innerHeight * 0.85;
+  items.forEach((item) => {
+    const boxTop = item.getBoundingClientRect().top;
+    if (boxTop < triggerBottom) {
+      item.classList.add("show");
+    }
+  });
+}
+
+window.addEventListener("scroll", revealTimeline);
+revealTimeline(); // chạy 1 lần đầu
