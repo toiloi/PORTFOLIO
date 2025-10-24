@@ -72,23 +72,9 @@
                     </div>
                 </div>
                 <div class="hero-media">
-                                    <div class="avatar glass" aria-label="Ảnh đại diện">
-                                                    <!-- Anonymous person SVG (inline for crisp rendering and theme-aware color) -->
-                                                    <svg class="avatar-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-hidden="false">
-                                                        <title>Người ẩn danh</title>
-                                                        <defs>
-                                                            <linearGradient id="g1" x1="0" x2="1" y1="0" y2="1">
-                                                                <stop offset="0" stop-color="rgba(35,131,255,0.18)" />
-                                                                <stop offset="1" stop-color="rgba(255,107,129,0.12)" />
-                                                            </linearGradient>
-                                                        </defs>
-                                                        <rect width="120" height="120" rx="16" fill="url(#g1)" />
-                                                        <g transform="translate(20,16)" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="2">
-                                                            <circle cx="40" cy="28" r="18" fill="none" stroke-opacity="0.95" />
-                                                            <path d="M4,86 C4,66 22,54 40,54 C58,54 76,66 76,86" stroke-opacity="0.95" fill="none" stroke-linecap="round" stroke-linejoin="round" />
-                                                        </g>
-                                                    </svg>
-                                            </div>
+                    <div class="avatar glass" aria-label="Ảnh đại diện">
+                        <img src="./img/Avt.jpg" alt="Ảnh đại diện Trương Lê Bảo Thọ" class="avatar-img">
+                    </div>
                 </div>
             </div>
         </section>
@@ -107,22 +93,138 @@
                     <h3>🚀 Hướng phát triển</h3>
                     <p>Full‑stack : SpringBoot, Node.js, thiết kế API, DevOps cơ bản. Tập trung vào tạo ra những ứng dụng web hiện đại và hiệu quả.</p>
                 </article>
-                <article class="card glass card-3d floating-element scroll-scale-in" data-aos="zoom-in" data-aos-delay="250">
-                    <h3>👤 Thông tin cá nhân</h3>
-                    <p>Ngày sinh: 21/11/2005<br>
-                    Địa chỉ: Thành Phố Đà Lạt, Việt Nam<br>
-                    Liên hệ: thozed1032@gmail.com<br>
-                    Trình độ: Sinh viên Công nghệ Thông tin (3 năm)</p>
+                <article class="card glass card-3d floating-element scroll-scale-in personal-info-card" data-aos="zoom-in" data-aos-delay="250">
+                    <div class="personal-info-header">
+                        <div class="personal-avatar">
+                            <span class="iconify" data-icon="ph:user-circle-fill"></span>
+                        </div>
+                        <h3>👤 Thông tin cá nhân</h3>
+                    </div>
+                    <div class="personal-info-content">
+                        <div class="info-item">
+                            <span class="info-icon">🎂</span>
+                            <div class="info-details">
+                                <span class="info-label">Ngày sinh</span>
+                                <span class="info-value">21/11/2005</span>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-icon">📍</span>
+                            <div class="info-details">
+                                <span class="info-label">Địa chỉ</span>
+                                <span class="info-value">Thành Phố Đà Lạt, Việt Nam</span>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-icon">📧</span>
+                            <div class="info-details">
+                                <span class="info-label">Liên hệ</span>
+                                <span class="info-value">thozed1032@gmail.com</span>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-icon">🎓</span>
+                            <div class="info-details">
+                                <span class="info-label">Trình độ</span>
+                                <span class="info-value">Sinh viên CNTT (3 năm)</span>
+                            </div>
+                        </div>
+                    </div>
                 </article>
+            </div>
+        </section>
+
+        <section id="hobbies" class="section" data-aos="fade-up" data-aos-delay="100">
+            <div class="section-header">
+                <h2>Sở thích</h2>
+                <p>Những hoạt động và sở thích cá nhân giúp mình cân bằng giữa học tập và cuộc sống</p>
+            </div>
+            <div class="hobbies-grid">
+                <div class="hobby-card glass card-3d floating-element scroll-scale-in" data-aos="zoom-in" data-aos-delay="150">
+                    <div class="hobby-icon">🎮</div>
+                    <h3>Gaming</h3>
+                    <p>Chơi game để giải trí và kết nối với bạn bè. Yêu thích các thể loại strategy và RPG.</p>
+                </div>
+                <div class="hobby-card glass card-3d floating-element scroll-scale-in" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="hobby-icon">📚</div>
+                    <h3>Đọc sách</h3>
+                    <p>Đọc sách công nghệ và lập trình để cập nhật kiến thức mới và mở rộng tầm hiểu biết.</p>
+                </div>
+                <div class="hobby-card glass card-3d floating-element scroll-scale-in" data-aos="zoom-in" data-aos-delay="250">
+                    <div class="hobby-icon">🏃‍♂️</div>
+                    <h3>Thể thao</h3>
+                    <p>Chạy bộ và tập gym để duy trì sức khỏe và tăng cường năng lượng cho công việc.</p>
+                </div>
+                <div class="hobby-card glass card-3d floating-element scroll-scale-in" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="hobby-icon">🎵</div>
+                    <h3>Âm nhạc</h3>
+                    <p>Nghe nhạc và học guitar để thư giãn và phát triển khả năng sáng tạo.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="certificates" class="section" data-aos="fade-up" data-aos-delay="100">
+            <div class="section-header">
+                <h2>Chứng chỉ - Giải thưởng</h2>
+                <p>Các chứng chỉ và thành tích đạt được trong quá trình học tập</p>
+            </div>
+            <div class="certificates-grid">
+                <div class="certificate-card glass card-3d floating-element scroll-scale-in" data-aos="zoom-in" data-aos-delay="150">
+                    <div class="certificate-icon">🏆</div>
+                    <h3>Chứng chỉ Tin học Văn phòng</h3>
+                    <p>Microsoft Office Specialist - Word, Excel, PowerPoint</p>
+                    <span class="cert-date">2023</span>
+                </div>
+                <div class="certificate-card glass card-3d floating-element scroll-scale-in" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="certificate-icon">💻</div>
+                    <h3>Chứng chỉ Lập trình Web</h3>
+                    <p>HTML, CSS, JavaScript Fundamentals</p>
+                    <span class="cert-date">2024</span>
+                </div>
+                <div class="certificate-card glass card-3d floating-element scroll-scale-in" data-aos="zoom-in" data-aos-delay="250">
+                    <div class="certificate-icon">🎓</div>
+                    <h3>Học bổng Khuyến khích học tập</h3>
+                    <p>Đạt điểm GPA cao trong học kỳ</p>
+                    <span class="cert-date">2024</span>
+                </div>
             </div>
         </section>
 
         <section id="skills" class="section" data-aos="fade-up" data-aos-delay="100">
             <div class="section-header">
-                <h2>Kỹ năng</h2>
-                <p>Các công nghệ và kỹ năng mà mình đã tích lũy trong quá trình học tập và phát triển</p>
+                <h2>Kỹ năng & Ngôn ngữ</h2>
+                <p>Các công nghệ, kỹ năng và ngôn ngữ mà mình đã tích lũy trong quá trình học tập và phát triển</p>
             </div>
-            <div class="skills-grid">
+            
+            <!-- Ngôn ngữ -->
+            <div class="languages-section">
+                <h3>Ngôn ngữ</h3>
+                <div class="languages-grid">
+                    <div class="language-card glass card-3d floating-element scroll-scale-in" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="language-icon">🇻🇳</div>
+                        <h4>Tiếng Việt</h4>
+                        <p>Ngôn ngữ mẹ đẻ</p>
+                        <div class="language-level">Native</div>
+                    </div>
+                    <div class="language-card glass card-3d floating-element scroll-scale-in" data-aos="zoom-in" data-aos-delay="150">
+                        <div class="language-icon">🇺🇸</div>
+                        <h4>Tiếng Anh</h4>
+                        <p>Giao tiếp và đọc tài liệu kỹ thuật</p>
+                        <div class="language-level">Intermediate</div>
+                    </div>
+                    <div class="language-card glass card-3d floating-element scroll-scale-in" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="language-icon">🇯🇵</div>
+                        <h4>Tiếng Nhật</h4>
+                        <p>Đang học cơ bản</p>
+                        <div class="language-level">Beginner</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kỹ năng kỹ thuật -->
+            <div class="technical-skills-section">
+                <h3>Kỹ năng kỹ thuật</h3>
+                <div class="skills-grid">
                 <div class="skill glass">
                     <span>JavaScript / TypeScript</span>
                     <div class="meter"><span style="--p:82%"></span></div>
@@ -146,6 +248,44 @@
                 <div class="skill glass">
                     <span>Git & CI/CD</span>
                     <div class="meter"><span style="--p:72%"></span></div>
+                </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery" class="section" data-aos="fade-up" data-aos-delay="100">
+            <div class="section-header">
+                <h2>Hình ảnh cá nhân</h2>
+                <p>Một số khoảnh khắc trong cuộc sống và hoạt động của mình</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item glass card-3d floating-element scroll-scale-in" data-aos="zoom-in" data-aos-delay="150">
+                    <img src="./img/Avt.jpg" alt="Ảnh cá nhân 1" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <h4>Ảnh đại diện</h4>
+                        <p>Portrait chính thức</p>
+                    </div>
+                </div>
+                <div class="gallery-item glass card-3d floating-element scroll-scale-in" data-aos="zoom-in" data-aos-delay="200">
+                    <img src="./img/Cup.jpg" alt="Hoạt động nhóm" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <h4>Hoạt động nhóm</h4>
+                        <p></p>
+                    </div>
+                </div>
+                <div class="gallery-item glass card-3d floating-element scroll-scale-in" data-aos="zoom-in" data-aos-delay="250">
+                    <img src="./img/Top8.jpg" alt="Dự án học tập" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <h4>Hoạt động nhóm</h4>
+                        <p>Top 8 Tứ Phương Đại Chiến(2024)</p>
+                    </div>
+                </div>
+                <div class="gallery-item glass card-3d floating-element scroll-scale-in" data-aos="zoom-in" data-aos-delay="300">
+                    <img src="./img/TFSIGN.png" alt="Dự án cá nhân" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <h4>Dự án cá nhân</h4>
+                        <p>Traffic Sign Management</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -171,18 +311,18 @@
                             <div class="tags">
                                 <span>Django</span><span>JavaScript</span><span>SQL</span>
                             </div>
-                            <button class="btn subtle project-detail-btn btn-morph" data-project="dashboard">🔍 Chi tiết</button>
+                            <button class="btn subtle project-detail-btn btn-morph" data-project="dashboard">Chi tiết</button>
                         </div>
                     </article>
                     <article class="project glass swiper-slide tilt-card card-3d scroll-fade-in" data-category="fullstack">
                         <img src="./img/uth1.png" alt="API minh hoạ">
                         <div class="project-body">
                             <h3>UTH Team Matchmaking</h3>
-                            <p>UTH Team Matchmaking API giúp kết nối sinh viên trong cùng đội nhóm dựa trên kỹ năng và sở thích chung.</p>
+                            <p>UTH Team Matchmaking giúp kết nối sinh viên trong cùng đội nhóm dựa trên kỹ năng và sở thích chung.</p>
                             <div class="tags">
                                 <span>Spring Boot</span><span>JWT</span><span>WebSocket</span>
                             </div>
-                            <button class="btn subtle project-detail-btn btn-morph" data-project="api">🔍 Chi tiết</button>
+                            <button class="btn subtle project-detail-btn btn-morph" data-project="api">Chi tiết</button>
                         </div>
                     </article>
                     <article class="project glass swiper-slide tilt-card card-3d scroll-slide-right" data-category="fullstack">
@@ -193,7 +333,7 @@
                             <div class="tags">
                                 <span>.NET</span><span>AI</span><span>Microservices</span>
                             </div>
-                            <button class="btn subtle project-detail-btn btn-morph" data-project="ui">🔍 Chi tiết</button>
+                            <button class="btn subtle project-detail-btn btn-morph" data-project="ui">Chi tiết</button>
                         </div>
                     </article>
                 </div>
