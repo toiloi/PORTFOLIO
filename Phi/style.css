@@ -1,4 +1,5 @@
 @charset "utf-8";
+/* CSS Document */
 
 * {
     margin: 0;
@@ -305,6 +306,10 @@ nav.scrolled {
     transition-delay: 0.3s;
 }
 
+.mobile-menu.active .mobile-nav-links li:nth-child(4) {
+    transition-delay: 0.4s;
+}
+
 .mobile-nav-links a {
     font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', sans-serif;
     font-size: 2.5rem;
@@ -474,6 +479,54 @@ nav.scrolled {
 
     50% {
         transform: translateY(-25px) translateX(-30px) rotate(180deg);
+    }
+}
+
+@keyframes floatShape4 {
+
+    0%,
+    100% {
+        transform: translateY(0px) translateX(0px) rotate(0deg);
+    }
+
+    25% {
+        transform: translateY(20px) translateX(-15px) rotate(45deg);
+    }
+
+    50% {
+        transform: translateY(-10px) translateX(30px) rotate(90deg);
+    }
+
+    75% {
+        transform: translateY(15px) translateX(-20px) rotate(135deg);
+    }
+}
+
+@keyframes floatShape5 {
+
+    0%,
+    100% {
+        transform: translateY(0px) translateX(0px) scale(1);
+    }
+
+    50% {
+        transform: translateY(-35px) translateX(20px) scale(1.2);
+    }
+}
+
+@keyframes floatShape6 {
+
+    0%,
+    100% {
+        transform: translateY(0px) translateX(0px) rotate(0deg);
+    }
+
+    33% {
+        transform: translateY(-15px) translateX(10px) rotate(60deg);
+    }
+
+    66% {
+        transform: translateY(10px) translateX(-25px) rotate(120deg);
     }
 }
 
@@ -685,7 +738,9 @@ section {
 .about-image {
     width: 100%;
     height: 500px;
-    background: url('images/smiling-girl-computer-desktop.jpg') center/cover;
+    justify-content: center; /* căn giữa ngang */
+  align-items: center;
+    background: url('images/home-right.png') center/cover;
     border-radius: 30px;
     position: relative;
     overflow: hidden;
@@ -731,35 +786,10 @@ section {
     line-height: 1.8;
 }
 
-.skills {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    margin-top: 3rem;
-}
 
-.skill-tag {
-    padding: 0.75rem 1.5rem;
-    background: var(--bg-card);
-    color: var(--primary-color);
-    border-radius: 30px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    border: 1px solid rgba(99, 102, 241, 0.2);
-    transition: all 0.3s ease;
-    backdrop-filter: blur(10px);
-}
-
-.skill-tag:hover {
-    background: var(--primary-color);
-    color: var(--text-light);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-lg);
-}
-
-/* project Section */
+/* Project Section */
 .project {
-    background: var(--bg-primary);
+    background: linear-gradient(135deg, #CBD5E1, #93C5FD);
 }
 
 .project-grid {
@@ -801,24 +831,18 @@ section {
     background-position: center;
 }
 
-.project-link {
-    text-decoration: none;
-    color: inherit;
-    display: block;
-}
-
 .project-item:nth-child(1) .project-image {
-    background-image: url('images/diamondShop.jpg');
+    background-image: url('images/diamondShop.png');
 }
 
 .project-item:nth-child(2) .project-image {
-    background-image: url('images/UTH1.png');
+    background-image: url('images/UTH.png');
 }
 
 .project-item:nth-child(3) .project-image {
-
     background-image: url('images/reviewBook.jpg');
 }
+
 
 .project-image::before {
     content: '';
@@ -827,7 +851,6 @@ section {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.1) 100%);
     transition: all 0.3s ease;
 }
 
@@ -835,9 +858,17 @@ section {
     background: linear-gradient(135deg, rgba(99, 102, 241, 0.4) 0%, rgba(139, 92, 246, 0.3) 100%);
 }
 
+.project-link {
+    text-decoration: none;
+    color: inherit;
+    gap: 15px;
+}
+
+
 .project-content {
     padding: 2rem;
 }
+
 
 .project-content h4 {
     font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', sans-serif;
@@ -1222,6 +1253,46 @@ section {
     transform: translateX(0);
 }
 
+.about-text {
+    display: grid;
+    justify-content: space-between;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    padding-top: 20px;
+}
+
+
+/* Photo-box */
+.photo-box {
+    position: relative;
+    width: 200px;
+    height: 250px;
+
+}
+
+.photo-box::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url('images/me.png') center/cover no-repeat;
+    filter: blur(10px);
+    transform: scale(1.1);
+    z-index: 0;
+}
+
+.photo-box img {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+
+
+
+
 /* Mobile Responsiveness */
 @media (max-width: 1024px) {
     .project-grid {
@@ -1281,9 +1352,6 @@ section {
         font-size: 2rem;
     }
 
-    .skills {
-        margin-top: 2rem;
-    }
 }
 
 @media (max-width: 480px) {
@@ -1306,45 +1374,535 @@ section {
 
 
 
-.fade-in,
-.slide-in-left,
-.slide-in-right,
-.project-item {
-    opacity: 1 !important;
-    transform: none !important;
-    transition: none !important;
+
+
+
+
+
+
+/* Career Section */
+.career {
+    background: linear-gradient(135deg, #f0f4ff, #e6e9ff);
+    padding: 80px 0;
+    position: relative;
 }
 
-.project-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
+.career-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
 }
 
-.project-item {
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    overflow: hidden;
-    transition: transform 0.3s ease;
+.career-text {
+    flex: 1 1 55%;
+    font-size: 1.1rem;
+    color: #333;
+    line-height: 1.8;
 }
 
-.project-item:hover {
-    transform: translateY(-6px);
+.career-text strong {
+    color: #0055ff;
 }
 
+.career-image {
+    flex: 1 1 40%;
+    text-align: center;
+}
 
-.project-image {
-    height: 200px;
+.career-image img {
+    max-width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.career-video {
+    flex: 1 1 40%;
+    position: relative;
+    text-align: center;
+}
+
+.career-video video {
     width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    object-fit: cover;
 }
 
 
-.project-content {
-    padding: 1.5rem;
+/* Hobbies Section */
+.hobby {
+    background: linear-gradient(135deg, #f9fbff, #edf0ff);
+    padding: 80px 0;
 }
 
-.project-tech {
-    margin-top: 1rem;
+.hobby-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.hobby-text {
+    flex: 1 1 45%;
+    font-size: 1.1rem;
+    color: #333;
+    line-height: 1.8;
+}
+
+.hobby-text strong {
+    color: #0055ff;
+}
+
+/* Slider styles */
+.hobby-slider {
+    flex: 1 1 50%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    background: #fff;
+}
+
+.hobby-slider .slides {
+    position: relative;
+    width: 80%;
+    aspect-ratio: 5/7;
+    border-radius: 12px;
+}
+
+.slide {
+    width: 100%;
+    height: 100%;
+    display: none;
+    border-radius: 12px;
+    object-fit: cover;
+    transition: opacity 1s ease;
+}
+
+.slide.active {
+    display: block;
+    opacity: 1;
+}
+
+/* Nút tiến lùi */
+.prev,
+.next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.4);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-size: 20px;
+    z-index: 10;
+}
+
+.prev:hover,
+.next:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.prev {
+    left: 5%;
+}
+
+.next {
+    right: 5%;
+}
+
+/* Responsive cho mobile */
+@media (max-width: 768px) {
+    .hobby-content {
+        flex-direction: column;
+    }
+
+    .hobby-text,
+    .hobby-slider {
+        flex: 1 1 100%;
+    }
+
+    .hobby-slider .slides {
+        width: 100%;
+    }
+}
+
+/* === Skills Section === */
+.skills {
+    background: linear-gradient(135deg, #E2E8F0, #BFDBFE);
+    padding: 60px 0;
+}
+
+.skills-content {
+    max-width: 700px;
+    margin: auto;
+    background: #fff;
+    border-radius: 15px;
+    padding: 30px 40px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.skill {
+    margin-bottom: 25px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hiệu ứng khi hover */
+.skill:hover {
+    transform: scale(1.03);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Khi hover vào, thanh có hiệu ứng rung nhẹ */
+.skill:hover .skill-level {
+    animation: pulse-bar 1s ease-in-out;
+}
+
+/* Tên kỹ năng */
+.skill h4 {
+    margin-bottom: 8px;
+}
+
+/* Thanh nền */
+.skill-bar {
+    height: 15px;
+    background: #eee;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Phần hiển thị mức độ */
+.skill-level {
+    height: 100%;
+    border-radius: 8px;
+    transition: background 0.3s ease;
+}
+
+/* Mức độ kỹ năng */
+.level-basic {
+    width: 35%;
+    background: #6EC1E4;
+}
+
+/* Cơ bản - xanh nhạt */
+.level-intermediate {
+    width: 55%;
+    background: #F2C94C;
+}
+
+/* Trung bình - vàng */
+.level-proficient {
+    width: 75%;
+    background: #EB5757;
+}
+
+/* Thành thạo - đỏ nhạt */
+.level-advanced {
+    width: 90%;
+    background: #9B51E0;
+}
+
+/* Nâng cao - tím */
+
+/* Đổi màu sáng hơn khi hover */
+.skill:hover .level-basic {
+    background: #4EA8DE;
+}
+
+.skill:hover .level-intermediate {
+    background: #E8B30E;
+}
+
+.skill:hover .level-proficient {
+    background: #D94444;
+}
+
+.skill:hover .level-advanced {
+    background: #8236C6;
+}
+
+/* Hiệu ứng "nhịp" nhẹ khi hover */
+@keyframes pulse-bar {
+    0% {
+        transform: scaleX(1);
+    }
+
+    50% {
+        transform: scaleX(1.05);
+    }
+
+    100% {
+        transform: scaleX(1);
+    }
+}
+
+/* Chữ mô tả mức độ */
+.level-text {
+    font-size: 0.9em;
+    color: #555;
+    margin-top: 5px;
+}
+
+/* Giải thích legend */
+.skill-legend {
+    margin-top: 40px;
+    background: #f6f8fa;
+    padding: 15px 20px;
+    border-radius: 10px;
+}
+
+.skill-legend h3 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.skill-legend ul {
+    list-style: none;
+    padding: 0;
+}
+
+.skill-legend li {
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.legend-box {
+    width: 20px;
+    height: 10px;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+.legend-box.level-basic {
+    background: #6EC1E4;
+}
+
+.legend-box.level-intermediate {
+    background: #F2C94C;
+}
+
+.legend-box.level-proficient {
+    background: #EB5757;
+}
+
+.legend-box.level-advanced {
+    background: #9B51E0;
+}
+
+
+/* Tooltip nổi bật khi hover skill */
+.skill {
+    position: relative;
+}
+
+/* Tooltip ẩn mặc định */
+.skill-tooltip {
+    position: absolute;
+    bottom: 120%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(60, 64, 67, 0.95);
+    color: #fff;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 0.85em;
+    width: 230px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Mũi tên nhỏ phía dưới tooltip */
+.skill-tooltip::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 6px;
+    border-style: solid;
+    border-color: rgba(60, 64, 67, 0.95) transparent transparent transparent;
+}
+
+/* Khi hover thì tooltip hiện ra */
+.skill:hover .skill-tooltip {
+    opacity: 1;
+    transform: translate(-50%, -8px);
+    pointer-events: auto;
+}
+
+
+/* Certificates Section */
+
+.certificates {
+    position: relative;
+    padding: 100px 0;
+background: linear-gradient(135deg, #1e293b, #334155);
+    color: #f1f5f9;
+    overflow: hidden;
+    text-align: center;
+}
+
+.certificates .section-title {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #38bdf8;
+}
+
+.certificates .section-subtitle {
+    font-size: 1.1rem;
+    margin-bottom: 60px;
+    color: #94a3b8;
+}
+
+.certificate-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+    align-items: center;
+    justify-content: center;
+}
+
+.certificate-item {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.certificate-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 25px rgba(56, 189, 248, 0.3);
+}
+
+.certificate-item img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.certificate-item h3 {
+    color: #e2e8f0;
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.certificate-item p {
+    color: #94a3b8;
+    font-size: 0.95rem;
+}
+
+.certificate-empty {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 60px 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+}
+
+.certificate-empty i {
+    font-size: 3rem;
+    color: #38bdf8;
+    margin-bottom: 20px;
+}
+
+
+
+/* === Social Icons Section === */
+.social-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin: 40px 0;
+}
+
+.social-icon {
+  width: 45px;
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #6C63FF, #3E8EDE);
+  color: #fff;
+  border-radius: 50%;
+  font-size: 20px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.social-icon:hover {
+  transform: translateY(-5px) scale(1.1);
+  background: linear-gradient(135deg, #8A7DFF, #5BA8FF);
+}
+
+
+.social-icon.github:hover {
+  background: #333;
+}
+
+.social-icon.facebook:hover {
+  background: #1877F2;
+}
+
+.social-icon.email:hover {
+  background: #EA4335;
+}
+
+
+
+/* === Đảm bảo nút Back to Top hiển thị đúng === */
+.back-to-top {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  width: 45px;
+  height: 45px;
+  background: linear-gradient(135deg, #6C63FF, #3E8EDE);
+  color: #fff;
+  text-align: center;
+  line-height: 45px;
+  font-size: 22px;
+  border-radius: 50%;
+  text-decoration: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s ease;
+  z-index: 9999; /* cực kỳ quan trọng */
+}
+
+.back-to-top.show {
+  opacity: 1;
+  visibility: visible;
+  bottom: 60px;
+}
+
+.back-to-top:hover {
+  transform: scale(1.1);
+  background: linear-gradient(135deg, #8A7DFF, #5BA8FF);
+}
+
+/* Đảm bảo footer không che nút */
+.footer {
+  position: relative;
+  z-index: 1;
 }

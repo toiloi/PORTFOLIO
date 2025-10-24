@@ -4,23 +4,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Hoàng Phi</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="style.css" rel="stylesheet">
 </head>
 
 <body>
-
     <!-- Navigation -->
-    <nav>
+    <nav id="navbar">
         <div class="nav-container">
-            <div class="logo">Profile</div>
+            <div class="logo">Hoàng Phi</div>
             <ul class="nav-links">
-                <li><a href="#hero">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#project">Project</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#home">Trang Chủ</a></li>
+                <li><a href="#about">Thông Tin</a></li>
+                <li><a href="#career">Định Hướng</a></li>
+                <li><a href="#hobby">Sở Thích</a></li>
+                <li><a href="#skills">Kỹ Năng</a></li>
+                <li><a href="#certificates">Chứng Chỉ</a></li>
+                <li><a href="#project">Dự Án</a></li>
+                <li><a href="#contact">Liên Hệ</a></li>
             </ul>
-            <div class="mobile-menu-toggle" id="menu-toggle">
+            <div class="mobile-menu-toggle" id="mobileMenuToggle">
                 <div class="hamburger"></div>
                 <div class="hamburger"></div>
                 <div class="hamburger"></div>
@@ -28,86 +32,283 @@
         </div>
     </nav>
 
-    <div class="mobile-menu" id="mobile-menu">
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
         <ul class="mobile-nav-links">
-            <li><a href="#hero">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#project">Project</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#home">Trang Chủ</a></li>
+            <li><a href="#about">Thông Tin</a></li>
+            <li><a href="#career">Định Hướng</a></li>
+            <li><a href="#hobby">Sở Thích</a></li>
+            <li><a href="#skills">Kỹ Năng</a></li>
+            <li><a href="#certificates">Chứng Chỉ</a></li>
+            <li><a href="#project">Dự Án</a></li>
+            <li><a href="#contact">Liên Hệ</a></li>
         </ul>
     </div>
 
+
     <!-- Hero Section -->
-    <section class="hero" id="hero">
+    <section id="home" class="hero">
         <div class="floating-shapes">
             <div class="shape shape-1"></div>
             <div class="shape shape-2"></div>
             <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+            <div class="shape shape-5"></div>
+            <div class="shape shape-6"></div>
         </div>
-
         <div class="hero-content">
-            <p class="hero-subtitle">Welcome to My profile</p>
-            <h1>I'm Hoàng Phi</h1>
-            <p class="subtitle">A third-year student majoring in information technology at University of Transport Ho
-                Chi Minh City.</p>
-            <a href="#project" class="cta-button">View My Work</a>
+            <div class="hero-subtitle">Creative Designer</div>
+            <h1>Biến ý tưởng thành trải nghiệm hoàn hảo!</h1>
+            <p class="subtitle">Tôi sẽ hiện thực hoá ý tưởng của bạn thành một sản phẩm hoàn hảo, mang đến trải nghiệm
+                tuyệt vời nhất. Bạn chỉ cần tưởng tượng, việc thực hiện đã có tôi lo.</p>
+            <a href="#about" class="cta-button">Chi tiết</a>
         </div>
-
-        <div class="scroll-indicator"></div>
+        <div class="scroll-indicator" onclick="document.getElementById('about').scrollIntoView()"></div>
     </section>
 
+
     <!-- About Section -->
-    <section class="about" id="about">
-        <div class="container about-content">
-            <div class="about-image"></div>
-            <div class="about-text">
-                <h3>About Me</h3>
-                <p>MSSV: 082205001536</p>
-                <p>Full Name: NGUYỄN HOÀNG PHI</p>
-                <p>Class: CN2305CLC</p>
-                <p>Faculty: Information Technology</p>
-                <div class="skills">
-                    <span class="skill-tag">HTML</span>
-                    <span class="skill-tag">CSS</span>
-                    <span class="skill-tag">JavaScript</span>
-                    <span class="skill-tag">PHP</span>
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title fade-in">Thông Tin Cá Nhân</h2>
+            <div class="about-content">
+                <div class="about-image slide-in-left"></div>
+                <div class="about-text slide-in-right">
+                    <div>
+                        <p><strong>MSSV: </strong>082205001536</p>
+                        <p><strong>Họ và Tên: </strong>Nguyễn Hoàng Phi</p>
+                        <p><strong>Ngày Sinh: </strong>17/02/2005</p>
+                        <p><strong>Quê quán: </strong>Đồng Tháp</p>
+                        <p><strong>Số điện thoại: </strong>0876540505</p>
+                        <p><strong>Khoá Học: </strong>2023</p>
+                        <p><strong>Ngành: </strong>Công nghệ thông tin</p>
+                        <p><strong>Chuyên Ngành: </strong>Công nghệ thông tin</p>
+                        <p><strong>Trường: </strong>Đại học Giao thông vận tải TP.HCM</p>
+                    </div>
+                    <div class="photo-box">
+                        <img src="images/me.png" alt="Ảnh thẻ">
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- project Section -->
-    <section class="project" id="project">
+
+    <!-- Career Section -->
+    <section id="career" class="career">
         <div class="container">
-            <h2 class="section-title">My Project</h2>
+            <h2 class="section-title fade-in">Định Hướng Nghề Nghiệp</h2>
+            <div class="career-content fade-in">
+                <div class="career-text">
+                    <p>
+                        Là một sinh viên năm 3 ngành Công nghệ thông tin. Tôi luôn khao khát trở thành một <strong>Kỹ sư
+                            phần mềm chuyên nghiệp</strong>,
+                        người không chỉ viết mã mà còn tạo ra những sản phẩm mang lại giá trị thực cho mọi người.
+                        Mục tiêu của tôi là phát triển trong lĩnh vực <strong>Web Development</strong> với vai trò
+                        <strong>Back End</strong>
+                        và định hướng trở thành <strong>Full-Stack Developer</strong>.
+                    </p><br>
+                    <p>
+                        Tôi đam mê xây dựng các ứng dụng có trải nghiệm người dùng mượt mà, sáng tạo, tối ưu hiệu năng
+                        và đảm bảo bảo mật cao. Trong tương lai, tôi muốn đóng góp vào những dự án
+                        có quy mô lớn, sử dụng công nghệ hiện đại như <strong>Spring Boot, React, và Cloud
+                            Services</strong>.
+                    </p><br>
+                    <p>
+                        Tôi tin rằng sự kiên trì, tinh thần tự học sẽ giúp tôi
+                        tiến xa hơn trên con đường công nghệ thông tin.
+                    </p>
+                </div>
+                <div class="career-video">
+                    <video autoplay muted loop playsinline>
+                        <source src="video/videoCareer.mp4" type="video/mp4">
+                        Trình duyệt của bạn không hỗ trợ video.
+                    </video>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Hobbies Section -->
+    <section id="hobby" class="hobby">
+        <div class="container">
+            <h2 class="section-title fade-in">Sở Thích Của Tôi</h2>
+            <div class="hobby-content fade-in">
+                <div class="hobby-text">
+                    <p>Tôi là một người đam mê nghệ thuật nên ngoài lập trình, tôi yêu thích việc <strong>chụp
+                            ảnh</strong>, <strong>ca hát</strong>,
+                        và <strong>đặc biệt là vẽ tranh</strong>. Lập trình là một công việc khó, đòi hỏi sự kiên trì,
+                        chăm chỉ, và mang lại nhiều áp lực, stress,...
+                    </p>
+                    <p>
+                        Khi đó việc<strong> vẽ tranh</strong> là lựa chọn hàng đầu của tôi để xả stress. Sau những giờ
+                        học tập, tìm kiếm tài liệu,... hoặc đơn giản là khi bí ý tưởng. Tôi sẽ nghĩ đến việc <strong>vẽ tranh</strong>.
+                    </p>
+                    <p> <strong>Vẽ tranh</strong> là cách để tâm hồn thăng hoa, nơi tôi lạc mình vào một thế giới của màu sắc và trí
+                        tưởng tượng. Việc <strong>vẽ tranh</strong> giúp tôi cảm thấy thư giản, thoái mái tâm hồn. Giúp tôi lấy lại tinh
+                        thần để tiếp tục học tập, làm việc hiệu quả hơn.</p><br>
+                    <p>
+                        <strong>Mỗi người đều có một sở thích của riêng mình.</strong> Với tôi đó là <strong>vẽ tranh</strong>. Còn bạn thì sao?
+                        <strong>Sở thích của bạn là gì?</strong>
+                    </p>
+                </div>
+
+                <div class="hobby-slider">
+                    <div class="slides">
+                        <img src="images/pic1.jpg" class="slide active" alt="Hobby 1">
+                        <img src="images/pic2.jpg" class="slide" alt="Hobby 2">
+                        <img src="images/pic3.jpg" class="slide" alt="Hobby 3">
+                        <img src="images/pic4.jpg" class="slide" alt="Hobby 4">
+                    </div>
+                    <button class="prev">&#10094;</button>
+                    <button class="next">&#10095;</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title fade-in">Kỹ Năng Lập Trình</h2>
+            <div class="skills-content fade-in">
+
+                <div class="skill">
+                    <h4>C++</h4>
+                    <div class="skill-bar">
+                        <div class="skill-level level-proficient"></div>
+                    </div>
+                    <p class="level-text">Thành thạo</p>
+                    <div class="skill-tooltip">Học Kỹ thuật lập trình, Cấu trúc dữ liệu và Giải thuật, Lập trình hướng đối tượng,.. và Các bài tập lớn bằng C++.</div>
+                </div>
+
+
+                <div class="skill">
+                    <h4>Java</h4>
+                    <div class="skill-bar">
+                        <div class="skill-level level-intermediate"></div>
+                    </div>
+                    <p class="level-text">Trung bình</p>
+                    <div class="skill-tooltip">Học Lập trình Java, Lập trình Mobile, làm các bài tập cuối kỳ với Java.</div>
+
+                </div>
+
+                <div class="skill">
+                    <h4>Python</h4>
+                    <div class="skill-bar">
+                        <div class="skill-level level-intermediate"></div>
+                    </div>
+                    <p class="level-text">Trung bình</p>
+                    <div class="skill-tooltip">Học Nhập môn CNTT, Chuyên đề Hệ thống giao thông thông minh, Khai thác dữ liệu, làm các bài tập lớn bằng Python.</div>
+
+                </div>
+
+                <div class="skill">
+                    <h4>HTML - CSS - JavaScript</h4>
+                    <div class="skill-bar">
+                        <div class="skill-level level-basic"></div>
+                    </div>
+                    <p class="level-text">Cơ bản</p>
+                    <div class="skill-tooltip">Đang học Lập trình Web, làm bài tập cuối kỳ.</div>
+
+                </div>
+
+                <div class="skill-legend">
+                    <h3>Giải thích các mức độ</h3>
+                    <ul>
+                        <li><span class="legend-box level-basic"></span> <strong>Cơ bản:</strong> Hiểu cú pháp, viết
+                            chương trình đơn giản.</li>
+                        <li><span class="legend-box level-intermediate"></span> <strong>Trung bình:</strong> Nắm được
+                            cấu trúc dữ liệu, các thư viện, framework.</li>
+                        <li><span class="legend-box level-proficient"></span> <strong>Thành thạo:</strong> Có thể làm dự
+                            án thực tế, tối ưu hiệu suất và bảo trì code.</li>
+                        <li><span class="legend-box level-advanced"></span> <strong>Nâng cao:</strong> Tối ưu hóa, có
+                            kinh nghiệm thực tế.</li>
+
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Certificates Section -->
+    <section id="certificates" class="certificates">
+        <div class="container">
+            <h2 class="section-title fade-in">Chứng Chỉ &amp; Bằng Cấp</h2>
+            <p class="fade-in section-subtitle">Những minh chứng cho quá trình học tập và phát triển chuyên môn của tôi.
+            </p>
+            <div class="certificate-grid fade-in">
+                <div class="certificate-empty">
+                    <i class="fas fa-award"></i>
+                    <p>Hiện tại tôi chưa có chứng chỉ nào, nhưng tôi đang nỗ lực học tập và sẽ sớm cập nhật tại đây.</p>
+                </div>
+
+            <!--
+            <div class="certificate-item">
+                <img src="assets/images/certificate1.jpg" alt="Certificate 1">
+                <h3>Google Data Analytics</h3>
+                <p>Google / Coursera - 2025</p>
+            </div>
+            -->
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Project Section -->
+    <section id="project" class="project">
+        <div class="container">
+            <h2 class="section-title fade-in">Dự Án Của Tôi</h2>
             <div class="project-grid">
-                <a href="https://github.com/Phap625/Diamond-Shop-System.git" target="_blank" class="project-link">
-                    <div class="project-item">
+                <div class="project-item">
+                    <a href="https://github.com/Phap625/Diamond-Shop-System.git" target="_blank" class="project-link">
                         <div class="project-image">
                         </div>
                         <div class="project-content">
                             <h4>Diamond Shop</h4>
-                            <p>Fully functional diamond sales website project to be implemented in HK2 2023-2024</p>
+                            <p>Dựa án Diamond Shop, tạo một trang web bán hàng kim cương với đầy đủ chức năng đăng nhập,
+                                mua sắm, thanh toán,... Được thực hiện vào HK2 2023-2024</p>
                             <div class="project-tech">
-                                <span class="tech-tag">Python</span>
-                                <span class="tech-tag">Django</span>
-                                <span class="tech-tag">MySQL</span>
+                                <span class="tech-tag"
+                                    onclick="window.open('https://www.python.org/', '_blank'); event.stopPropagation();">Python
+                                </span>
+                                <span class="tech-tag"
+                                    onclick="window.open('https://www.djangoproject.com/', '_blank'); event.stopPropagation();">Django
+                                </span>
+                                <span class="tech-tag"
+                                    onclick="window.open('https://www.mysql.com/', '_blank'); event.stopPropagation();">MySQL
+                                </span>
                             </div>
                         </div>
-                    </div>
-                </a>
+                    </a>
+                </div>
+
 
                 <div class="project-item">
                     <a href="https://github.com/toiloi/UTHTeamMatching.git" target="_blank" class="project-link">
                         <div class="project-image"></div>
                         <div class="project-content">
                             <h4>UTH Team Meeting</h4>
-                            <p>UTH student learning website project with modern functions, implemented in HK1 2024-2025
+                            <p>Dự án UTH Team Meeting với các chức năng chat, kết bạn, tìm thành viên cho dự án,.. Được
+                                thực hiện vào HK2 2024-2025
                             </p>
                             <div class="project-tech">
-                                <span class="tech-tag">Java</span>
-                                <span class="tech-tag">Spring Boot</span>
-                                <span class="tech-tag">MySQL</span>
+                                <span class="tech-tag"
+                                    onclick="window.open('https://www.java.com', '_blank'); event.stopPropagation();">Java</span>
+                                <span class="tech-tag"
+                                    onclick="window.open('https://spring.io/projects/spring-boot', '_blank'); event.stopPropagation();">Spring
+                                    Boot</span>
+                                <span class="tech-tag"
+                                    onclick="window.open('https://www.mysql.com', '_blank'); event.stopPropagation();">MySQL</span>
                             </div>
                         </div>
                     </a>
@@ -118,13 +319,22 @@
                         <div class="project-image"></div>
                         <div class="project-content">
                             <h4>Book Review Site</h4>
-                            <p>Book review website with friendly, intuitive, easy-to-use interface implemented in
-                                HK1-2025-2026</p>
+                            <p>Tạo trang web để đọc giả đánh giá các loại sách, giao diện hiện đại, thân thiện tạo nên một cộng đồng cho những người yêu sách, được thực hiện
+                            vào HK1-2025-2026</p>
                             <div class="project-tech">
-                                <span class="tech-tag">HTML</span>
-                                <span class="tech-tag">CSS</span>
-                                <span class="tech-tag">JavaScript</span>
-                                <span class="tech-tag">PHP</span>
+                                <span class="tech-tag"
+                                    onclick="window.open('https://developer.mozilla.org/en-US/docs/Web/HTML', '_blank'); event.stopPropagation();">HTML
+                                </span>
+                                <span class="tech-tag"
+                                    onclick="window.open('https://developer.mozilla.org/en-US/docs/Web/CSS', '_blank'); event.stopPropagation();">CSS
+                                </span>
+                                <span class="tech-tag"
+                                    onclick="window.open('https://developer.mozilla.org/en-US/docs/Web/JavaScript', '_blank'); event.stopPropagation();">JavaScript
+                                </span>
+                                <span class="tech-tag"
+                                    onclick="window.open('https://www.php.net/', '_blank'); event.stopPropagation();">PHP
+                                </span>
+
                             </div>
                         </div>
                     </a>
@@ -133,62 +343,56 @@
         </div>
     </section>
 
+
     <!-- Contact Section -->
-    <section class="contact" id="contact">
+    <section id="contact" class="contact">
         <div class="contact-floating-shapes">
-            <div class="contact-shape contact-shape-1">
-            </div>
-            <div class="contact-shape contact-shape-2">
-                
-            </div>
-            <div class="contact-shape contact-shape-3">
-            </div>
-            <div class="contact-shape contact-shape-4">
-            </div>
-            <div class="contact-shape contact-shape-5">
-            </div>
+            <div class="contact-shape contact-shape-1"></div>
+            <div class="contact-shape contact-shape-2"></div>
+            <div class="contact-shape contact-shape-3"></div>
+            <div class="contact-shape contact-shape-4"></div>
+            <div class="contact-shape contact-shape-5"></div>
             <div class="contact-shape contact-shape-6"></div>
         </div>
-
-        <div class="container" style="position: relative; z-index: 2; text-align: center;">
-            <h2 class="section-title" style="color: white;">Get in Touch</h2>
-            <p style="max-width: 600px; margin: 0 auto 2rem;">Interested in working together? Let's connect and discuss
-                your next project.</p>
-            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=phinh1536@ut.edu.vn" target="_blank"
-                class="cta-button">
-                Contact Me
-            </a>
+        <div class="container">
+            <div class="contact-content">
+                <h2 class="section-title fade-in">Liên Hệ Với Tôi</h2>
+                <p class="fade-in">Bạn muốn biến giấc mơ thành hiện thực? Hãy cùng nhau hợp tác để tạo nên những sản
+                    phẩm tuyệt vời! Tôi luôn hào hứng đón nhận những thử thách mới và hợp tác làm các dự án sáng tạo.
+                </p>
+                <div class="social-links">
+                    <a href="https://github.com/HPhi1808" target="_blank" class="social-icon github" title="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.facebook.com/nguyen.hoang.phi.638629?mibextid=ZbWKwL" target="_blank"
+                        class="social-icon facebook" title="Facebook">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=phinh1536@ut.edu.vn" target="_blank"
+                        class="social-icon email" title="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
         </div>
     </section>
 
+
+    <!-- Back to Top Button --> <a href="#home" class="back-to-top">&#9650;</a>
+
+
     <!-- Footer -->
     <footer class="footer">
-        <div class="container footer-content">
-            <div class="footer-left">
-                <p>© 2025 Hoang Phi. All Rights Reserved.</p>
-            </div>
-            <div class="footer-right">
-                <a href="#hero">Home</a>
-                <a href="#about">About</a>
-                <a href="#project">Project</a>
-                <a href="#contact">Contact</a>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <p>&copy; 2025 Hoàng Phi. All rights reserved.</p>
+                </div>
             </div>
         </div>
     </footer>
 
-    <script>
-        const menuToggle = document.getElementById('menu-toggle');
-        const mobileMenu = document.getElementById('mobile-menu');
-
-        menuToggle.addEventListener('click', () => {
-            menuToggle.classList.toggle('active');
-            mobileMenu.classList.toggle('active');
-        });
-
-        window.addEventListener('scroll', () => {
-            document.querySelector('nav').classList.toggle('scrolled', window.scrollY > 50);
-        });
-    </script>
+    <script src="scripts.js"></script>
 
 </body>
 
