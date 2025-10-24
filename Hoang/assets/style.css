@@ -101,7 +101,7 @@ section {
 /* ===== Hero ===== */
 #hero {
   background-image: linear-gradient(to right, rgb(0, 0, 0), rgba(0, 0, 0, 0)),
-    /* gradient từ trái sang phải */ url("image/background.png");
+    url("image/background.png");
   background-size: cover;
 }
 
@@ -124,12 +124,10 @@ section {
   font-size: 3rem;
   color: #ffd700;
   margin-bottom: 1rem;
-  transform: translateX(-30px);
-  opacity: 0;
-  transition: transform 0.7s ease, opacity 0.7s ease;
-  text-shadow: 0 0 3px #ffd700, 0 0 8px #ffea00, 2px 2px 5px rgba(0, 0, 0, 0.6);
-  z-index: 5;
-  position: relative;
+  text-shadow: 0 0 8px #ffd700, 0 0 20px #ffea00;
+  letter-spacing: 2px;
+  font-weight: bold;
+  display: inline-block;
 }
 
 .hero-text p {
@@ -140,6 +138,7 @@ section {
   opacity: 0;
   transition: transform 0.7s ease 0.1s, opacity 0.7s ease 0.1s;
   text-shadow: #333 3 5px 10px rgba(0, 0, 0, 0.5);
+  z-index: 5;
 }
 
 .hero-text .btn {
@@ -162,6 +161,7 @@ section {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 .hero-media ::before {
   content: "";
@@ -191,6 +191,7 @@ section {
   transform: translateY(10px);
   opacity: 0;
   transition: transform 0.9s cubic-bezier(0.2, 0.9, 0.3, 1), opacity 0.9s;
+  z-index: 2;
 }
 
 .hero-text::before {
@@ -482,7 +483,6 @@ section {
   overflow: hidden;
 }
 
-/* Lớp phủ tối giúp chữ rõ hơn */
 #skills::before {
   content: "";
   position: absolute;
@@ -490,7 +490,6 @@ section {
   z-index: 0;
 }
 
-/* Tất cả nội dung nằm trên overlay */
 #skills * {
   position: relative;
   z-index: 1;
@@ -571,7 +570,6 @@ section {
   animation: fillBar 1.2s forwards;
 }
 
-/* Animation cho thanh kỹ năng */
 @keyframes fillBar {
   from {
     width: 0;
@@ -590,7 +588,6 @@ section {
   }
 }
 
-/* Animation tiêu đề */
 @keyframes fadeInDown {
   from {
     opacity: 0;

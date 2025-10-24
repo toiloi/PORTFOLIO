@@ -36,7 +36,7 @@ window.addEventListener("scroll", () => {
   let current = "";
 
   sections.forEach((section) => {
-    const sectionTop = section.offsetTop - 80; // khoảng cách trừ đi chiều cao header
+    const sectionTop = section.offsetTop - 80;
     const sectionHeight = section.clientHeight;
 
     if (
@@ -253,3 +253,42 @@ document.querySelectorAll(".about-card-container").forEach((container) => {
     });
   }
 });
+// Hiệu ứng chữ lộn xộn cho <h1>
+const textElement = document.getElementById("animated-text");
+const finalText = textElement.textContent;
+const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+let iterations = 0;
+
+function scrambleEffect() {
+  const textArray = finalText.split("");
+  const interval = setInterval(() => {
+    textElement.textContent = textArray
+      .map((char, i) => {
+        if (i < iterations) return finalText[i];
+        return chars[Math.floor(Math.random() * chars.length)];
+      })
+      .join("");
+    if (iterations >= textArray.length) clearInterval(interval);
+    iterations += 1 / 3;
+  }, 50);
+}
+
+// Hiệu ứng xuất hiện từng ký tự cho <p>
+const paragraph = document.getElementById("animated-paragraph");
+const textP = paragraph.textContent;
+paragraph.textContent = "";
+let indexP = 0;
+
+function revealText() {
+  if (indexP < textP.length) {
+    paragraph.textContent += textP.charAt(indexP);
+    paragraph.style.opacity = 1;
+    indexP++;
+    setTimeout(revealText, 40);
+  }
+}
+
+window.onload = () => {
+  scrambleEffect();
+  setTimeout(revealText, 1200);
+};

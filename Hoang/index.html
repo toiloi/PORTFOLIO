@@ -38,16 +38,16 @@
     <section id="hero">
       <div class="hero-inner">
         <div class="hero-text">
-          <h1>Chào mừng đến với trang web của tôi</h1>
-          <p>
-            Tôi là sinh viên năm 3 đang theo học chuyên ngành CNTT của Trường
-            Đại học Giao thông Vận tải
+          <h1 id="animated-text">Welcom to my Website</h1>
+          <p id="animated-paragraph">
+            Hi,I'm Nguyen Huy Hoang - third years student learning in
+            Information Technology at University of Transport Ho Chi Minh City.
           </p>
           <button
             class="btn"
             onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })"
           >
-            Liên hệ ngay
+            Contact Me
           </button>
         </div>
         <div class="hero-media">
@@ -58,10 +58,10 @@
 
     <!-- About Section -->
     <section id="about">
-      <h2>Giới thiệu</h2>
+      <h2>About me</h2>
       <p style="color: white">
-        Dưới đây là một số thông tin cá nhân cũng như định hướng phát triển
-        trong tương lai của tôi.
+        Some personal information as well as my future development orientation.
+        (Hover for more)
       </p>
       <div class="about-grid">
         <!-- Card 1: Thông tin cá nhân -->
@@ -71,11 +71,11 @@
               <div class="icon">
                 <i class="fas fa-code"></i>
               </div>
-              <h3>Thông tin cá nhân</h3>
-              <p>Họ và tên: Nguyễn Huy Hoàng</p>
-              <p>Ngày sinh: 20/05/2005</p>
+              <h3>Personal information</h3>
+              <p>Full name: Nguyễn Huy Hoàng</p>
+              <p>Date of birth: 20/05/2005</p>
               <p>Email: hoangnh7128@ut.edu.vn</p>
-              <p>Chuyên ngành: CNTT</p>
+              <p>Majority: Information Technology</p>
             </div>
             <div class="about-card-back">
               <div class="img-slider">
@@ -92,11 +92,11 @@
               <div class="icon">
                 <i class="fas fa-cogs"></i>
               </div>
-              <h3>Sở thích</h3>
-              <p>Đọc sách và xem phim về thể loại hành động</p>
-              <p>Chơi các môn thể thao như bóng đá, cầu lông, billiards</p>
+              <h3>My hobbies</h3>
+              <p>Read books and watch movies about action genre</p>
+              <p>Play sports like soccer, badminton, billiards</p>
               <p>
-                Du lịch và dã ngoại cũng như tham gia các hoạt động ngoài trời
+                Travel and picnic as well as participate in outdoor activities
               </p>
             </div>
             <div class="about-card-back">
@@ -118,10 +118,10 @@
               <div class="icon">
                 <i class="fas fa-cloud"></i>
               </div>
-              <h3>Mục tiêu phát triển</h3>
-              <p>Trở thành web developer chuyên nghiệp</p>
-              <p>Thuần thục các thuật toán với độ phức tạp cao</p>
-              <p>Xây dựng kỹ năng làm việc nhóm và phát biểu trước đám đông</p>
+              <h3>Development goals</h3>
+              <p>Become a professional web developer</p>
+              <p>Professional in UX/UI</p>
+              <p>Build teamwork and public speaking skills</p>
             </div>
             <div class="about-card-back">
               <div class="img-slider">
@@ -135,19 +135,17 @@
 
     <!-- Skills Section -->
     <section id="skills" class="fade-in">
-      <h2>Kỹ năng</h2>
-      <h3>
-        Dưới đây là 1 số kĩ năng mà tôi đã tích lũy được trong quá trình học tập
-      </h3>
+      <h2>Skills</h2>
+      <h3>Some skills that I have accumulated during my studies.</h3>
       <div class="skills-container">
         <div class="skill">
-          <p>Lập trình Frontend</p>
+          <p>Frontend programming</p>
           <div class="skill-bar"><div style="--skill-level: 50%"></div></div>
           <div class="skill-details">
             <ul>
               <li>
-                Hiểu cơ bản về cấu trúc và các thành phần cũng như chức năng của
-                1 trang web cơ bản
+                Basic understanding of the structure and components and
+                functions of a basic website
               </li>
             </ul>
           </div>
@@ -158,8 +156,8 @@
           <div class="skill-details">
             <ul>
               <li>
-                Nắm khái quát về cú pháp và cách hoạt động cũng như các dòng
-                lệnh và các kiểu dữ liệu
+                Get an overview of syntax and how it works, as well as command
+                lines and data types
               </li>
             </ul>
           </div>
@@ -170,8 +168,8 @@
           <div class="skill-details">
             <ul>
               <li>
-                Đang trong quá trình học tập và tìm hiểu để phát triển ứng dụng
-                mạng
+                In the process of learning and researching to develop network
+                applications
               </li>
             </ul>
           </div>
@@ -182,7 +180,7 @@
           <div class="skill-details">
             <ul>
               <li>
-                Áp dụng kiến thức đã học về OOP để thiết kế trang web thực tế
+                Apply the knowledge learned about OOP to design real websites
               </li>
             </ul>
           </div>
@@ -192,7 +190,7 @@
           <div class="skill-bar"><div style="--skill-level: 50%"></div></div>
           <div class="skill-details">
             <ul>
-              <li>Thiết kế web dựa trên các hàm và các thư viện được hỗ trợ</li>
+              <li>Web design based on supported functions and libraries</li>
             </ul>
           </div>
         </div>
@@ -201,25 +199,25 @@
 
     <!-- Projects Section -->
     <section id="projects" class="fade-in">
-      <h2>Các dự án đã tham gia</h2>
+      <h2>Projects participated</h2>
       <div class="projects-container">
         <div class="project">
           <img src="assets/image/badminton.png" alt="Project 1" />
           <div class="project-info">
             <h3>BadmintonManage</h3>
             <p style="font-style: italic">
-              Website quản lý và đặt lịch sân cầu lông.
+              Website for managing and booking badminton courts.
             </p>
-            <p>Các nhiệm vụ đã đảm nhận:</p>
-            <p>• Lên kế hoạch và thiết kế các biểu đồ UML.</p>
+            <p>Tasks undertaken:</p>
+            <p>• Plan and design UML diagrams.</p>
             <p>
-              • Phát triển các tính năng trên trang quản lý danh sách sân và
-              trang khuyến mãi cho khách hàng.
+              • Develop features on the course list management page and customer
+              promotion page.
             </p>
             <a
               href="https://github.com/toiloi/BadmintonManage"
               class="btn-learn"
-              >Truy cập dự án <i class="fas fa-"></i
+              >Learn more <i class="fas fa-"></i
             ></a>
           </div>
         </div>
@@ -228,14 +226,14 @@
           <div class="project-info">
             <h3>TSL-SignMap</h3>
             <p style="font-style: italic">
-              Ứng dụng quản lý vị trí biển báo giao thông có tích hợp AI(đang
-              phát triển).
+              Traffic sign location management application with integrated AI
+              (in development).
             </p>
-            <p>Các nhiệm vụ đã đảm nhận:</p>
-            <p>• Lên kế hoạch và thiết kế các biểu đồ UML.</p>
-            <p>• Phát triển các tính năng cho ứng dụng.</p>
+            <p>Tasks undertaken:</p>
+            <p>• Plan and design UML diagrams.</p>
+            <p>• Develop features for the application.</p>
             <a href="https://github.com/hhoang205/TSL-SignMap" class="btn-learn"
-              >Truy cập dự án</a
+              >Learn more</a
             >
           </div>
         </div>
@@ -244,18 +242,18 @@
           <div class="project-info">
             <h3>Skincare-Booking-System</h3>
             <p style="font-style: italic">
-              Website quản lý hệ thống làm đẹp và chăm sóc da.
+              Website for managing beauty and skin care systems.
             </p>
-            <p>Các nhiệm vụ đã đảm nhận:</p>
-            <p>• Lên kế hoạch và thiết kế các biểu đồ UML.</p>
+            <p>Tasks undertaken:</p>
+            <p>• Plan and design UML diagrams.</p>
             <p>
-              • Thiết kế giao diện người dùng (UI) và trải nghiệm người dùng
-              (UX) cho toàn bộ ứng dụng.
+              • Design user interface (UI) and user experience (UX) for the
+              entire application.
             </p>
             <a
               href="https://github.com/Phap625/Skincare-Booking-System"
               class="btn-learn"
-              >Truy cập dự án</a
+              >Learn more</a
             >
           </div>
         </div>
@@ -264,7 +262,7 @@
 
     <!-- Contact Section -->
     <section id="contact" class="fade-in" style="min-height: 30px">
-      <h2>Liên hệ</h2>
+      <h2>Contact</h2>
       <div class="contact-container">
         <a href="mailto:nguyenhuyhoang2052005@gmail.com"
           ><i class="fas fa-envelope"></i> Email</a
@@ -305,7 +303,7 @@
     <button class="scroll-to-top" id="scrollToTopBtn">🔼</button>
     <!-- Footer -->
     <footer>
-      <p>&copy; Thiết kế bởi Nguyễn Hoàng.</p>
+      <p>&copy; Design by Nguyen Hoang.</p>
     </footer>
   </body>
 </html>
