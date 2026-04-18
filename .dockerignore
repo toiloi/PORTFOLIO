@@ -1,0 +1,9 @@
+.git
+.gitignore
+.vscode
+.cursor
+**/.DS_Store
+Tho/readme.md
+docker-compose.yml
+Dockerfile
+.dockerignore
