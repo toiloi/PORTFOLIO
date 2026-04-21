@@ -1,0 +1,41 @@
+:root {
+  /* 1. MÀU NỀN CỐ ĐỊNH */
+  --color-bg-white: #FFFFFF;
+
+  /* 2. MÀU CHỮ CHÍNH (Xanh đen đậm): 
+     Trên nền trắng, dùng màu này cho Tiêu Đề thay vì màu đen kịt. Nhìn web sẽ xịn hơn rất nhiều */
+  --color-text-primary: #0B1F3A;
+
+  /* 3. MÀU CHỮ PHỤ (Xám tro): 
+     Dùng cho chữ đoạn văn thông thường dài thòng lòong. */
+  --color-text-muted: #746C6B;
+
+  /* 4. MÀU NHẤN CHÍNH (Vàng nghệ): 
+     Dùng cho Nút bấm (Contact me), màu khi ấn vào link, icon nổi bật. */
+  --color-accent-primary: #FFD66D;
+
+  /* 5. MÀU NỀN MẢNG LỚN (Xanh Navy): 
+     Dùng để tô nền cho thanh Navbar ở trên cùng hoặc cái Footer ở dưới cùng. */
+  --color-accent-secondary: #143A51;
+
+  /* 6. MÀU TRANG TRÍ (Vàng Cát): 
+     Dùng làm màu background của các nút kỹ năng nhỏ (Tags) hoặc đường viền phân chia. */
+  --color-accent-tertiary: #C49A68;
+}
+
+/* Áp dụng chuẩn vào web */
+body {
+  background-color: var(--color-bg-white);
+  /* Nền luôn trắng */
+  color: var(--color-text-muted);
+  /* Mặc định chữ đều màu xám tro dễ đọc */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Tự động bắt mọi Tiêu Đề phải mang màu Xanh Đen đậm */
+h1,
+h2,
+h3,
+h4 {
+  color: var(--color-text-primary);
+}
