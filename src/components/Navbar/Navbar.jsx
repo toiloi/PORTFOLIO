@@ -4,7 +4,7 @@ export default function Navbar() {
     return (
         <header className="navbar">
             <div className="nav-logo">
-                <a href="/" onClick={() => window.scrollTo(0,0)}>Nguyen Anh <span>Toai</span></a>
+                <a href="#" onClick={(e) => { e.preventDefault(); window.location.reload(); }}>Nguyen Anh <span>Toai</span></a>
             </div>
 
             <nav className="nav-links">

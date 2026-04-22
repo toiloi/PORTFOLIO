@@ -13,15 +13,14 @@ export default function Home() {
 
                 <p className="home-description">
                     A passionate Full Stack Software Developer 🚀 having an experience
-                    of building Web applications with JavaScript / Reactjs /
-                    Nodejs and some other cool libraries and frameworks.
+                    of building Web applications with Reactjs / Spring Boot and some other cool libraries and frameworks.
                 </p>
 
                 <div className="social-icons">
-                    <a href="https://github.com/..." target="_blank" className="icon-btn github"><FaGithub /></a>
-                    <a href="https://linkedin.com/in/..." target="_blank" className="icon-btn linkedin"><FaLinkedinIn /></a>
-                    <a href="https://facebook.com/..." target="_blank" className="icon-btn facebook"><FaFacebookF /></a>
-                    <a href="https://instagram.com/..." target="_blank" className="icon-btn instagram"><FaInstagram /></a>
+                    <a href="https://github.com/toiloi" target="_blank" className="icon-btn github"><FaGithub /></a>
+                    <a href="www.linkedin.com/in/toaidev" target="_blank" className="icon-btn linkedin"><FaLinkedinIn /></a>
+                    <a href="https://www.facebook.com/toiloi1211" target="_blank" className="icon-btn facebook"><FaFacebookF /></a>
+                    <a href="https://www.instagram.com/toai_loi/" target="_blank" className="icon-btn instagram"><FaInstagram /></a>
                 </div>
             </div>
             {/* cột phải */}

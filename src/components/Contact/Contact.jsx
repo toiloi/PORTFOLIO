@@ -26,10 +26,10 @@ export default function Contact() {
 
                     {/* Dàn icon mạng xã hội hình tròn */}
                     <div className="social-icons">
-                        <a href="https://github.com/TOAINA" target="_blank" rel="noreferrer" className="icon-btn github"><FaGithub /></a>
-                        <a href="#" className="icon-btn linkedin"><FaLinkedinIn /></a>
-                        <a href="#" className="icon-btn facebook"><FaFacebookF /></a>
-                        <a href="https://instagram.com/..." target="_blank" className="icon-btn instagram"><FaInstagram /></a>
+                        <a href="https://github.com/toiloi" target="_blank" rel="noreferrer" className="icon-btn github"><FaGithub /></a>
+                        <a href="https://www.linkedin.com/in/toaidev" target="_blank" rel="noreferrer" className="icon-btn linkedin"><FaLinkedinIn /></a>
+                        <a href="https://www.facebook.com/toiloi1211" className="icon-btn facebook"><FaFacebookF /></a>
+                        <a href="https://www.instagram.com/toai_loi/" target="_blank" className="icon-btn instagram"><FaInstagram /></a>
                     </div>
                 </div>
 
