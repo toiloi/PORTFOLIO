@@ -1,0 +1,92 @@
+.service-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 80px 10%;
+    gap: 50px;
+
+    .service-image {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+
+        img {
+            width: 100%;
+            max-width: 500px;
+        }
+    }
+
+    .service-content {
+        flex: 1;
+
+        .service-title {
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--color-text-primary);
+            margin-bottom: 10px;
+        }
+
+        .service-subtitle {
+            font-size: 1rem;
+            color: var(--color-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+
+        .tech-icons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            font-size: 3.5rem; // Kích thước của các icon (Html, React, Docker...)
+            color: var(--color-text-muted);
+            margin-bottom: 30px;
+
+            svg {
+                transition: color 0.3s ease, transform 0.3s ease;
+                cursor: pointer;
+
+                &:hover {
+                    color: var(--color-accent-primary); // Chuyển vàng nghệ khi hover
+                    transform: translateY(-5px);
+                }
+            }
+        }
+
+        .service-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+
+            li {
+                font-size: 1.2rem;
+                color: var(--color-text-muted);
+                line-height: 1.7;
+                margin-bottom: 15px;
+
+                // Tô màu riêng cho icon tia sét
+                &::first-letter {
+                    color: var(--color-accent-tertiary);
+                }
+            }
+        }
+    }
+}
+
+// Chỉnh lại cho điện thoại
+@media screen and (max-width: 900px) {
+    .service-container {
+        flex-direction: column;
+        text-align: center;
+
+        .service-image {
+            order: -1; // Đẩy ảnh lên trên cùng
+            margin-bottom: 30px;
+        }
+
+        .tech-icons {
+            justify-content: center;
+        }
+    }
+}

@@ -1,0 +1,216 @@
+/* ======================================================================
+   WRAPPER NỘI DUNG TRANG — Fade-in sau khi Splash biến mất
+   Navbar + toàn bộ main đều nằm trong .page-content
+========================================================================= */
+.page-content {
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+.page-content.content-visible {
+  opacity: 1;
+}
+
+/* ======================================================================
+   SPLASH SCREEN — Dùng hoàn toàn transition (không dùng animation để tránh conflict)
+========================================================================= */
+.splash-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  z-index: 10000;
+  pointer-events: auto;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ---- 2 KHỐI TỨ GIÁC ---- */
+.splash-half {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #143A51;
+  /* Chỉ dùng transition để cả in lẫn out đều hoạt động đúng */
+  transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.splash-left {
+  clip-path: polygon(0 0, calc(50% + 20vmax) 0%, calc(50% - 20vmax) 100%, 0 100%);
+}
+
+.splash-right {
+  clip-path: polygon(calc(50% + 20vmax) 0%, 100% 0%, 100% 100%, calc(50% - 20vmax) 100%);
+}
+
+/* Trạng thái ENTERING: bắt đầu ngoài màn hình (chưa vào) */
+.splash-entering .splash-left  { transform: translate(-100vw, -100vh); }
+.splash-entering .splash-right { transform: translate( 100vw,  100vh); }
+
+/* Trạng thái ENTERED: khối trượt VÀO tâm màn hình */
+.splash-entered .splash-left  { transform: translate(0, 0); }
+.splash-entered .splash-right { transform: translate(0, 0); }
+
+/* Trạng thái EXITING: khối văng ngược về góc */
+.splash-exiting .splash-left  { transform: translate(-100vw, -100vh); }
+.splash-exiting .splash-right { transform: translate( 100vw,  100vh); }
+
+
+/* ---- LOGO + LỤC GIÁC ---- */
+.splash-logo-container {
+  position: relative;
+  z-index: 10001;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Ẩn ban đầu, hiện sau khi khối vào xong */
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.5s ease 1.2s, transform 0.5s ease 1.2s;
+}
+
+/* Khi đã entered: Logo hiện ra */
+.splash-entered .splash-logo-container {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Khi exiting: Logo zoom phóng rồi biến mất */
+.splash-exiting .splash-logo-container {
+  opacity: 0;
+  transform: scale(2);
+  transition: opacity 0.4s ease, transform 0.6s ease;
+}
+
+.splash-logo-text {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: 4px;
+  color: white;
+  position: relative;
+  z-index: 1;
+}
+.splash-logo-text span {
+  color: var(--color-accent-primary, #FFD66D);
+}
+
+/* Hai SVG lục giác */
+.splash-hexagon {
+  position: absolute;
+  fill: none;
+  stroke: white;
+  stroke-width: 2;
+}
+
+.hex-1 {
+  width: 200px;
+  height: 200px;
+  animation: spinHex 4s infinite linear;
+}
+
+.hex-2 {
+  width: 240px;
+  height: 240px;
+  stroke: var(--color-accent-primary, #FFD66D);
+  stroke-width: 1.5;
+  stroke-dasharray: 15 8;
+  animation: spinHexRev 7s infinite linear;
+}
+
+@keyframes spinHex    { to { transform: rotate( 360deg); } }
+@keyframes spinHexRev { to { transform: rotate(-360deg); } }
+
+
+/* ======================================================================
+   SCROLL TO TOP BUTTON
+========================================================================= */
+.scroll-top-btn {
+  position: fixed;
+  bottom: 30px; right: 30px;
+  background-color: var(--color-text-primary);
+  color: white;
+  width: 50px; height: 50px;
+  border-radius: 50%;
+  border: none;
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  cursor: pointer;
+  z-index: 9999;
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+.scroll-top-btn.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.scroll-top-btn:hover {
+  background-color: var(--color-accent-primary);
+  color: #000;
+  transform: translateY(-5px);
+}
+
+
+/* ======================================================================
+   HIỆU ỨNG CUỘN — Hình/Nội dung trượt từ trái, phải (Element-specific)
+========================================================================= */
+
+/* Các section chỉ ẩn nhạt dần, KHÔNG di chuyển (để nhường chuyển động cho nội dung con) */
+section {
+  opacity: 0;
+  transition: opacity 1.5s ease;
+}
+
+section.reveal-visible {
+  opacity: 1;
+}
+
+#home {
+  opacity: 1 !important;
+}
+
+/* HIỆU ỨNG THÀNH PHẦN CON BÊN TRONG SECTION */
+.slide-from-left {
+  opacity: 0;
+  transform: translateX(-100px);
+  transition: opacity 1.2s ease, transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.slide-from-right {
+  opacity: 0;
+  transform: translateX(100px);
+  transition: opacity 1.2s ease, transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.slide-from-bottom {
+  opacity: 0;
+  transform: translateY(100px);
+  transition: opacity 1.2s ease, transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Khi section parent xuất hiện, hoặc page-content xuất hiện (đối với Home) */
+.reveal-visible .slide-from-left,
+.page-content.content-visible #home .slide-from-left {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-visible .slide-from-right,
+.page-content.content-visible #home .slide-from-right {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-visible .slide-from-bottom,
+.page-content.content-visible #home .slide-from-bottom {
+  opacity: 1;
+  transform: translateY(0);
+}

@@ -1,0 +1,93 @@
+/* --- NAVBAR SCSS --- */
+.navbar {
+  /* Cho nó dính chặt vào mép trên màn hình */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  
+  /* Căn bố cục trái phải */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+  /* Khỏang cách trên dưới và thụt lề vào 10% cho ngang hàng với Home */
+  padding: 20px 10%; 
+  
+  /* Hiệu ứng kính mờ cho nền Navbar. Không dùng trắng đặc 100% */
+  background-color: rgba(255, 255, 255, 0.85); 
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  
+  /* Thêm cái bóng đen phía dưới cho navbar nẩy ra khỏi trang */
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.05);
+
+  .nav-logo {
+    a {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--color-text-primary); // Xanh navy đậm
+      text-decoration: none;
+      letter-spacing: -0.5px; // Kéo chữ lại gần nhau cho ngầu
+      
+      span {
+        color: var(--color-accent-primary); // Chữ "Toai." màu Vàng
+      }
+    }
+  }
+
+  .nav-links {
+    ul {
+      display: flex;
+      gap: 35px; // Khoảng cách giữa các chữ
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      li {
+        a {
+          font-size: 1.1rem;
+          font-weight: 500;
+          color: var(--color-text-primary);
+          text-decoration: none;
+          position: relative; // Cực kỳ quan trọng để lát vẽ cái gạch chân
+          transition: color 0.3s ease;
+
+          /* Cách vẽ gạch chân trượt ngang của dân Pro (không dùng text-decoration: underline) */
+          &::after {
+            content: '';
+            position: absolute;
+            width: 0; // Ban đầu gạch chân dài 0%
+            height: 3px; // Độ dày gạch chân
+            bottom: -5px; // Cho nó thụt xuống dưới chữ một xíu
+            left: 0;
+            background-color: var(--color-accent-primary); // Gạch chân màu vàng
+            transition: width 0.3s ease; // Chuyển động dài ra từ từ
+          }
+
+          /* Khi đưa chuột vào thì gạch chân kéo dài ra 100% */
+          &:hover {
+            color: var(--color-accent-secondary); // Khi đưa chuột vào chữ đổi màu xanh lợt hơn
+            &::after {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/* Cho màn hình điện thoại (Giấu chữ đi trên đt hoặc cuộn nhỏ lại tuỳ ý thích) */
+@media screen and (max-width: 900px) {
+  .navbar {
+    flex-direction: column;
+    padding: 15px 5%;
+    gap: 15px;
+    
+    .nav-links ul {
+      flex-wrap: wrap; // Khi màn hình chật thì các chữ rớt xuống hàng
+      justify-content: center;
+      gap: 15px;
+    }
+  }
+}

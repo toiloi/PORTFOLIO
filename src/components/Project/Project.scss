@@ -1,0 +1,150 @@
+/* --- PROJECT SCSS --- */
+.project-container {
+    padding: 80px 10%;
+    
+    .project-title {
+        font-size: 4rem; 
+        font-weight: 700; // Đồng bộ độ đậm giống hệt trang Service và Education
+        color: var(--color-text-primary);
+        margin-bottom: 50px;
+    }
+
+    .project-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); // Căn chính xác 3 cột
+        gap: 30px;
+        margin-bottom: 50px;
+
+        .project-card {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08); 
+            text-decoration: none; 
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+            // Hiệu ứng rê chuột thẻ bài nhảy nhẹ
+            &:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            }
+
+            .project-header {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                margin-bottom: 15px;
+
+                .repo-icon {
+                    font-size: 1.5rem;
+                    color: var(--color-text-primary);
+                }
+
+                .repo-title {
+                    font-size: 1.4rem;
+                    font-weight: 600;
+                    color: var(--color-text-primary);
+                    margin: 0;
+                }
+            }
+
+            .project-desc {
+                font-size: 1.2rem; // Đồng bộ size 1.2rem giống Service
+                color: var(--color-text-muted);
+                line-height: 1.5;
+                flex-grow: 1;
+                margin-bottom: 30px;
+            }
+
+            .project-footer {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                color: var(--color-text-muted);
+                font-size: 1.1rem; // Tăng size cho dễ nhìn
+
+                .footer-left {
+                    display: flex;
+                    align-items: center;
+                    gap: 5px;
+
+                    .lang-dot {
+                        display: inline-block;
+                        width: 12px;
+                        height: 12px;
+                        border-radius: 50%;
+                    }
+
+                    .lang-text {
+                        margin-right: 12px; 
+                    }
+
+                    .stat-icon {
+                        font-size: 1.2rem;
+                        margin-right: 3px;
+                    }
+
+                    .stat-text {
+                        margin-right: 12px;
+                    }
+                }
+
+                .footer-right {
+                    .size-text {
+                        color: var(--color-text-muted);
+                        font-family: monospace; 
+                    }
+                }
+            }
+        }
+    }
+
+    .more-btn-container {
+        display: flex;
+        justify-content: center;
+
+        .more-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--color-text-primary); /* Đổi màu xanh tối như nút cuộn lên */
+            color: #fff;
+            padding: 15px 40px;
+            border-radius: 30px; /* Bo góc tròn lẳn */
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3); /* Bóng giống nút scroll top */
+            transition: all 0.3s ease;
+
+            &:hover {
+                background-color: var(--color-accent-primary); /* Màu vàng nghệ */
+                color: #000;
+                transform: translateY(-5px);
+            }
+        }
+    }
+}
+
+// Bóp về 2 cột khi view trên ipad chật
+@media screen and (max-width: 1200px) {
+    .project-container .project-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+// Ép về 1 cột dọc và căn giữa chữ trên điện thoại
+@media screen and (max-width: 768px) {
+    .project-container {
+        .project-grid {
+            grid-template-columns: 1fr;
+        }
+        .project-title {
+            text-align: center;
+        }
+    }
+}

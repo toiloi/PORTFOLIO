@@ -1,0 +1,14 @@
+/* --- FOOTER SCSS --- */
+.footer-area {
+    text-align: center;
+    border-top: 1px solid rgba(0, 0, 0, 0.1); 
+    padding: 30px 10%;
+    color: var(--color-text-muted);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    background-color: var(--color-bg-white);
+
+    p {
+        margin: 0;
+    }
+}

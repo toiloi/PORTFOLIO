@@ -1,0 +1,141 @@
+/* --- CONTACT & FOOTER SCSS --- */
+.contact-container {
+    padding: 80px 10% 20px;
+
+    .contact-card {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 50px;
+        margin-bottom: 80px;
+
+        .contact-content {
+            flex: 1;
+
+            .contact-title {
+                font-size: 4rem; // Áp dụng định dạng font to của Service
+                font-weight: 700;
+                color: var(--color-text-primary);
+                margin-bottom: 15px;
+            }
+
+            .contact-subtitle {
+                font-size: 1rem;
+                color: var(--color-text-muted);
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                margin-bottom: 30px;
+                line-height: 1.5;
+            }
+
+            .contact-quote {
+                font-size: 1.2rem;
+                color: var(--color-text-primary);
+                font-weight: 500;
+                margin-bottom: 25px;
+            }
+
+            .contact-location {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                font-size: 1.1rem;
+                color: var(--color-text-primary);
+                margin-bottom: 25px;
+
+                .loc-icon {
+                    font-size: 1.3rem; // icon location
+                }
+            }
+
+            .contact-status {
+                font-size: 1.1rem;
+                color: var(--color-text-primary);
+                margin-bottom: 30px;
+
+                strong {
+                    font-weight: 600;
+                }
+            }
+
+            .social-icons {
+                display: flex;
+                gap: 15px;
+
+                .icon-btn {
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 45px;
+                    height: 45px;
+                    border-radius: 50%;
+                    color: #fff;
+                    font-size: 1.2rem;
+                    transition: transform 0.3s ease, background-color 0.3s;
+
+                    &:hover {
+                        transform: translateY(-5px);
+                        background-color: var(--color-accent-primary) !important;
+                    }
+
+                    // Tự set màu thương hiệu nếu không hover
+                    &.github {
+                        background-color: #333;
+                    }
+
+                    &.linkedin {
+                        background-color: #0077b5;
+                    }
+
+                    &.facebook {
+                        background-color: #3b5998;
+                    }
+
+                    &.instagram {
+                        background-color: #e1306c; // Màu hồng/cam gradient tiêu chuẩn
+                    }
+
+                    // Hoặc đỏ cam
+                }
+            }
+        }
+
+        .contact-avatar {
+            img {
+                width: 300px;
+                height: 300px;
+                border-radius: 50%;
+                object-fit: cover;
+                // Khung viền mầu xanh như hình
+                border: 8px solid #143A51; // Màu tím pha trong suốt
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+                transition: transform 0.3s ease;
+
+                &:hover {
+                    transform: scale(1.05); // Phóng to nhẹ khi rê chuột
+                }
+            }
+        }
+    }
+}
+
+// Bóp giao diện điện thoại
+@media screen and (max-width: 900px) {
+    .contact-container .contact-card {
+        flex-direction: column;
+        text-align: center;
+
+        .contact-location {
+            justify-content: center;
+        }
+
+        .social-icons {
+            justify-content: center;
+        }
+
+        .contact-avatar img {
+            width: 250px;
+            height: 250px;
+        }
+    }
+}

@@ -1,0 +1,101 @@
+/* --- EDUCATION SCSS --- */
+.education-container {
+    padding: 80px 10%;
+
+    .education-title {
+        font-size: 4rem;
+        font-weight: 700; // Giống độ đậm bên trang Service
+        color: var(--color-text-primary);
+        margin-bottom: 10px;
+    }
+
+    .edu-card {
+        display: flex;
+        align-items: flex-start;
+        gap: 30px;
+        margin-bottom: 20px;
+
+        /* Xử lý Logo bên trái */
+        .edu-logo {
+            flex-shrink: 0;
+
+            img {
+                width: 140px;
+                height: 140px;
+                object-fit: contain;
+                border-radius: 50%;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                padding: 10px;
+                background-color: white;
+            }
+        }
+
+        /* Xử lý Chữ bên phải */
+        .edu-details {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            padding-bottom: 30px;
+            border-bottom: 2px solid rgba(0, 0, 0, 0.1); // Viền nhẹ nhàng hài hoà hơn màu tím
+
+            .uni-name {
+                font-size: 2.2rem;
+                font-weight: 600;
+                color: var(--color-text-primary); // Dùng lại màu xanh navy chuẩn
+                margin-bottom: 5px; // Giảm khoảng cách
+            }
+
+            .degree {
+                font-size: 1.4rem;
+                font-weight: 600;
+                color: var(--color-text-primary);
+                margin-top: 5px;
+                margin-bottom: 5px; // Giảm khoảng cách
+            }
+
+            .duration {
+                font-size: 1.1rem;
+                color: var(--color-text-muted); // Màu xám tro chuẩn
+                margin-top: 5px;
+                margin-bottom: 10px; // Giảm khoảng cách
+            }
+
+            .description {
+                font-size: 1.2rem;
+                color: var(--color-text-muted);
+                margin-bottom: 5px; // Giảm khoảng cách
+                line-height: 1.5; // Kéo các dòng gần nhau hơn
+            }
+
+            .edu-list {
+                padding-left: 20px;
+                margin: 0;
+
+                li {
+                    font-size: 1.2rem;
+                    color: var(--color-text-muted);
+                    line-height: 1.5; // Kéo các dòng gần nhau hơn
+                    margin-bottom: 5px; // Giảm khoảng cách các dòng chữ list
+                }
+            }
+        }
+    }
+}
+
+/* Ép layout thành cột chữ đè xuống dưới ảnh khi xem trên Mobile */
+@media screen and (max-width: 768px) {
+    .education-container {
+        text-align: center;
+
+        .edu-card {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+
+            .edu-list {
+                padding-left: 0;
+                list-style-position: inside;
+            }
+        }
+    }
+}

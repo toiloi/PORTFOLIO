@@ -1,0 +1,140 @@
+/* --- HOME SCSS --- */
+.home-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 80px 10%; // Thụt lề an toàn hai bên
+    gap: 50px;
+
+    // Xử lý riêng CỘT TRÁI
+    .home-content {
+        flex: 1;
+
+        .home-title {
+            font-size: 4rem; // Chữ khổng lồ y như hình
+            font-weight: 600;
+            color: var(--color-text-primary); // Xanh đen đậm
+            line-height: 1.1;
+            margin-bottom: 25px;
+
+            // Hiệu ứng tay vẫy chào
+            .wave-emoji {
+                display: inline-block;
+                animation: wave 2.5s infinite;
+                transform-origin: 70% 70%;
+            }
+        }
+
+        .home-description {
+            font-size: 1.4rem;
+            color: var(--color-text-muted); // Màu xám tro như hình
+            line-height: 1.6;
+            font-weight: 400;
+            margin-bottom: 40px;
+        }
+
+        // Vùng chứa các nút Icon tròn
+        .social-icons {
+            display: flex;
+            gap: 15px;
+
+            .icon-btn {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                width: 45px;
+                height: 45px;
+                border-radius: 50%;
+                color: #fff;
+                font-size: 1.2rem;
+                transition: transform 0.3s ease, background-color 0.3s;
+
+                // Nếu bạn muốn hover chuyển thành màu accent Vàng Nghệ 
+                &:hover {
+                    transform: translateY(-5px); // Nảy lên
+                    background-color: var(--color-accent-primary) !important;
+                }
+
+                // Màu thương hiệu đúng y như hình
+                &.github {
+                    background-color: #333;
+                }
+
+                &.linkedin {
+                    background-color: #0077b5;
+                }
+
+                &.facebook {
+                    background-color: #3b5998;
+                }
+
+                &.instagram {
+                    background-color: #e4405f;
+                }
+            }
+        }
+    }
+
+    // Xử lý CỘT PHẢI
+    .home-image {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+
+        img {
+            width: 100%;
+            max-width: 600px; // Không để ảnh to bè quá lố
+        }
+    }
+}
+
+// Keyframes tạo hiệu ứng cái tay lắc qua lắc lại 
+@keyframes wave {
+    0% {
+        transform: rotate(0.0deg)
+    }
+
+    10% {
+        transform: rotate(14.0deg)
+    }
+
+    20% {
+        transform: rotate(-8.0deg)
+    }
+
+    30% {
+        transform: rotate(14.0deg)
+    }
+
+    40% {
+        transform: rotate(-4.0deg)
+    }
+
+    50% {
+        transform: rotate(10.0deg)
+    }
+
+    60% {
+        transform: rotate(0.0deg)
+    }
+
+    100% {
+        transform: rotate(0.0deg)
+    }
+}
+
+/* Đảm bảo Responsive: Thu nhỏ cột trên Điện Thoại */
+@media screen and (max-width: 900px) {
+    .home-container {
+        flex-direction: column;
+        text-align: center;
+
+        .social-icons {
+            justify-content: center;
+        }
+
+        .home-image {
+            margin-top: 40px;
+        }
+    }
+}
